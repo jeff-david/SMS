@@ -20,10 +20,10 @@
                         </a>
                         <ul class="header3-sub-list list-unstyled">
                             <li>
-                                <a href="registerstudent.html"><i class="fas fa-plus-square"></i> Register Student</a>
+                                <a href="{{route('admin.register_student')}}"><i class="fas fa-plus-square"></i> Register Student</a>
                             </li>
                             <li>
-                                <a href="registerteacher.html"><i class="fas fa-plus-square"></i> Teacher</a>
+                                <a href="{{route('admin.register_teacher')}}"><i class="fas fa-plus-square"></i> Teacher</a>
                             </li>
                         </ul>
                     </li>
