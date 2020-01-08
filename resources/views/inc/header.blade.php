@@ -28,7 +28,7 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="classlist.html"><i class="fas fa-list-ul"></i>
+                        <a href="{{route('admin.register_class')}}"><i class="fas fa-list-ul"></i>
                             <span class="bot-line"></span> Class
                         </a>
                     </li>

@@ -18,6 +18,8 @@ Route::get('/admin', function () {
 Route::prefix('admin')->group(function(){
     Route::get('/register/student', 'Admin\AdminController@index')->name('admin.register_student');
     Route::get('/register/teacher', 'Admin\AdminController@teacher')->name('admin.register_teacher');
+    Route::get('/register/class', 'Admin\AdminController@class_view')->name('admin.register_class');
   
 });
+
 
