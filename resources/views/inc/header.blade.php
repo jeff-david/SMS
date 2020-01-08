@@ -33,7 +33,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="studentlist.html"><i class="fas fa-list-ul"></i>
+                        <a href="{{route('admin.studentlist')}}"><i class="fas fa-list-ul"></i>
                             <span class="bot-line"></span> Student
                         </a>
                     </li>
