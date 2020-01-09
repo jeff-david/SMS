@@ -70,3 +70,4 @@
     <script src="{{ url('/js/ranking.js')}}"></script>
     <script src="{{ url('/js/class.js')}}"></script>
     <script src="{{ url('/js/student.js')}}"></script>
+    <script src="{{ url('/js/teacher.js')}}"></script>
