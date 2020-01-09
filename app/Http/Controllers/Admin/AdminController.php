@@ -21,9 +21,9 @@ class AdminController extends Controller
     {
         return view('admin.class');
     }
-    public function studentlist()
+    public function student_list()
     {
-        return view('admin');
+        return view('admin.studentlist');
     }
 
 
