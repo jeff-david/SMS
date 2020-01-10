@@ -23,4 +23,14 @@ Route::prefix('admin')->group(function(){
   
 });
 
+Route::get('/principal', function(){
+    return view('principal.dashboard');
+});
+
+Route::prefix('principal')->group(function(){
+    Route::get('/principal/announce', 'Principal\PrincipalController@announce')->name('principal.announcement');
+    
+  
+});
+
 
