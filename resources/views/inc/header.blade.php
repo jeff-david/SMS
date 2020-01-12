@@ -9,7 +9,7 @@
             <div class="header__navbar">
                 <ul class="list-unstyled">
                     <li>
-                        <a href="dashboard.html"><i class="fas fa-th-large"></i>
+                        <a href="{{url('/admin')}}"><i class="fas fa-th-large"></i>
                             <span class="bot-line"></span> Dashboard
                         </a>
                     </li>
@@ -88,7 +88,7 @@
         <div class="container-fluid">
             <ul class="navbar-mobile__list list-unstyled">
                 <li>
-                    <a href="dashboard.html"><i class="fas fa-th-large"></i> Dashboard</a>
+                    <a href=""><i class="fas fa-th-large"></i> Dashboard</a>
                 </li>
                 <li class="has-sub">
                     <a class="js-arrow" href="#"><i class="fas fa-cogs"></i> Manage User</a>

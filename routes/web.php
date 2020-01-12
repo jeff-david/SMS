@@ -18,6 +18,7 @@ Route::get('/admin', function () {
 Route::prefix('admin')->group(function(){
     Route::get('/register/student', 'Admin\AdminController@index')->name('admin.register_student');
     Route::get('/register/teacher', 'Admin\AdminController@teacher')->name('admin.register_teacher');
+    Route::post('/register/student', 'Admin\AdminController@store_student')->name('admin.register_student');
   
 });
 
