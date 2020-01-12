@@ -31,8 +31,6 @@ class AdminController extends Controller
         {
 
             $save = $this->adminService->store($data);
-            
-
             \DB::commit();
 
             return view('admin.dashboard');  
@@ -50,20 +48,4 @@ class AdminController extends Controller
         return view('admin.register_teacher');
     }
 
-<<<<<<< HEAD
-=======
-    public function class_view()
-    {
-        return view('admin.class');
-    }
-    public function student_list()
-    {
-        return view('admin.studentlist');
-    }
-    public function teacher_list()
-    {
-        return view('admin.teacher');
-    }
-
->>>>>>> c8537bb2e54f46ebb0690b803ceed83194386f65
 }
