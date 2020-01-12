@@ -38,12 +38,12 @@
                         </a>
                     </li>
                     <li>
-                        <a href="teacherlist.html"><i class="fas fa-list-ul"></i>
+                        <a href="{{route('admin.register_teacher')}}"><i class="fas fa-list-ul"></i>
                             <span class="bot-line"></span> Teacher
                         </a>
                     </li>
                     <li class="has-sub">
-                        <a href="#">
+                        <a href="#">    
                             <i class="fas fa-user"></i>
                             <span class="bot-line"></span> Account
                         </a>
