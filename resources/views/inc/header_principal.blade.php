@@ -9,14 +9,14 @@
             <div class="header__navbar">
                 <ul class="list-unstyled">
                     <li>
-                        <a href="{{url('/admin')}}"><i class="fas fa-th-large"></i>
+                        <a href="dashboard.html"><i class="fas fa-th-large"></i>
                             <span class="bot-line"></span> Dashboard
                         </a>
                     </li>
-                    <li class="has-sub">
+                    <!-- <li class="has-sub">
                         <a href="#">
                             <i class="fas fa-cogs"></i>
-                            <span class="bot-line"></span> Manage User
+                            <span class="bot-line"></span> Announcement
                         </a>
                         <ul class="header3-sub-list list-unstyled">
                             <li>
@@ -26,10 +26,10 @@
                                 <a href="{{route('admin.register_teacher')}}"><i class="fas fa-plus-square"></i> Teacher</a>
                             </li>
                         </ul>
-                    </li>
+                    </li> -->
                     <li>
-                        <a href="{{route('admin.register_class')}}"><i class="fas fa-list-ul"></i>
-                            <span class="bot-line"></span> Class
+                        <a href="{{route('principal.announcement')}}"><i class="fas fa-list-ul"></i>
+                            <span class="bot-line"></span> Announcement
                         </a>
                     </li>
                     <li>
@@ -88,7 +88,7 @@
         <div class="container-fluid">
             <ul class="navbar-mobile__list list-unstyled">
                 <li>
-                    <a href=""><i class="fas fa-th-large"></i> Dashboard</a>
+                    <a href="dashboard.html"><i class="fas fa-th-large"></i> Dashboard</a>
                 </li>
                 <li class="has-sub">
                     <a class="js-arrow" href="#"><i class="fas fa-cogs"></i> Manage User</a>
