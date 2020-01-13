@@ -11,6 +11,28 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/admin', function () {
+    return view('admin.dashboard');
 });
+
+Route::prefix('admin')->group(function(){
+    Route::get('/register/student', 'Admin\AdminController@index')->name('admin.register_student');
+    Route::get('/register/teacher', 'Admin\AdminController@register_teacher')->name('admin.register_teacher');
+    Route::post('/register/student', 'Admin\AdminController@store_student')->name('admin.register_student');
+    Route::get('/register/class', 'Admin\AdminController@class_view')->name('admin.register_class');
+    Route::get('/register/studentlist','Admin\AdminController@student_list')->name('admin.studentlist');
+    Route::get('/register/teacherlist','Admin\AdminController@teacher_list')->name('admin.teacher');
+  
+});
+
+Route::get('/principal', function(){
+    return view('principal.dashboard');
+});
+
+Route::prefix('principal')->group(function(){
+    Route::get('/principal/announce', 'Principal\PrincipalController@announce')->name('principal.announcement');
+    
+  
+});
+
+

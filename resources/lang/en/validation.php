@@ -128,6 +128,9 @@ return [
     |
     */
 
+    
+
+
     'custom' => [
         'attribute-name' => [
             'rule-name' => 'custom-message',
@@ -145,6 +148,12 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'rel_student' =>'relationship to student',
+        'current_res' =>'current residence',
+        'guardian_rel' =>'guardian religion',
+        'cell_1' => 'cellular number'
+    ],
 
 ];
+
