@@ -3,6 +3,7 @@
 namespace SMS\Services;
 
 use SMS\Models\Student;
+use SMS\Models\Teacher;
 use Hash;
 
 
@@ -11,18 +12,22 @@ class AdminService
     /** @var \SMS\Models\Student **/
     private $studentList;
 
+    /** @var \SMS\Models\Teacher **/
+    private $teacherList;
+
     /**
      * AdminService constructor.
      *
      * @param Student $studentList
+     * @param Teacher $teacherList
      *
      *
      */
-    function __construct(Student $studentList)
+    function __construct(Student $studentList,Teacher $teacherList)
     {
-
         $this->studentList = $studentList;
-        
+        $this->teacherList = $teacherList;
+  
     }
 
 
@@ -65,5 +70,35 @@ class AdminService
         
         return $rtn;    
        
+    }
+
+
+    public function store_teacher($data)
+    {
+        $teacher = [];
+        $teacher['lastname'] = $data['lastname'];
+        $teacher['departments_id'] = $data['department'];
+        $teacher['firstname'] = $data['firstname'];
+        $teacher['middlename'] = $data['middlename'];
+        $teacher['register_date'] = $data['register_date'];
+        $teacher['username'] = $data['username'];
+        $teacher['password'] = Hash::make($data['password']);
+        $teacher['gender'] = $data['gender'];
+        $teacher['age'] = $data['age'];
+        $teacher['birthdate'] = $data['birthdate'];
+        $teacher['religion'] = $data['religion'];
+        $teacher['city'] = $data['city'];
+        $teacher['street_address'] = $data['street_address'];
+        $teacher['province'] = $data['province'];
+        $teacher['cell_no'] = $data['cell_no'];
+        $teacher['school_graduated'] = $data['school_graduated'];
+        $teacher['date_graduated'] = $data['date_graduated'];
+
+    
+        $rtn = $this->teacherList->create($teacher);
+        $rtn->save();
+        
+        return $rtn;   
+        
     }
 }

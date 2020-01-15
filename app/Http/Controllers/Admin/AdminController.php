@@ -4,8 +4,10 @@ namespace SMS\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use SMS\Http\Requests\Student\StudentRequest;
+use SMS\Http\Requests\Teacher\TeacherRequest;
 use SMS\Http\Controllers\Controller;
 use SMS\Services\AdminService;
+use SMS\Models\Department;
 use DB;
 
 class AdminController extends Controller
@@ -31,9 +33,7 @@ class AdminController extends Controller
         {
 
             $save = $this->adminService->store($data);
-            \DB::commit();
-
-            return view('admin.dashboard');  
+            \DB::commit(); 
         }catch(\Exception $th)
         {
             \DB::rollback();
@@ -41,11 +41,34 @@ class AdminController extends Controller
             return redirect()->back()->withInput()->withErrors(['failed'=>'Error in registering the students']);
         }
 
+        return redirect()->route('admin.studentList');
+
     }
 
     public function register_teacher()
     {
-        return view('admin.register_teacher');
+        $departments = Department::all();
+        return view('admin.register_teacher',compact('departments'));
+    }
+
+    public function store_teacher(TeacherRequest $request)
+    {
+        $data = $request->all();
+
+        \DB::beginTransaction();
+
+        try
+        {
+            $save = $this->adminService->store_teacher($data);
+            \DB::commit(); 
+        }catch(\Exception $th)
+        {
+            \DB::rollback();
+
+            return redirect()->back()->withInput()->withErrors(['failed'=>'Error in registering the teachers']);
+        }
+
+        return redirect()->route('admin.teacher');
     }
 
     public function class_view()
