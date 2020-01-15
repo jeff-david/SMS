@@ -152,7 +152,8 @@ return [
         'rel_student' =>'relationship to student',
         'current_res' =>'current residence',
         'guardian_rel' =>'guardian religion',
-        'cell_1' => 'cellular number'
+        'cell_1' => 'cellular number',
+        'cell_no' => 'cellular number'
     ],
 
 ];
