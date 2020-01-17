@@ -30,10 +30,10 @@ Route::get('/principal', function(){
     return view('principal.dashboard');
 });
 
-Route::prefix('principal')->group(function(){
-    Route::get('/principal/announce', 'Principal\PrincipalController@announce')->name('principal.announcement');
-    Route::get('/principal/student', 'Principal\PrincipalController@student_view')->name('principal.student');
-    Route::get('/principal/teacher', 'Principal\PrincipalController@teacher_list')->name('principal.teacher');
+Route::prefix('/principal')->group(function(){
+    Route::get('/announce', 'Principal\PrincipalController@announce')->name('principal.announcement');
+    Route::get('/student', 'Principal\PrincipalController@student_view')->name('principal.student');
+    Route::get('/teacher', 'Principal\PrincipalController@teacher_list')->name('principal.teacher');
     
   
 });
