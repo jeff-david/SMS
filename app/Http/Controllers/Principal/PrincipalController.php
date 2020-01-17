@@ -1,9 +1,9 @@
 <?php 
 
-namespace App\Http\Controllers\Principal;
+namespace SMS\Http\Controllers\Principal;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use SMS\Http\Controllers\Controller;
 
 class PrincipalController extends Controller
 {
