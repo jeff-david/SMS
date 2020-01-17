@@ -29,6 +29,8 @@ Route::get('/principal', function(){
 
 Route::prefix('principal')->group(function(){
     Route::get('/principal/announce', 'Principal\PrincipalController@announce')->name('principal.announcement');
+    Route::get('/principal/student', 'Principal\PrincipalController@student_view')->name('principal.student');
+    Route::get('/principal/teacher', 'Principal\PrincipalController@teacher_list')->name('principal.teacher');
     
   
 });
