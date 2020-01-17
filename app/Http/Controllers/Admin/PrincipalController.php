@@ -11,4 +11,12 @@ class PrincipalController extends Controller
     {
         return view('principal.announcement');
     }
+    public function student_view()
+    {
+        return view('principal.student');
+    }
+    public function teacher_list()
+    {
+        return view('principal.teacher');
+    }
 }
