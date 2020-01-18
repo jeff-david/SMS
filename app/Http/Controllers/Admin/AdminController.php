@@ -8,6 +8,7 @@ use SMS\Http\Requests\Teacher\TeacherRequest;
 use SMS\Http\Controllers\Controller;
 use SMS\Services\AdminService;
 use SMS\Models\Department;
+use SMS\Models\YearLevel;
 use DB;
 
 class AdminController extends Controller
@@ -73,7 +74,9 @@ class AdminController extends Controller
 
     public function class_view()
     {
-        return view('admin.class');
+        $yearlevel = YearLevel::all();
+        
+        return view('admin.class',compact('yearlevel'));
     }
     public function student_list()
     {

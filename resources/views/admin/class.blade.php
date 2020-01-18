@@ -12,12 +12,9 @@
                                         <div class="table-data__tool-left">
                                             <div class="rs-select2--light rs-select2--md">
                                                 <select name="Gradelevel" id="gradelevel" class="myselect">
-                                                    <option value=1>Grade 7</option>
-                                                    <option value=2>Grade 8</option>
-                                                    <option value=3>Grade 9</option>
-                                                    <option value=4>Grade 10</option>
-                                                    <option value=5>Grade 11</option>
-                                                    <option value=6>Grade 12</option>
+                                                    @foreach($yearlevel as $yearlevels)
+                                                        <option value={{$yearlevels->id}}>{{$yearlevels->yearlevel}}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                             <button class="au-btn-filter" id="filter">
@@ -28,7 +25,7 @@
                                         <section class="statistic statistic2">
                                             <div class="container">
                                                 <div class="row" id="classes">
-                                                    <!-- classes -->
+                                                    
                                                 </div>
                                             </div>
                                         </section>
