@@ -87,8 +87,8 @@ class SectionTableSeeder extends Seeder
                 array('year_level_id' => '6','section_name' => "Section L"),
                 
                                  
-            ),
-        );
+            )
+            );
        
     }
 }

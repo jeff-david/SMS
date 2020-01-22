@@ -4,6 +4,8 @@ namespace SMS\Services;
 
 use SMS\Models\Student;
 use SMS\Models\Teacher;
+use SMS\Models\Section;
+use SMS\Models\YearLevel;
 use Hash;
 
 
@@ -15,18 +17,28 @@ class AdminService
     /** @var \SMS\Models\Teacher **/
     private $teacherList;
 
+    /** @var \SMS\Models\section **/
+    private $sectionList;
+
+    /** @var \SMS\Models\YearLevel **/
+    private $yearlevelList;
+
     /**
      * AdminService constructor.
      *
      * @param Student $studentList
      * @param Teacher $teacherList
+     * @param Section $sectionList
+     * @param Teacher $yearlevelList
      *
      *
      */
-    function __construct(Student $studentList,Teacher $teacherList)
+    function __construct(Student $studentList,Teacher $teacherList,Section $sectionList,YearLevel $yearlevelList)
     {
         $this->studentList = $studentList;
         $this->teacherList = $teacherList;
+        $this->sectionList = $sectionList;
+        $this->yearlevelList = $yearlevelList;
   
     }
 
@@ -62,7 +74,6 @@ class AdminService
         $student['dialects'] = $data['dialects'];
         $student['ethnicities'] = $data['ethnicities'];
         $student['cell_1'] = $data['cell_1'];
-        
         
         $rtn = $this->studentList->create($student);
         
@@ -100,5 +111,24 @@ class AdminService
         
         return $rtn;   
         
+    }
+
+    public function getAllSection()
+    {
+        $section = YearLevel::join('sections', 'sections.year_level_id', '=', 'year_levels.id')
+                    ->select('year_levels.id','sections.section_name','year_levels.color','year_levels.yearlevel')
+                    ->where('sections.year_level_id', '=','1')
+                    ->get();
+        return $section;
+    }
+
+    public function getAllSectionById($yearlevel)
+    {
+        $id = $yearlevel->id;
+        $section = YearLevel::join('sections', 'sections.year_level_id', '=', 'year_levels.id')
+                    ->select('year_levels.id','sections.section_name','year_levels.color','year_levels.yearlevel')
+                    ->where('sections.year_level_id', '=',$id)
+                    ->get();
+        return $section;
     }
 }

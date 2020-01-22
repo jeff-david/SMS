@@ -32,7 +32,6 @@ class AdminController extends Controller
         \DB::beginTransaction();
         try
         {
-
             $save = $this->adminService->store($data);
             \DB::commit(); 
         }catch(\Exception $th)
@@ -75,8 +74,16 @@ class AdminController extends Controller
     public function class_view()
     {
         $yearlevel = YearLevel::all();
-        
-        return view('admin.class',compact('yearlevel'));
+        $section = $this->adminService->getAllSection();
+        return view('admin.class',compact('yearlevel','section'));
+    }
+
+    public function class_view_id($id)
+    {
+        $yearlevel = YearLevel::all();
+        $yearlevels = YearLevel::find($id);
+        $section = $this->adminService->getAllSectionById($yearlevels);
+        return view('admin.class',compact('yearlevel','section'));
     }
     public function student_list()
     {
@@ -86,6 +93,11 @@ class AdminController extends Controller
     public function teacher_list()
     {
         return view('admin.teacher');
+    }
+
+    public function assign_teacher()
+    {
+        return view('admin.assign_teacher'); 
     }
 
 }

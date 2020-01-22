@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateYearLevelsTable extends Migration
+class CreateSubjectsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateYearLevelsTable extends Migration
      */
     public function up()
     {
-        Schema::create('year_levels', function (Blueprint $table) {
+        Schema::create('subjects', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('yearlevel');
-            $table->string('color');
+            $table->tinyInteger('section_id');
+            $table->tinyInteger('department_id');
+            $table->string('subject_name');
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ class CreateYearLevelsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('year_levels');
+        Schema::dropIfExists('subjects');
     }
 }
