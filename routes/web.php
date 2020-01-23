@@ -40,4 +40,20 @@ Route::prefix('/principal')->group(function(){
   
 });
 
+Route::get('/parent', function(){
+    return view('parent.dashboard');
+});
+
+
+Route::prefix('parent')->group(function(){
+    Route::get('/announce', 'Parent\ParentController@announcement')->name('parent.announcement');
+    Route::get('/grade', 'Parent\ParentController@grade')->name('parent.grade');
+    Route::get('/profile', 'Parent\ParentController@profile')->name('parent.profile');
+    Route::get('/concern', 'Parent\ParentController@concern')->name('parent.concern');
+
+
+    
+  
+});
+
 
