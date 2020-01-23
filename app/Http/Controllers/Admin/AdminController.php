@@ -95,9 +95,11 @@ class AdminController extends Controller
         return view('admin.teacher');
     }
 
-    public function assign_teacher()
+    public function assign_teacher($id)
     {
-        return view('admin.assign_teacher'); 
+        $subject = $this->adminService->getAllSubject($id);
+
+        return view('admin.assign_teacher',compact('subject')); 
     }
 
 }

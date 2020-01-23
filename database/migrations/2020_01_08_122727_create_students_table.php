@@ -42,6 +42,7 @@ class CreateStudentsTable extends Migration
             $table->string('dialects');
             $table->string('ethnicities');
             $table->string('cell_1');
+            $table->tinyInteger('assign');
             $table->timestamps();
         });
     }

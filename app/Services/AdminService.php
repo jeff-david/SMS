@@ -131,4 +131,15 @@ class AdminService
                     ->get();
         return $section;
     }
+
+    public function getAllSubject($id)
+    {
+        
+        $subject = YearLevel::join('subjects', 'subjects.year_level_id', '=', 'year_levels.id')
+                    ->select('year_levels.id','subjects.department_id','subjects.subject_name','year_levels.color')
+                    ->where('subjects.year_level_id','=',$id)
+                    ->get();
+
+        return $subject;
+    }
 }

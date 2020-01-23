@@ -6,17 +6,17 @@ var subject = ['Filipino','English','Mathematics','Science','AralPan','C.L.E.','
 
 $(document).ready(function(){
     
-    for(var i = 0 ; i < 12 ; i++){
-        $(
-            `<div class="col-md-6 col-lg-3">
-                <div class="statistic__item statistic__item--blue text-center">
-                    <span class="desc">`+subject[i]+`</span>
-                    <br>
-                    <button type="button" class="btn btn-info mb-1" data-toggle="modal" data-target="#staticModal">Assign</button>
-                </div>
-            </div>`
-        ).appendTo('#subjects')
-    }
+    // for(var i = 0 ; i < 12 ; i++){
+    //     $(
+    //         `<div class="col-md-6 col-lg-3">
+    //             <div class="statistic__item statistic__item--blue text-center">
+    //                 <span class="desc">`+subject[i]+`</span>
+    //                 <br>
+    //                 <button type="button" class="btn btn-info mb-1" data-toggle="modal" data-target="#staticModal">Assign</button>
+    //             </div>
+    //         </div>`
+    //     ).appendTo('#subjects')
+    // }
 
     // for(var i = 0 ; i < 15 ; i++){
     //     $(

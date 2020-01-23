@@ -10,7 +10,16 @@
                         <section class="statistic statistic2">
                             <div class="container">
                                 <div class="row" id="subjects">
-                                    <!-- classes -->
+                                    @foreach($subject as $subjects)
+                                    <div class="col-md-6 col-lg-3">
+                                        <div class="statistic__item statistic__item text-center" style="background-color:{{$subjects->color}}">
+                                            <span class="desc">{{$subjects->subject_name}}</span>
+                                            <br>
+                                            <button type="button" class="btn btn-info mb-1" style="background-color:{{$subjects->color}}" data-toggle="modal"
+                                                data-target="#staticModal">Assign</button>
+                                        </div>
+                                    </div>
+                                    @endforeach
                                 </div>
                             </div>
                         </section>
