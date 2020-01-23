@@ -13,7 +13,7 @@
                                     <div class="rs-select2--light rs-select2--md">
                                         <select name="gradelevel" id="gradelevel" class="myselect">
                                             @foreach($yearlevel as $yearlevels)
-                                                <option value={{$yearlevels->id}}>{{$yearlevels->yearlevel}}</option>
+                                                <option value="{{$yearlevels->id}}"{{old('gradelevel') == $yearlevels->id ? 'selected' : ''}} >{{$yearlevels->yearlevel}}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -35,7 +35,7 @@
                                                     </h3>
                                                     <span class="desc">{{$sections->section_name}}</span>
                                                     <br>
-                                                    <a href="{{route('admin.assign_teacher')}}"
+                                                    <a href="{{route('admin.assign_teacher',$sections->id)}}"
                                                         class="btn btn-secondary btn-sm">Enter</a>
                                                 </div>
                                             </div>
