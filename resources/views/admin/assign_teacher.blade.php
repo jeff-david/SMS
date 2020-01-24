@@ -15,8 +15,8 @@
                                         <div class="statistic__item statistic__item text-center" style="background-color:{{$subjects->color}}">
                                             <span class="desc">{{$subjects->subject_name}}</span>
                                             <br>
-                                            <button type="button" class="btn btn-info mb-1" style="background-color:{{$subjects->color}}" data-toggle="modal"
-                                                data-target="#staticModal">Assign</button>
+                                            <button id="assign" data-value="{{$subjects->department_id}}" type="button" class="btn btn-info mb-1" style="background-color:{{$subjects->color}}" data-toggle="modal"
+                                                data-target="#staticModal{{$subjects->department_id}}">Assign</button>
                                         </div>
                                     </div>
                                     @endforeach
@@ -30,7 +30,7 @@
     </div>
 </div>
 
-<div class="modal fade" id="staticModal" tabindex="-1" role="dialog" aria-labelledby="staticModalLabel"
+<div class="modal fade" id="staticModal{{$subjects->department_id}}" tabindex="-1" role="dialog" aria-labelledby="staticModalLabel"
     aria-hidden="true" data-backdrop="static">
     <div class="modal-dialog modal-sm" role="document">
         <div class="modal-content text-center" style="margin-top: 85%;">

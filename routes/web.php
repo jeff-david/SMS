@@ -21,7 +21,7 @@ Route::prefix('admin')->group(function(){
     Route::get('/register/class', 'Admin\AdminController@class_view')->name('admin.register_class');
     Route::get('/register/studentlist','Admin\AdminController@student_list')->name('admin.studentlist');
     Route::get('/register/teacherlist','Admin\AdminController@teacher_list')->name('admin.teacher');
-    Route::get('/register/assign_teacher/{id}','Admin\AdminController@assign_teacher')->name('admin.assign_teacher');
+    Route::get('/register/view_teacher/{id}','Admin\AdminController@assign_teacher')->name('admin.assign_teacher');
     Route::get('/register/class/{id}','Admin\AdminController@class_view_id')->name('admin.class_view_id');
     Route::post('/register/student', 'Admin\AdminController@store_student')->name('admin.register_student');
     Route::post('/register/teacher/store', 'Admin\AdminController@store_teacher')->name('admin.register_store_teacher');
