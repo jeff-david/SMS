@@ -42,7 +42,7 @@
 <body class="animsition">
     <div class="page-wrapper">
 
-        @include('inc.header_parent')
+        @include('inc.header_teacher')
 
         @yield('content')
 
@@ -71,3 +71,4 @@
     <script src="{{ url('/js/class.js')}}"></script>
     <script src="{{ url('/js/student.js')}}"></script>
     <script src="{{ url('/js/principal.js')}}"></script>
+    <script src="{{ url('/js/teacher.js')}}"></script>

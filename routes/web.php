@@ -56,4 +56,14 @@ Route::prefix('parent')->group(function(){
   
 });
 
+Route::get('/teacher', function(){
+    return view('teacher.dashboard');
+});
+
+Route::prefix('teacher')->group(function(){
+    Route::get('/announce', 'Teacher\TeacherController@announce')->name('teacher.announce');
+    Route::get('/class', 'Teacher\TeacherController@class_list')->name('teacher.class');
+    
+  
+});
 
