@@ -24,7 +24,6 @@ class DepartmentsTableSeeder extends Seeder
                 array('department_name' => 'ARTS'),
                 array('department_name' => 'HEALTH'),
                 array('department_name' => 'Math'),
-                array('department_name' => 'HOMEROOM'),
             )
         );
 
