@@ -9,6 +9,9 @@ use SMS\Http\Controllers\Controller;
 use SMS\Services\AdminService;
 use SMS\Models\Department;
 use SMS\Models\YearLevel;
+use SMS\Models\Student;
+use SMS\Models\Section;
+use SMS\Models\Teacher;
 use DB;
 
 class AdminController extends Controller
@@ -41,7 +44,7 @@ class AdminController extends Controller
             return redirect()->back()->withInput()->withErrors(['failed'=>'Error in registering the students']);
         }
 
-        return redirect()->route('admin.studentList');
+        return redirect()->route('admin.studentlist');
 
     }
 
@@ -87,12 +90,70 @@ class AdminController extends Controller
     }
     public function student_list()
     {
-        return view('admin.studentlist');
+        $student = Student::select('students.*','year_levels.yearlevel')
+                    ->join('year_levels','students.year_level_id', '=', 'year_levels.id')
+                    ->distinct()
+                    ->get();
+        return view('admin.studentlist', compact('student'));
+    }
+
+    public function student_edit($id)
+    {
+        $student = Student::findOrFail($id);
+        
+        return view('admin.edit', compact('student'));
+    }
+
+    public function student_update(StudentRequest $request,$id)
+    {
+        $data = $request->all();
+        $data['id'] = $id;
+        
+        \DB::beginTransaction();
+        try{
+            $this->adminService->student_update($data);
+            \DB::commit();
+        }catch(\Exception $e){
+            \DB::rollback();
+
+            return redirect()->back()->withInput()->withErrors(['failed' => 'Please fill up the forms']);
+        }
+
+        return redirect()->route('admin.studentlist');
     }
 
     public function teacher_list()
     {
-        return view('admin.teacher');
+        $teacher = Department::join('teachers', 'teachers.departments_id', '=', 'departments.id')
+                    ->select('teachers.*','departments.department_name')
+                    ->get();
+
+        return view('admin.teacher',compact('teacher'));
+    }
+
+    public function teacher_edit($id)
+    {
+
+        $teacher = Teacher::findOrFail($id);
+        return view('admin.teacher_edit', compact('teacher'));
+    }
+
+    public function teacher_update(TeacherRequest $request,$id)
+    {
+        $data = $request->all();
+        $data['id'] = $id;
+        
+        \DB::beginTransaction();
+        try{
+            $this->adminService->teacher_update($data);
+            \DB::commit();
+        }catch(\Exception $e){
+            \DB::rollback();
+
+            return redirect()->back()->withInput()->withErrors(['failed' => 'Please fill up the forms']);
+        }
+
+        return redirect()->route('admin.teacher');
     }
 
     public function assign_teacher($id)

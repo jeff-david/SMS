@@ -35,7 +35,13 @@ class Student extends Model
         'dialects',
         'ethnicities',
         'cell_1',
+        'year_level_id'
        
         
     ];
+
+    public function section_name()
+    {
+        return $this->belongsTo('section_name','id');
+    }
 }

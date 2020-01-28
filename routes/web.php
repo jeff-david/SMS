@@ -22,9 +22,13 @@ Route::prefix('admin')->group(function(){
     Route::get('/register/studentlist','Admin\AdminController@student_list')->name('admin.studentlist');
     Route::get('/register/teacherlist','Admin\AdminController@teacher_list')->name('admin.teacher');
     Route::get('/register/assign_teacher/{id}','Admin\AdminController@assign_teacher')->name('admin.assign_teacher');
+    Route::get('/register/student/edit/{id}','Admin\AdminController@student_edit')->name('admin.student_edit');
+    Route::get('/register/teacher/edit/{id}','Admin\AdminController@teacher_edit')->name('admin.teacher_edit');
     Route::get('/register/class/{id}','Admin\AdminController@class_view_id')->name('admin.class_view_id');
     Route::post('/register/student', 'Admin\AdminController@store_student')->name('admin.register_student');
     Route::post('/register/teacher/store', 'Admin\AdminController@store_teacher')->name('admin.register_store_teacher');
+    Route::post('/student/update/{id}', 'Admin\AdminController@student_update')->name('admin.student_update');
+    Route::post('/teacher/update/{id}', 'Admin\AdminController@teacher_update')->name('admin.teacher_update');
   
 });
 
