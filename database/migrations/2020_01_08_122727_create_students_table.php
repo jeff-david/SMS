@@ -20,7 +20,7 @@ class CreateStudentsTable extends Migration
             $table->string('lastname');
             $table->string('firstname');
             $table->string('middlename');
-            $table->string('username');
+            $table->string('username')->unique();
             $table->string('password');
             $table->string('gender');
             $table->date('birthday');
@@ -43,6 +43,7 @@ class CreateStudentsTable extends Migration
             $table->string('ethnicities');
             $table->string('cell_1');
             $table->tinyInteger('year_level_id');
+            $table->string('is_student')->default(false);
             $table->timestamps();
         });
     }

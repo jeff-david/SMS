@@ -12,7 +12,7 @@
                                 <div class="table-data__tool-right">
                                     <a style="margin-top: 25px;" href="{{route('admin.register_student')}}"
                                         class="au-btn au-btn-icon au-btn--green au-btn--small">
-                                        <i class="zmdi zmdi-plus"></i>add class
+                                        <i class="zmdi zmdi-plus"></i>add section
                                     </a>
                                 </div>
                             </div>
@@ -32,10 +32,10 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($class as $classes)
+                                        @foreach($section as $sections)
                                         <tr>
-                                            <td class="text-center">{{$classes->id}}</td>
-                                            <td class="text-center">{{$classes->class_name}}
+                                            <td class="text-center">{{$sections->id}}</td>
+                                            <td class="text-center">{{$sections->section_name}}
                                             </td>
                                             <td class="text-center">
                                                 <div class="table-data-feature " style="text-align:center">
@@ -47,8 +47,8 @@
                                                         data-target="#deleteModal">
                                                         <i class="zmdi zmdi-delete"></i>
                                                     </button>
-                                                    <a href="{{route('admin.view_section',$classes->id)}}" class="item" data-toggle="tooltip" data-placement="top"
-                                                        title="More">
+                                                    <a href="{{route('admin.assign_teacher',$sections->year_level_id)}}" class="item" data-toggle="tooltip" data-placement="top"
+                                                        title="Assign Teacher">
                                                         <i class="zmdi zmdi-more"></i>
                                                     </a>
                                                 </div>
