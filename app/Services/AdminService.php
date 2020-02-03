@@ -6,6 +6,9 @@ use SMS\Models\Student;
 use SMS\Models\Teacher;
 use SMS\Models\Section;
 use SMS\Models\YearLevel;
+use SMS\Models\Classes;
+use SMS\Models\Subject;
+use SMS\Models\Assign;
 use Hash;
 
 
@@ -114,34 +117,20 @@ class AdminService
         
     }
 
-    public function getAllSection()
+    public function get_Subject($id)
     {
-        $section = YearLevel::join('sections', 'sections.year_level_id', '=', 'year_levels.id')
-                    ->select('year_levels.id','sections.section_name','year_levels.color','year_levels.yearlevel')
-                    ->where('sections.year_level_id', '=','1')
-                    ->get();
-        return $section;
-    }
-
-    public function getAllSectionById($yearlevel)
-    {
-        $id = $yearlevel->id;
-        $section = YearLevel::join('sections', 'sections.year_level_id', '=', 'year_levels.id')
-                    ->select('year_levels.id','sections.section_name','year_levels.color','year_levels.yearlevel')
-                    ->where('sections.year_level_id', '=',$id)
-                    ->get();
-        return $section;
-    }
-
-    public function getAllSubject($id)
-    {
-        
-        $subject = YearLevel::join('subjects', 'subjects.year_level_id', '=', 'year_levels.id')
-                    ->select('year_levels.id','subjects.department_id','subjects.subject_name','year_levels.color')
-                    ->where('subjects.year_level_id','=',$id)
+        $subject = Subject::where('subjects.year_level_id','=',$id)
                     ->get();
 
         return $subject;
+    }
+    public function get_Section($id)
+    {
+        $section = Classes::join('sections', 'sections.class_id', '=', 'classes.id')
+                    ->select('sections.*')
+                    ->where('sections.class_id','=',$id)
+                    ->get();
+        return $section;
     }
 
     public function student_update($data)
@@ -204,4 +193,59 @@ class AdminService
 
         return $teacher;
     }
-}
+
+    public function store_assign($data,$id)
+    {
+        $assign = [
+            ['subject_id' => $data['subject1'] , 'teacher_id' => $data['teacher1'], 'schedule_time' => $data['schedule1'],'section_id' =>$id ],
+            ['subject_id' => $data['subject2'] , 'teacher_id' => $data['teacher2'], 'schedule_time' => $data['schedule2'],'section_id' =>$id ],
+            ['subject_id' => $data['subject3'] , 'teacher_id' => $data['teacher3'], 'schedule_time' => $data['schedule3'],'section_id' =>$id ],
+            ['subject_id' => $data['subject4'] , 'teacher_id' => $data['teacher4'], 'schedule_time' => $data['schedule4'],'section_id' =>$id ],
+            ['subject_id' => $data['subject5'] , 'teacher_id' => $data['teacher5'], 'schedule_time' => $data['schedule5'],'section_id' =>$id ],
+            ['subject_id' => $data['subject6'] , 'teacher_id' => $data['teacher6'], 'schedule_time' => $data['schedule6'],'section_id' =>$id ],
+            ['subject_id' => $data['subject7'] , 'teacher_id' => $data['teacher7'], 'schedule_time' => $data['schedule7'],'section_id' =>$id ],
+            ['subject_id' => $data['subject8'] , 'teacher_id' => $data['teacher8'], 'schedule_time' => $data['schedule8'],'section_id' =>$id ],
+        ];
+
+        $result = Assign::insert($assign);
+
+        return $result;
+        
+    }
+
+    public function update_teacher_handle($data)
+    {
+        $teacher1 = $this->teacherList->find($data['teacher1']);
+        $teacher1->handle_classes = $teacher1->handle_classes + 1;
+        $teacher1->save();
+        
+        $teacher2 = $this->teacherList->find($data['teacher2']);
+        $teacher2->handle_classes = $teacher2->handle_classes + 1;
+        $teacher2->save();
+
+        $teacher3 = $this->teacherList->find($data['teacher3']);
+        $teacher3->handle_classes = $teacher3->handle_classes + 1;
+        $teacher3->save();
+
+        $teacher4 = $this->teacherList->find($data['teacher4']);
+        $teacher4->handle_classes = $teacher4->handle_classes + 1;
+        $teacher4->save();
+
+        $teacher5 = $this->teacherList->find($data['teacher5']);
+        $teacher5->handle_classes = $teacher5->handle_classes + 1;
+        $teacher5->save();
+
+        $teacher6 = $this->teacherList->find($data['teacher6']);
+        $teacher6->handle_classes = $teacher6->handle_classes + 1;
+        $teacher6->save();
+
+        $teacher7 = $this->teacherList->find($data['teacher7']);
+        $teacher7->handle_classes = $teacher7->handle_classes + 1;
+        $teacher7->save();
+
+        $teacher8 = $this->teacherList->find($data['teacher8']);
+        $teacher8->handle_classes = $teacher8->handle_classes + 1;
+        $teacher8->save();
+        
+    }
+} 

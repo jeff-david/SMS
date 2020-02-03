@@ -6,6 +6,12 @@
         <div class="container-fluid">
             <section class="p-t-20">
                 <div class="container">
+                    @if (Session::has('success'))
+                    <div class="alert alert-success alert-block">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+                        <strong>{{ Session::get('success') }}</strong>
+                    </div>
+                    @endif
                     <div class="row">
                         <div class="col-md-12">
                             <div class="table-data__tool">
@@ -50,24 +56,25 @@
                                             <th class="text-center">Name</th>
                                             <th class="text-center">Department</th>
                                             <th class="text-center">Handled Classes</th>
-                                            <th class="text-center" >Action</th>
+                                            <th class="text-center">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach($teacher as $teachers)
                                         <tr>
                                             <td class="text-center">{{$teachers->id}}</td>
-                                            <td class="text-center">{{$teachers->lastname}} {{$teachers->firstname}}</td>
+                                            <td class="text-center">{{$teachers->lastname}} {{$teachers->firstname}}
+                                            </td>
                                             <td class="text-center">{{$teachers->department_name}}</td>
-                                            <td class="text-center">0</td>
+                                            <td class="text-center">{{$teachers->handle_classes}}</td>
                                             <td class="text-center">
                                                 <div class="table-data-feature">
                                                     <button class="item" title="Send" data-toggle="modal"
                                                         data-target="#sendModal">
                                                         <i class="zmdi zmdi-mail-send"></i>
                                                     </button>
-                                                    <a href="{{route('admin.teacher_edit',$teachers->id)}}" class="item" data-placement="top"
-                                                        title="Edit">
+                                                    <a href="{{route('admin.teacher_edit',$teachers->id)}}" class="item"
+                                                        data-placement="top" title="Edit">
                                                         <i class="zmdi zmdi-edit"></i>
                                                     </a>
                                                     <button class="item" title="Delete" data-toggle="modal"
@@ -140,3 +147,5 @@
         </div>
     </div>
 </div>
+
+@endsection

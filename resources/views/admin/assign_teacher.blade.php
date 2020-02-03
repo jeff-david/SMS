@@ -1,66 +1,298 @@
 @extends('layout.admin')
 
 @section('content')
+
+<!-- PAGE CONTENT-->
 <div class="main-content">
     <div class="section__content section__content--p30">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-12">
-                    <div class="page-content--bgf7">
-                        <section class="statistic statistic2">
-                            <div class="container">
-                                <div class="row" id="subjects">
-                                    @foreach($subject as $subjects)
-                                    <div class="col-md-6 col-lg-3">
-                                        <div class="statistic__item statistic__item text-center" style="background-color:{{$subjects->color}}">
-                                            <span class="desc">{{$subjects->subject_name}}</span>
-                                            <br>
-                                            <button type="button" class="btn btn-info mb-1" style="background-color:{{$subjects->color}}" data-toggle="modal"
-                                                data-target="#staticModal">Assign</button>
+                <div class="col-lg-12">
+                    <div class="card" style="padding: 10px;margin-top: 45px;">
+                        <div class="card-header">
+                            <h2><small>Assign Teacher</small></h2>
+                        </div>
+                        <form action="{{route('admin.store_assign',$id)}}" method="POST" novalidate="novalidate">
+                            @csrf
+                            <div class="card-body">
+                                <div class="card-title">
+                                    <h3><small>Assign Teacher</small></h3>
+                                </div>
+                                <div class="row">
+                                    <div class="col col-md-4">
+                                        <div class="form-group has-success">
+                                            <label for="profession"
+                                                class="control-label mb-1"><small>Subject</small></label>
+                                            <select name="subject1"  class=" subject form-control">
+                                                @foreach($subject as $subjects)
+                                                    <option value="{{$subjects->department_id}}">{{$subjects->subject_name}}</option>
+                                                @endforeach
+                                            </select>
+                                            <span class="text-danger">{{ $errors->first('department') }}</span>
                                         </div>
                                     </div>
-                                    @endforeach
+                                    <div class="col col-md-4">
+                                        <div class="form-group has-success">
+                                            <label for="lrn" class="control-label mb-1"><small>Teacher</small></label>
+                                            <select name="teacher1" class="teacher form-control">
+                                            </select>
+                                            <span class="text-danger">{{ $errors->first('cell_no') }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="col col-md-4">
+                                        <div class="form-group has-success">
+                                            <label for="datetoday"
+                                                class="control-label mb-1"><small>Schedule</small></label>
+                                            <select name="schedule1" class="form-control">
+                                                @foreach(config('const.schedule_time') as $id => $schedule_time)
+                                                    <option value="{{$schedule_time}}" {{old('schedule_time') == $schedule_time ? 'selected' : '' }}>{{$schedule_time}}</option>
+                                                @endforeach
+                                            </select>
+                                            <span class="text-danger">{{ $errors->first('register_date') }}</span>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </section>
+                                <div class="row">
+                                    <div class="col col-md-4">
+                                        <div class="form-group has-success">
+                                            <label for="lastname" class="control-label mb-1"><small>Subject</small></label>
+                                            <select name="subject2"  class=" subject form-control">
+                                                @foreach($subject as $subjects)
+                                                    <option value="{{$subjects->department_id}}">{{$subjects->subject_name}}</option>
+                                                @endforeach
+                                            </select>
+                                            <span class="text-danger">{{ $errors->first('lastname') }}</span>
+                                        </div>
+                                    </div>
+                                    <div class=" col-md-4">
+                                        <div class="form-group has-success">
+                                            <label for="sfname" class="control-label mb-1"><small>Teacher</small></label>
+                                            <select name="teacher2" class=" teacher form-control">
+                                            </select>
+                                            <span class="text-danger">{{ $errors->first('firstname') }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group has-success">
+                                            <label for="smname" class="control-label mb-1"><small>Schedule</small></label>
+                                            <select name="schedule2" class="form-control">
+                                                @foreach(config('const.schedule_time') as $id => $schedule_time)
+                                                    <option value="{{$schedule_time}}" {{old('schedule_time') == $schedule_time ? 'selected' : '' }}>{{$schedule_time}}</option>
+                                                @endforeach
+                                            </select>
+                                            <span class="text-danger">{{ $errors->first('middlename') }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col col-md-4">
+                                        <div class="form-group has-success">
+                                            <label for="gender" class="control-label mb-1"><small>Subject</small></label>
+                                            <select name="subject3"  class=" subject form-control">
+                                                @foreach($subject as $subjects)
+                                                    <option value="{{$subjects->department_id}}">{{$subjects->subject_name}}</option>
+                                                @endforeach
+                                            </select>
+                                            <span class="text-danger">{{ $errors->first('gender') }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="col col-md-4">
+                                        <div class="form-group has-success">
+                                            <label for="birthDate" class="control-label mb-1"><small>Teacher</small></label>
+                                            <select name="teacher3" id="gender" class="form-control">
+                                            </select>
+                                            <span class="text-danger">{{ $errors->first('birthdate') }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="col col-md-4">
+                                        <div class="form-group has-success">
+                                            <label for="religion"
+                                                class="control-label mb-1"><small>Schedule</small></label>
+                                            <select name="schedule3" id="gender" class="form-control">
+                                                @foreach(config('const.schedule_time') as $id => $schedule_time)
+                                                    <option value="{{$schedule_time}}" {{old('schedule_time') == $schedule_time ? 'selected' : '' }}>{{$schedule_time}}</option>
+                                                @endforeach
+                                            </select>
+                                            <span class="text-danger">{{ $errors->first('religion') }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col col-md-4">
+                                        <div class="form-group has-success">
+                                            <label for="gender" class="control-label mb-1"><small>Subject</small></label>
+                                            <select name="subject4"  class=" subject form-control">
+                                                @foreach($subject as $subjects)
+                                                    <option value="{{$subjects->department_id}}">{{$subjects->subject_name}}</option>
+                                                @endforeach
+                                            </select>
+                                            <span class="text-danger">{{ $errors->first('gender') }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="col col-md-4">
+                                        <div class="form-group has-success">
+                                            <label for="birthDate" class="control-label mb-1"><small>Teacher</small></label>
+                                            <select name="teacher4" id="gender" class="form-control">
+                                            </select>
+                                            <span class="text-danger">{{ $errors->first('birthdate') }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="col col-md-4">
+                                        <div class="form-group has-success">
+                                            <label for="religion"
+                                                class="control-label mb-1"><small>Schedule</small></label>
+                                            <select name="schedule4" id="schedule4" class="form-control">
+                                                @foreach(config('const.schedule_time') as $id => $schedule_time)
+                                                    <option value="{{$schedule_time}}" {{old('schedule_time') == $schedule_time ? 'selected' : '' }}>{{$schedule_time}}</option>
+                                                @endforeach
+                                            </select>
+                                            <span class="text-danger">{{ $errors->first('religion') }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col col-md-4">
+                                        <div class="form-group has-success">
+                                            <label for="gender" class="control-label mb-1"><small>Subject</small></label>
+                                            <select name="subject5"  class=" subject form-control">
+                                                @foreach($subject as $subjects)
+                                                    <option value="{{$subjects->department_id}}">{{$subjects->subject_name}}</option>
+                                                @endforeach
+                                            </select>
+                                            <span class="text-danger">{{ $errors->first('gender') }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="col col-md-4">
+                                        <div class="form-group has-success">
+                                            <label for="birthDate" class="control-label mb-1"><small>Teacher</small></label>
+                                            <select name="teacher5" id="gender" class="form-control">
+                                            </select>
+                                            <span class="text-danger">{{ $errors->first('birthdate') }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="col col-md-4">
+                                        <div class="form-group has-success">
+                                            <label for="religion"
+                                                class="control-label mb-1"><small>Schedule</small></label>
+                                            <select name="schedule5" id="gender" class="form-control">
+                                                    @foreach(config('const.schedule_time') as $id => $schedule_time)
+                                                    <option value="{{$schedule_time}}" {{old('schedule_time') == $schedule_time ? 'selected' : '' }}>{{$schedule_time}}</option>
+                                                @endforeach
+                                            </select>
+                                            <span class="text-danger">{{ $errors->first('religion') }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col col-md-4">
+                                        <div class="form-group has-success">
+                                            <label for="gender" class="control-label mb-1"><small>Subject</small></label>
+                                            <select name="subject6"  class=" subject form-control">
+                                                @foreach($subject as $subjects)
+                                                    <option value="{{$subjects->department_id}}">{{$subjects->subject_name}}</option>
+                                                @endforeach
+                                            </select>
+                                            <span class="text-danger">{{ $errors->first('gender') }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="col col-md-4">
+                                        <div class="form-group has-success">
+                                            <label for="birthDate" class="control-label mb-1"><small>Teacher</small></label>
+                                            <select name="teacher6" id="gender" class="form-control">
+                                            </select>
+                                            <span class="text-danger">{{ $errors->first('birthdate') }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="col col-md-4">
+                                        <div class="form-group has-success">
+                                            <label for="religion"
+                                                class="control-label mb-1"><small>Schedule</small></label>
+                                            <select name="schedule6" id="gender" class="form-control">
+                                                @foreach(config('const.schedule_time') as $id => $schedule_time)
+                                                    <option value="{{$schedule_time}}" {{old('schedule_time') == $schedule_time ? 'selected' : '' }}>{{$schedule_time}}</option>
+                                                @endforeach
+                                            </select>
+                                            <span class="text-danger">{{ $errors->first('religion') }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col col-md-4">
+                                        <div class="form-group has-success">
+                                            <label for="gender" class="control-label mb-1"><small>Subject</small></label>
+                                            <select name="subject7"  class=" subject form-control">
+                                                @foreach($subject as $subjects)
+                                                    <option value="{{$subjects->department_id}}">{{$subjects->subject_name}}</option>
+                                                @endforeach
+                                            </select>
+                                            <span class="text-danger">{{ $errors->first('gender') }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="col col-md-4">
+                                        <div class="form-group has-success">
+                                            <label for="birthDate" class="control-label mb-1"><small>Teacher</small></label>
+                                            <select name="teacher7" id="gender" class="form-control">
+                                            </select>
+                                            <span class="text-danger">{{ $errors->first('birthdate') }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="col col-md-4">
+                                        <div class="form-group has-success">
+                                            <label for="religion"
+                                                class="control-label mb-1"><small>Schedule</small></label>
+                                            <select name="schedule7" id="gender" class="form-control">
+                                                @foreach(config('const.schedule_time') as $id => $schedule_time)
+                                                    <option value="{{$schedule_time}}" {{old('schedule_time') == $schedule_time ? 'selected' : '' }}>{{$schedule_time}}</option>
+                                                @endforeach
+                                            </select>
+                                            <span class="text-danger">{{ $errors->first('religion') }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col col-md-4">
+                                        <div class="form-group has-success">
+                                            <label for="gender" class="control-label mb-1"><small>Subject</small></label>
+                                            <select name="subject8"  class=" subject form-control">
+                                                @foreach($subject as $subjects)
+                                                    <option value="{{$subjects->department_id}}">{{$subjects->subject_name}}</option>
+                                                @endforeach
+                                            </select>
+                                            <span class="text-danger">{{ $errors->first('gender') }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="col col-md-4">
+                                        <div class="form-group has-success">
+                                            <label for="birthDate" class="control-label mb-1"><small>Teacher</small></label>
+                                            <select name="teacher8" id="gender" class="form-control">
+                                            </select>
+                                            <span class="text-danger">{{ $errors->first('birthdate') }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="col col-md-4">
+                                        <div class="form-group has-success">
+                                            <label for="religion"
+                                                class="control-label mb-1"><small>Schedule</small></label>
+                                            <select name="schedule8" id="gender" class="form-control">
+                                                @foreach(config('const.schedule_time') as $id => $schedule_time)
+                                                    <option value="{{$schedule_time}}" {{old('schedule_time') == $schedule_time ? 'selected' : '' }}>{{$schedule_time}}</option>
+                                                @endforeach
+                                            </select>
+                                            <span class="text-danger">{{ $errors->first('religion') }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="text-center">
+                                    <input type="submit" class="btn btn-info mb-1" value="Assign"/>
+                                </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-<div class="modal fade" id="staticModal" tabindex="-1" role="dialog" aria-labelledby="staticModalLabel"
-    aria-hidden="true" data-backdrop="static">
-    <div class="modal-dialog modal-sm" role="document">
-        <div class="modal-content text-center" style="margin-top: 85%;">
-            <form action="">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="staticModalLabel">Assign Teacher</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body text center">
-                    <div class="rs-select2--light rs-select2--md">
-                        <select name="" id="" class="form-control" style="width: 250px;margin-left: -45px;">
-                            <option value="">Select Teacher</option>
-                            <option value="">Ms. Labiste</option>
-                            <option value="">Ms.Clamonte</option>
-                            <option value="">Mr. Potrido</option>
-                            <option value="">Ms. Requela</option>
-                            <option value="">Ms. Bontilao</option>
-                            <option value="">Mr. Banadalan</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary btn-block" data-dismiss="modal">Assign</button>
-                    <button type="button" class="btn btn-danger btn-block" data-dismiss="modal"
-                        style="margin-top: 0rem;">Cancel</button>
-                </div>
-            </form>
-        </div>
-    </div>
+<!-- PAGE CONTENT-->
 </div>
+
 @endsection

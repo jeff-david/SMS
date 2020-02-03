@@ -12,6 +12,8 @@ use SMS\Models\YearLevel;
 use SMS\Models\Student;
 use SMS\Models\Section;
 use SMS\Models\Teacher;
+use SMS\Models\Classes;
+use SMS\Models\Subject;
 use DB;
 
 class AdminController extends Controller
@@ -76,18 +78,18 @@ class AdminController extends Controller
 
     public function class_view()
     {
-        $yearlevel = YearLevel::all();
-        $section = $this->adminService->getAllSection();
-        return view('admin.class',compact('yearlevel','section'));
+        $class = Classes::all();
+        return view('admin.class',compact('class'));
     }
 
-    public function class_view_id($id)
+    public function view_section(Request $request, $id)
     {
-        $yearlevel = YearLevel::all();
-        $yearlevels = YearLevel::find($id);
-        $section = $this->adminService->getAllSectionById($yearlevels);
-        return view('admin.class',compact('yearlevel','section'));
+        $section = $this->adminService->get_Section($id);
+        
+        return view('admin.view_section', compact('section'));
     }
+
+   
     public function student_list()
     {
         $student = Student::select('students.*','year_levels.yearlevel')
@@ -157,10 +159,37 @@ class AdminController extends Controller
     }
 
     public function assign_teacher($id)
-    {
-        $subject = $this->adminService->getAllSubject($id);
+    {    
+        $subject = $this->adminService->get_Subject($id);
+     
+        return view('admin.assign_teacher',compact('subject','id')); 
+    }   
 
-        return view('admin.assign_teacher',compact('subject')); 
+    public function get_teacher($id)
+    {
+        $teacher = DB::table('teachers')->where('departments_id', $id)->pluck('lastname','id');
+        return json_encode($teacher);
+    }
+
+    public function store_assign(Request $request,$id)
+    {
+        $data = $request->all();
+
+        \DB::beginTransaction();
+        try{
+            $rtn = $this->adminService->store_assign($data,$id);
+            if ($rtn) {
+                $this->adminService->update_teacher_handle($data);
+            }
+
+            \DB::commit();
+        }catch(\Exception $e){
+            \DB::rollback();
+
+            return redirect()->back()->withInput()->withErrors(['failed' => 'Please assign teacher']);
+        }
+
+        return redirect()->route('admin.teacher')->with('success','Successfully Assign Teacher');
     }
 
 }
