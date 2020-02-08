@@ -44,7 +44,7 @@
                     </div>
                     <div class="header__tool">
                         <div class="account-wrap">
-                                <a href="../index.html" style="color: white;">Logout</a>
+                                <a href="{{ url('logout')}}" style="color: white;">Logout</a>
                         </div>
                     </div>
                 </div>

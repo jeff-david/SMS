@@ -9,7 +9,7 @@
                 <div class="header3-wrap">
                     <div class="header__logo">
                         <a href="dashboard.html">
-                            <img src="../images/icon/logo-mini.png" alt="CoolAdmin" />
+                            <img src="{{ url('/images/logo-mini.png')}}" alt="SMS" />   
                         </a>
                     </div>
                     <div class="header__navbar">
@@ -152,3 +152,5 @@
             </div>
 
     </div>
+
+@endsection

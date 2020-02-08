@@ -41,6 +41,7 @@ class TeacherRequest extends FormRequest
             'cell_no' => ['required'],
             'school_graduated' => ['required'],
             'date_graduated' => ['required'],
+            'handle_classes' => ['nullable']
         ];
     }
 }

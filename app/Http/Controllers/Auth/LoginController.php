@@ -7,7 +7,9 @@ use SMS\Http\Controllers\Controller;
 use SMS\Http\Requests\Admin\AdminRequest;
 use SMS\Http\Requests\Principal\PrincipalRequest;
 use SMS\Http\Requests\Teacher\TeacherRequest;
+use SMS\Http\Requests\Login\LoginRequest;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+
 use Auth;
 
 class LoginController extends Controller
@@ -29,7 +31,7 @@ class LoginController extends Controller
 
     public function adminLogin(AdminRequest $request)
     {
-       
+
         if (Auth::guard('admin')->attempt(['username' => $request->username,'password' => $request->password])) {
             return redirect()->intended('/admin');
         }
@@ -68,6 +70,11 @@ class LoginController extends Controller
         Auth::guard('teacher')->logout();
         
         return redirect('/login/teacher');
+
+        }elseif (Auth::guard('student')->check()) {
+            Auth::guard('student')->logout();
+
+            return redirect('/login/parent');
         }
     }
 
@@ -76,16 +83,33 @@ class LoginController extends Controller
         return view('auth.teacher_login');
     }
 
-    public function teacherLogin(TeacherRequest $request)
+    public function teacherLogin(PrincipalRequest $request)
     {
-        if (Auth::guard('teacher')->attempt(['username' => $request->username,'password' => $request->password])) {
-            return redirect()->intended('/teacher');
+       
+        try{
+            if (Auth::guard('teacher')->attempt(['username' => $request->username,'password' => $request->password])) {
+                return redirect()->intended('/teacher');
+            }
+        }catch(Exception $e){
+            return redirect()->back()->withInput()->with(['failed'=>'Please Check Your Credentials']);
         }
-        return redirect()->back()->withInput()->with(['failed'=>'Please Check Your Credentials']);
+        return redirect()->intended('/teacher');
     }
 
     public function showParentLoginForm()
     {
         return view('auth.parent_login');
+    }
+
+    public function parentLogin(LoginRequest $request)
+    {
+        try{
+            if (Auth::guard('student')->attempt(['username' => $request->username,'password' => $request->password])) {
+                return redirect()->intended('/parent');
+            }
+        }catch(Exception $e){
+            return redirect()->back()->withInput()->with(['failed'=>'Please Check Your Credentials']);
+        }
+        return redirect()->intended('/parent');
     }
 }

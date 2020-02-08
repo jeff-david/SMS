@@ -16,6 +16,8 @@ return [
     'defaults' => [
         'guard' => 'admin',
         'guard' => 'principal',
+        'guard' => 'teacher',
+        'guard' => 'student',
         'passwords' => 'users',
     ],
 
