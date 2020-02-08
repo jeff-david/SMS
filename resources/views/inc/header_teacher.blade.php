@@ -6,7 +6,7 @@
                 <div class="header3-wrap">
                     <div class="header__logo">
                         <a href="dashboard.html">
-                        <img src="{{ url('/images/logo-mini.png')}}" alt="SMS" />
+                            <img src="{{ url('/images/logo-mini.png')}}" alt="SMS" />
                         </a>
                     </div>
                     <div class="header__navbar">
@@ -29,22 +29,51 @@
                             <li class="has-sub">
                                 <a href="#">
                                     <i class="fas fa-user"></i>
-                                    <span class="bot-line"></span> Account
+                                    <span class="bot-line"></span> Schedule
                                 </a>
-                                <ul class="header3-sub-list list-unstyled">
-                                    <li>
-                                        <a href="#"><i class="fas fa-cog"></i> General Settings</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><i class="fas fa-cog"></i> Privacy Settings</a>
-                                    </li>
-                                </ul>
+                            </li>
+                            <li class="has-sub">
+                                <a href="#">
+                                    <i class="fas fa-user"></i>
+                                    <span class="bot-line"></span> Concern
+                                </a>
                             </li>
                         </ul>
                     </div>
                     <div class="header__tool">
                         <div class="account-wrap">
-                                <a href="{{ url('logout')}}" style="color: white;">Logout</a>
+                            <div class="account-item account-item--style2 clearfix js-item-menu">
+                                <div class="image">
+                                    <img src="{{ url('/images/teacher.jpg')}}" alt="Teacher" />
+                                </div>
+                                <div class="content">
+                                    <a class="js-acc-btn" href="#">Teacher</a>
+                                </div>
+                                <div class="account-dropdown js-dropdown">
+                                    <div class="info clearfix">
+                                        <div class="image">
+                                            <a href="#">
+                                                <img src="{{ url('/images/teacher.jpg')}}" alt="Teacher" />
+                                            </a>
+                                        </div>
+                                        <div class="content">
+                                            <h5 class="name">
+                                                <a href="#">Parent</a>
+                                            </h5>
+                                        </div>
+                                    </div>
+                                    <div class="account-dropdown__body">
+                                        <div class="account-dropdown__item">
+                                            <a href="smsLAYOUTsetting.html">
+                                                <i class="zmdi zmdi-settings"></i>Setting</a>
+                                        </div>
+                                        <div class="account-dropdown__item">
+                                            <a href="{{route('logout')}}">
+                                                <i class="zmdi zmdi-power"></i>Logout</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -247,6 +276,6 @@
     <!-- Main JS-->
     <script src="../js/main.js"></script>
     <script src="../js/ranking.js"></script>
-    
+
 
 </body>
