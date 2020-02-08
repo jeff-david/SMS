@@ -20,7 +20,8 @@ Route::get('/login/parent','Auth\LoginController@showParentLoginForm');
 Route::get('/login/principal','Auth\LoginController@showPrincipalLoginForm');
 Route::get('/logout','Auth\LoginController@logout')->name('logout'); 
 Route::get('/login/teacher','Auth\LoginController@showTeacherLoginForm');
-Route::post('/teacher/login','Auth\LoginController@teacherLogin')->name('teacher.login');
+Route::post('/login/teacher','Auth\LoginController@teacherLogin')->name('teacher.login');
+Route::post('/parent/login','Auth\LoginController@parentLogin')->name('parent.login');
 Route::post('/principal/login','Auth\LoginController@principalLogin')->name('principal.login'); 
 Route::post('/login/admin','Auth\LoginController@adminLogin')->name('admin.login'); 
 

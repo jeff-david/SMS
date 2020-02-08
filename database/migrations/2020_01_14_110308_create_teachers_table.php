@@ -32,7 +32,7 @@ class CreateTeachersTable extends Migration
             $table->string('username')->unique();
             $table->string('password');
             $table->tinyInteger('age');
-            $table->tinyInteger('handle_classes');
+            $table->tinyInteger('handle_classes')->nullable();
             $table->string('is_teacher')->default(false);
             $table->timestamps();
         });

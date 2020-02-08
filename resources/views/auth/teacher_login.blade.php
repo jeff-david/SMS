@@ -17,17 +17,19 @@
                         </a>
                     </div>
                     <div class="login-form">
-                        <form action="{{route('teacher.login')}}" method="post">
+                        <form action="{{route('teacher.login')}}" method="POST">
                             @csrf
                             <div class="form-group">
                                 <label>Username</label>
                                 <input class="au-input au-input--full" type="text" name="username"
                                     placeholder="username" value="{{old('username')}}">
+                                    <span class="text-danger">{{ $errors->first('username') }}</span>
                             </div>
                             <div class="form-group">
                                 <label>Password</label>
                                 <input class="au-input au-input--full" type="password" name="password" value="{{old('password')}}"
                                     placeholder="Password">
+                                    <span class="text-danger">{{ $errors->first('password')}}</span>
                             </div>
                             <div class="login-checkbox">
                                 <label>
