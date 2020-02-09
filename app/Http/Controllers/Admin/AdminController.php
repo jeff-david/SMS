@@ -25,6 +25,16 @@ class AdminController extends Controller
     {
         $this->adminService = $adminService;
     }
+    public function dashboard()
+    {
+        $g7 = Student::where('year_level_id','=','1')->count();
+        $g8 = Student::where('year_level_id','=','2')->count();
+        $g9 = Student::where('year_level_id','=','3')->count();
+        $g10 = Student::where('year_level_id','=','4')->count();
+        $g11 = Student::where('year_level_id','=','5')->count();
+        $g12 = Student::where('year_level_id','=','6')->count();
+        return view('admin.dashboard',compact('g7','g8','g9','g10','g11','g12'));
+    }
     public function index()
     {
         return view('admin.register_student');
