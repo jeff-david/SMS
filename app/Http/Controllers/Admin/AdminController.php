@@ -196,7 +196,7 @@ class AdminController extends Controller
         }catch(\Exception $e){
             \DB::rollback();
 
-            return redirect()->back()->withInput()->withErrors(['failed' => 'Please assign teacher']);
+            return redirect()->back()->withInput()->with(['failed' => 'Please assign teacher']);
         }
 
         return redirect()->route('admin.teacher')->with('success','Successfully Assign Teacher');
