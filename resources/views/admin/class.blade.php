@@ -48,8 +48,8 @@
                                                         <i class="zmdi zmdi-delete"></i>
                                                     </button>
                                                     <a href="{{route('admin.view_section',$classes->id)}}" class="item" data-toggle="tooltip" data-placement="top"
-                                                        title="More">
-                                                        <i class="zmdi zmdi-more"></i>
+                                                        title="View Section">
+                                                        <i class="zmdi zmdi-view-list"></i>
                                                     </a>
                                                 </div>
                                             </td>

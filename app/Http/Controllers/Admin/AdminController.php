@@ -128,7 +128,7 @@ class AdminController extends Controller
         }catch(\Exception $e){
             \DB::rollback();
 
-            return redirect()->back()->withInput()->withErrors(['failed' => 'Please fill up the forms']);
+            return redirect()->back()->withInput()->with(['failed' => 'Please fill up the forms']);
         }
 
         return redirect()->route('admin.studentlist');

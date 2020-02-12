@@ -71,6 +71,14 @@
                             <div class="account-dropdown__body">
                                 <div class="account-dropdown__item">
                                     <a href="smsLAYOUTsetting.html">
+                                        <i class="zmdi zmdi-notifications"></i>Announcement</a>
+                                </div>
+                                <div class="account-dropdown__item">
+                                    <a href="smsLAYOUTsetting.html">
+                                        <i class="zmdi zmdi-comment-text"></i>Concern</a>
+                                </div>
+                                <div class="account-dropdown__item">
+                                    <a href="smsLAYOUTsetting.html">
                                         <i class="zmdi zmdi-settings"></i>Setting</a>
                                 </div>
                                 <div class="account-dropdown__item">
