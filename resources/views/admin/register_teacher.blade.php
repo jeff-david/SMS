@@ -9,17 +9,10 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card" style="padding: 10px;margin-top: 45px;">
-                    @if (Session::has('failed'))
-                    <div class="alert alert-danger alert-block">
-                        <button type="button" class="close" data-dismiss="alert">×</button>
-                        <strong>{{ Session::get('failed') }}</strong>
-                    </div>
-                    @endif
                         <div class="card-header">
                             <h2><small>Teacher Profile</small></h2>
                         </div>
-                        <form action="{{route('admin.register_store_teacher')}}" method="POST" novalidate="novalidate">
-                            @csrf
+                        <form action="" method="post" novalidate="novalidate">
                             <div class="card-body">
                                 <div class="card-title">
                                     <h3><small>Teacher's Information</small></h3>
@@ -28,91 +21,100 @@
                                     <div class="col col-md-4">
                                         <div class="form-group has-success">
                                             <label for="profession"
-                                                class="control-label mb-1"><small>Department</small></label>
-                                            <select name="department" class="form-control">
-                                                <option value="" selected="selected">-------------Select Departments------------</option>
-                                                @foreach($departments as $department)
-                                                <option value="{{$department->id}}" {{ old('department') == $department->id ? 'selected' : ''}}>{{$department->department_name}}</option>
-                                                @endforeach
-                                            </select>
-                                            <span class="text-danger">{{ $errors->first('department') }}</span>
+                                                class="control-label mb-1"><small>Profession</small></label>
+                                            <select name="" class="form-control">
+                                                <option selected="selected">All Teacher</option>
+                                                <option value="">Filipino Teacher</option>
+                                                <option value="">English Teacher</option>
+                                                <option value="">Mathematics Teacher</option>
+                                                <option value="">Science Teacher</option>
+                                                <option value="">AralPan Teacher</option>
+                                                <option value="">C.L.E. Teacher</option>
+                                                <option value="">T.L.E. Teacher</option>
+                                                <option value="">Music Teacher</option>
+                                                <option value="">Arts Teacher</option>
+                                                <option value="">P.E. Teacher</option>
+                                                <option value="">Health Teacher</option>
+                                            </select><span class="help-block field-validation-valid"
+                                                data-valmsg-for="profession" data-valmsg-replace="true"></span>
                                         </div>
                                     </div>
                                     <div class="col col-md-4">
                                         <div class="form-group has-success">
-                                            <label for="lrn" class="control-label mb-1"><small>Cell no:</small></label>
-                                            <input id="cell_no" name="cell_no" type="text" class="form-control" value="{{old('cell_no')}}">
-                                            <span class="text-danger">{{ $errors->first('cell_no') }}</span>
+                                            <label for="lrn" class="control-label mb-1"><small>Id no.</small></label>
+                                            <input id="lrn" name="lrn" type="text" class="form-control" readonly>
+                                            <span class="help-block field-validation-valid" data-valmsg-for="cc-name"
+                                                data-valmsg-replace="true"></span>
                                         </div>
                                     </div>
                                     <div class="col col-md-4">
                                         <div class="form-group has-success">
                                             <label for="datetoday"
-                                                class="control-label mb-1"><small>Register Date</small></label>
-                                            <input id="register_date" name="register_date" type="date" class="form-control" value="{{old('register_date')}}">
-                                            <span class="text-danger">{{ $errors->first('register_date') }}</span>
+                                                class="control-label mb-1"><small>Date</small></label>
+                                            <input id="datetoday" name="datetoday" type="text" class="form-control"
+                                                readonly>
+                                            <span class="help-block field-validation-valid" data-valmsg-for="datetoday"
+                                                data-valmsg-replace="true"></span>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col col-md-4">
                                         <div class="form-group has-success">
-                                            <label for="lastname" class="control-label mb-1"><small>Last
+                                            <label for="slname" class="control-label mb-1"><small>Last
                                                     Name</small></label>
-                                            <input id="slname" name="lastname" type="text" class="form-control" value="{{old('lastname')}}">
-                                            <span class="text-danger">{{ $errors->first('lastname') }}</span>
+                                            <input id="slname" name="slname" type="text" class="form-control">
+                                            <span class="help-block field-validation-valid" data-valmsg-for="slname"
+                                                data-valmsg-replace="true"></span>
                                         </div>
                                     </div>
                                     <div class=" col-md-4">
                                         <div class="form-group has-success">
                                             <label for="sfname" class="control-label mb-1"><small>First
                                                     Name</small></label>
-                                            <input id="sfname" name="firstname" type="text" class="form-control" value="{{old('firstname')}}">
-                                            <span class="text-danger">{{ $errors->first('firstname') }}</span>
+                                            <input id="sfname" name="sfname" type="text" class="form-control">
+                                            <span class="help-block field-validation-valid" data-valmsg-for="sfname"
+                                                data-valmsg-replace="true"></span>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group has-success">
                                             <label for="smname" class="control-label mb-1"><small>Middle
                                                     Name</small></label>
-                                            <input id="smname" name="middlename" type="text" class="form-control" value="{{old('middlename')}}">
-                                            <span class="text-danger">{{ $errors->first('middlename') }}</span>
+                                            <input id="smname" name="smname" type="text" class="form-control">
+                                            <span class="help-block field-validation-valid" data-valmsg-for="smname"
+                                                data-valmsg-replace="true"></span>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col col-md-2">
+                                    <div class="col col-md-4">
                                         <div class="form-group has-success">
                                             <label for="gender" class="control-label mb-1"><small>Gender</small></label>
                                             <select name="gender" id="gender" class="form-control">
-                                                @foreach(config('const.gender') as $id => $gender)
-                                                    <option value={{$gender}} {{old('gender') == $gender ? 'selected' : '' }}>{{$gender}}</option>
-                                                @endforeach
+                                                <option value="">Male</option>
+                                                <option value="">Female</option>
                                             </select>
-                                            <span class="text-danger">{{ $errors->first('gender') }}</span>
-                                        </div>
-                                    </div>
-                                    <div class="col col-md-2">
-                                        <div class="form-group has-success">
-                                            <label for="age" class="control-label mb-1"><small>Age</small></label>
-                                            <input id="age" name="age" type="number" class="form-control"value="{{old('age')}}">
-                                            <span class="text-danger">{{ $errors->first('age') }}</span>
+                                            <span class="help-block field-validation-valid" data-valmsg-for="gender"
+                                                data-valmsg-replace="true"></span>
                                         </div>
                                     </div>
                                     <div class="col col-md-4">
                                         <div class="form-group has-success">
                                             <label for="birthDate" class="control-label mb-1"><small>Birth
                                                     Date</small></label>
-                                            <input id="birthDate" name="birthdate" type="date" class="form-control" value="{{old('birthdate')}}">
-                                            <span class="text-danger">{{ $errors->first('birthdate') }}</span>
+                                            <input id="birthDate" name="birthDate" type="text" class="form-control">
+                                            <span class="help-block field-validation-valid" data-valmsg-for="birthDate"
+                                                data-valmsg-replace="true"></span>
                                         </div>
                                     </div>
                                     <div class="col col-md-4">
                                         <div class="form-group has-success">
                                             <label for="religion"
                                                 class="control-label mb-1"><small>Religion</small></label>
-                                            <input id="religion" name="religion" type="text" class="form-control" value="{{old('religion')}}">
-                                            <span class="text-danger">{{ $errors->first('religion') }}</span>
+                                            <input id="religion" name="religion" type="text" class="form-control">
+                                            <span class="help-block field-validation-valid" data-valmsg-for="religion"
+                                                data-valmsg-replace="true"></span>
                                         </div>
                                     </div>
                                 </div>
@@ -121,71 +123,77 @@
                                         <div class="form-group has-success">
                                             <label for="sAddress" class="control-label mb-1"><small>Street
                                                     Address</small></label>
-                                            <input id="sAddress" name="street_address" type="text" class="form-control" value="{{old('street_address')}}">
-                                            <span class="text-danger">{{ $errors->first('street_address') }}</span>
+                                            <input id="sAddress" name="sAddress" type="text" class="form-control">
+                                            <span class="help-block field-validation-valid" data-valmsg-for="sAddress"
+                                                data-valmsg-replace="true"></span>
                                         </div>
                                     </div>
                                     <div class="col col-md-3">
                                         <div class="form-group has-success">
                                             <label for="city" class="control-label mb-1"><small>City</small></label>
-                                            <input id="city" name="city" type="text" class="form-control" value="{{old('city')}}">
-                                            <span class="text-danger">{{ $errors->first('city') }}</span>
+                                            <input id="city" name="city" type="text" class="form-control">
+                                            <span class="help-block field-validation-valid" data-valmsg-for="city"
+                                                data-valmsg-replace="true"></span>
                                         </div>
                                     </div>
                                     <div class="col col-md-3">
                                         <div class="form-group has-success">
                                             <label for="province"
                                                 class="control-label mb-1"><small>Province</small></label>
-                                            <input id="province" name="province" type="text" class="form-control" value="{{old('province')}}">
-                                            <span class="text-danger">{{ $errors->first('province') }}</span>
+                                            <input id="province" name="province" type="text" class="form-control">
+                                            <span class="help-block field-validation-valid" data-valmsg-for="province"
+                                                data-valmsg-replace="true"></span>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-8">
                                         <div class="form-group has-success">
-                                            <label for="motherName" class="control-label mb-1"><small>School
-                                                    Graduate</small></label>
-                                            <input id="school_graduated" name="school_graduated" type="text" class="form-control" value="{{old('school_graduated')}}">
-                                            <span class="text-danger">{{ $errors->first('school_graduated') }}</span>
+                                            <label for="motherName" class="control-label mb-1"><small>Mother's Maiden
+                                                    Name</small></label>
+                                            <input id="motherName" name="motherName" type="text" class="form-control">
+                                            <span class="help-block field-validation-valid" data-valmsg-for="motherName"
+                                                data-valmsg-replace="true"></span>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group has-success">
-                                            <label for="motherOccupation" class="control-label mb-1"><small>Date
-                                                    Graduated:</small></label>
-                                            <input id="date_graduated" name="date_graduated" type="date"
-                                                class="form-control" value="{{old('date_graduated')}}">
-                                            <span class="text-danger">{{ $errors->first('date_graduated') }}</span>
+                                            <label for="motherOccupation"
+                                                class="control-label mb-1"><small>Occupation</small></label>
+                                            <input id="motherOccupation" name="motherOccupation" type="text"
+                                                class="form-control">
+                                            <span class="help-block field-validation-valid"
+                                                data-valmsg-for="motherOccupation" data-valmsg-replace="true"></span>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-8">
                                         <div class="form-group has-success">
-                                            <label for="username" class="control-label mb-1"><small>Username</small></label>
-                                            <input id="username" name="username" type="text" class="form-control" value="{{old('username')}}">
-                                            <span class="text-danger">{{ $errors->first('username') }}</span>
+                                            <label for="fatherName" class="control-label mb-1"><small>Father's
+                                                    Name</small></label>
+                                            <input id="fatherName" name="fatherName" type="text" class="form-control">
+                                            <span class="help-block field-validation-valid" data-valmsg-for="fatherName"
+                                                data-valmsg-replace="true"></span>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group has-success">
-                                            <label for="password" class="control-label mb-1"><small>Password</small></label>
-                                            <input id="password" name="password" type="text"
-                                                class="form-control" value="{{old('password')}}">
-                                            <span class="text-danger">{{ $errors->first('password') }}</span>
+                                            <label for="fatherOccupation"
+                                                class="control-label mb-1"><small>Occupation</small></label>
+                                            <input id="fatherOccupation" name="fatherOccupation" type="text"
+                                                class="form-control">
+                                            <span class="help-block field-validation-valid"
+                                                data-valmsg-for="fatherOccupation" data-valmsg-replace="true"></span>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="text-center">
-                                    <input type="submit" class="btn btn-info mb-1" value="Register"/>
+                                <div class=" text-center">
+                                    <button type="button" class="btn btn-info mb-1" data-toggle="modal"
+                                        data-target="#staticModal">
+                                        Register
+                                    </button>
                                 </div>
-                                @if (Session::has('success'))
-                                <div class="alert alert-danger alert-block">
-                                    <button type="button" class="close" data-dismiss="alert">×</button>
-                                    <strong>{{ Session::get('success') }}</strong>
-                                </div>
-                                @endif
                         </form>
                     </div>
                 </div>
@@ -194,6 +202,31 @@
     </div>
 </div>
 <!-- PAGE CONTENT-->
+<!-- modal static -->
+<div class="modal fade" id="staticModal" tabindex="-1" role="dialog" aria-labelledby="staticModalLabel"
+    aria-hidden="true" data-backdrop="static">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content text-center" style="margin-top: 85%;">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticModalLabel">Create Account</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    Do you wish to create this account?
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary btn-block" data-dismiss="modal">Confirm</button>
+                <button type="button" class="btn btn-danger btn-block" data-dismiss="modal"
+                    style="margin-top: 0rem;">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end modal static -->
 </div>
 
 @endsection

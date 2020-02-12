@@ -1258,11 +1258,11 @@
     $('.animsition').animsition({
       inClass: 'fade-in',
       outClass: 'fade-out',
-      inDuration: 1000,
-      outDuration: 1000,
+      inDuration: 900,
+      outDuration: 900,
       linkElement: 'a:not([target="_blank"]):not([href^="#"]):not([class^="chosen-single"])',
       loading: true,
-      loadingParentElement: 'body',
+      loadingParentElement: 'html',
       loadingClass: 'page-loader',
       loadingInner: '<div class="page-loader__spin"></div>',
       timeout: false,
@@ -1271,7 +1271,7 @@
       browser: ['animation-duration', '-webkit-animation-duration'],
       overlay: false,
       overlayClass: 'animsition-overlay-slide',
-      overlayParentElement: 'body',
+      overlayParentElement: 'html',
       transition: function (url) {
         window.location.href = url;
       }

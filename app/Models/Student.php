@@ -3,13 +3,9 @@
 namespace SMS\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Student extends Authenticatable
+class Student extends Model
 {
-    protected $guard = 'student';
-
     protected $fillable = [
         
         'LRN',
@@ -39,13 +35,7 @@ class Student extends Authenticatable
         'dialects',
         'ethnicities',
         'cell_1',
-        'year_level_id'
        
         
     ];
-
-    public function section_name()
-    {
-        return $this->belongsTo('section_name','id');
-    }
 }

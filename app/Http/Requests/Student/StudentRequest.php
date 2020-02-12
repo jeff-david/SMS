@@ -51,7 +51,6 @@ class StudentRequest extends FormRequest
             'dialects'=>['required'],
             'ethnicities'=>['required'],
             'cell_1' => ['required'],
-            'year_level_id' => ['required'],
         ];
     }
 }
