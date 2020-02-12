@@ -48,3 +48,13 @@ function createPassword() {
 $('input[name = firstname]').on('keyup',createUsername);
 $('input[name = lastname]').on('keyup',createUsername);
 $('input[name = birthday]').on('change',createPassword);
+
+
+var lrn = 1 + Math.floor(Math.random() * 5000);
+
+$(document).ready(function() {
+    var number = 1 + Math.floor(Math.random() * 5000);
+    var pattern = '0000000';
+    var lrn = (pattern + number).slice(-7) ;
+    $('#lrn').val(lrn);
+}); 

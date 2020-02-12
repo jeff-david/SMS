@@ -7,6 +7,12 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card" style="padding: 10px;margin-top: 45px;">
+                    @if (Session::has('failed'))
+                    <div class="alert alert-danger alert-block">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+                        <strong>{{ Session::get('failed') }}</strong>
+                    </div>
+                    @endif
                         <div class="card-header">
                             <h2><small>Student Profile</small></h2>
                         </div>
@@ -247,6 +253,11 @@
                                             <span class="text-danger">{{ $errors->first('cell_1') }}</span>
                                         </div>
                                     </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group has-success">
+                                            <input id="cel1" name="year_level_id" type="hidden" class="form-control" value="1">
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
@@ -254,6 +265,12 @@
                                 <input style="margin-top: -15px;" type="submit" value="Register" class="btn btn-info mb-1"
                                     data-toggle="modal" data-target="#staticModal" />
                             </div>
+                            @if (Session::has('success'))
+                                <div class="alert alert-danger alert-block">
+                                    <button type="button" class="close" data-dismiss="alert">×</button>
+                                    <strong>{{ Session::get('success') }}</strong>
+                                </div>
+                            @endif
                         </form>
                     </div>
                 </div>

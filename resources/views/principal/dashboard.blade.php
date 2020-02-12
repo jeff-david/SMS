@@ -8,7 +8,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <h1 class="title-4">Welcome back
-                                <span>Jeff!</span>
+                               
                             </h1>
                             <hr class="line-seprate">
                         </div>
@@ -23,37 +23,37 @@
                     <div class="row">
                         <div class="col-md-6 col-lg-2">
                             <div class="statistic__item statistic__item--green">
-                                <h2 class="number">474</h2>
+                                <h2 class="number">{{ $g7 }}</h2>
                                 <span class="desc">Grade 7</span>
                             </div>
                         </div>
                         <div class="col-md-6 col-lg-2">
                             <div class="statistic__item statistic__item--yellow">
-                                <h2 class="number">688</h2>
+                                <h2 class="number">{{$g8}}</h2>
                                 <span class="desc">Grade 8</span>
                             </div>
                         </div>
                         <div class="col-md-6 col-lg-2">
                             <div class="statistic__item statistic__item--red">
-                                <h2 class="number">486</h2>
+                                <h2 class="number">{{$g9}}</h2>
                                 <span class="desc">Grade 9</span>
                             </div>
                         </div>
                         <div class="col-md-6 col-lg-2">
                             <div class="statistic__item statistic__item--blue">
-                                <h2 class="number">586</h2>
+                                <h2 class="number">{{$g10}}</h2>
                                 <span class="desc">Grade 10</span>
                             </div>
                         </div>
                         <div class="col-md-6 col-lg-2">
                             <div class="statistic__item statistic__item--purple">
-                                <h2 class="number">486</h2>
+                                <h2 class="number">{{$g11}}</h2>
                                 <span class="desc">Grade 11</span>
                             </div>
                         </div>
                         <div class="col-md-6 col-lg-2">
                             <div class="statistic__item statistic__item--orange">
-                                <h2 class="number">688</h2>
+                                <h2 class="number">{{$g12}}</h2>
                                 <span class="desc">Grade 12</span>
                             </div>
                         </div>
@@ -120,3 +120,4 @@
             </section> -->
             <!-- END COPYRIGHT-->
         </div>
+@endsection
