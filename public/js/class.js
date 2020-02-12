@@ -1,164 +1,84 @@
+
+var section = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
+
+var gl = ['Grade 7','Grade 8','Grade 9','Grade 10','Grade 11','Grade 12']
+var subject = ['Filipino','English','Mathematics','Science','AralPan','C.L.E.','T.L.E.','Music','Arts','PE','Health','Homeroom']
+
 $(document).ready(function(){
-    $('#class').DataTable({
-        "columnDefs": [
-            { "width": "10%", "targets": 2 },
-            { "width": "15%", "targets": 0 },
-            { "width": "20%", "targets": 0 }
-          ]
-    });
-
-    $('select[name = "subject1"]').on('change',function(){
-        var subjectId = $(this).val();
-        if (subjectId) {
-            $.ajax({
-                url:'/admin/assign_teacher/getTeacher/' + subjectId,
-                type: "GET",
-                dataType: "json",
-                success:function(data) {
-                    console.log(data);
-                    $('select[name="teacher1"]').empty();
-                    $.each(data,function(key,value) {
-                        $('select[name="teacher1"]').append('<option value="' + key + '">' + value + '</option>');    
-                    });
-                }
-            });
-        }else{
-            $('select[name="teacher1"]').empty
-        }
-    });
-
-    $('select[name = "subject2"]').on('change',function(){
-        var subjectId = $(this).val();
-        if (subjectId) {
-            $.ajax({
-                url:'/admin/assign_teacher/getTeacher/' + subjectId,
-                type: "GET",
-                dataType: "json",
-                success:function(data) {
-                    console.log(data);
-                    $('select[name="teacher2"]').empty();
-                    $.each(data,function(key,value) {
-                        $('select[name="teacher2"]').append('<option value="' + key + '">' + value + '</option>');    
-                    });
-                }
-            });
-        }else{
-            $('select[name="teacher2"]').empty
-        }
-    });
-    $('select[name = "subject3"]').on('change',function(){
-        var subjectId = $(this).val();
-        if (subjectId) {
-            $.ajax({
-                url:'/admin/assign_teacher/getTeacher/' + subjectId,
-                type: "GET",
-                dataType: "json",
-                success:function(data) {
-                    console.log(data);
-                    $('select[name="teacher3"]').empty();
-                    $.each(data,function(key,value) {
-                        $('select[name="teacher3"]').append('<option value="' + key + '">' + value + '</option>');    
-                    });
-                }
-            });
-        }else{
-            $('select[name="teacher3"]').empty
-        }
-    });
-    $('select[name = "subject4"]').on('change',function(){
-        var subjectId = $(this).val();
-        if (subjectId) {
-            $.ajax({
-                url:'/admin/assign_teacher/getTeacher/' + subjectId,
-                type: "GET",
-                dataType: "json",
-                success:function(data) {
-                    console.log(data);
-                    $('select[name="teacher4"]').empty();
-                    $.each(data,function(key,value) {
-                        $('select[name="teacher4"]').append('<option value="' + key + '">' + value + '</option>');    
-                    });
-                }
-            });
-        }else{
-            $('select[name="teacher4"]').empty
-        }
-    });
-    $('select[name = "subject5"]').on('change',function(){
-        var subjectId = $(this).val();
-        if (subjectId) {
-            $.ajax({
-                url:'/admin/assign_teacher/getTeacher/' + subjectId,
-                type: "GET",
-                dataType: "json",
-                success:function(data) {
-                    console.log(data);
-                    $('select[name="teacher5"]').empty();
-                    $.each(data,function(key,value) {
-                        $('select[name="teacher5"]').append('<option value="' + key + '">' + value + '</option>');    
-                    });
-                }
-            });
-        }else{
-            $('select[name="teache5r"]').empty
-        }
-    });
-    $('select[name = "subject6"]').on('change',function(){
-        var subjectId = $(this).val();
-        if (subjectId) {
-            $.ajax({
-                url:'/admin/assign_teacher/getTeacher/' + subjectId,
-                type: "GET",
-                dataType: "json",
-                success:function(data) {
-                    console.log(data);
-                    $('select[name="teacher6"]').empty();
-                    $.each(data,function(key,value) {
-                        $('select[name="teacher6"]').append('<option value="' + key + '">' + value + '</option>');    
-                    });
-                }
-            });
-        }else{
-            $('select[name="teacher6"]').empty
-        }
-    });
-    $('select[name = "subject7"]').on('change',function(){
-        var subjectId = $(this).val();
-        if (subjectId) {
-            $.ajax({
-                url:'/admin/assign_teacher/getTeacher/' + subjectId,
-                type: "GET",
-                dataType: "json",
-                success:function(data) {
-                    console.log(data);
-                    $('select[name="teacher7"]').empty();
-                    $.each(data,function(key,value) {
-                        $('select[name="teacher7"]').append('<option value="' + key + '">' + value + '</option>');    
-                    });
-                }
-            });
-        }else{
-            $('select[name="teacher7"]').empty
-        }
-    });
-    $('select[name = "subject8"]').on('change',function(){
-        var subjectId = $(this).val();
-        if (subjectId) {
-            $.ajax({
-                url:'/admin/assign_teacher/getTeacher/' + subjectId,
-                type: "GET",
-                dataType: "json",
-                success:function(data) {
-                    console.log(data);
-                    $('select[name="teacher8"]').empty();
-                    $.each(data,function(key,value) {
-                        $('select[name="teacher8"]').append('<option value="' + key + '">' + value + '</option>');    
-                    });
-                }
-            });
-        }else{
-            $('select[name="teacher8"]').empty
-        }
-    });
     
-}); 
+    for(var i = 0 ; i < 12 ; i++){
+        $(
+            `<div class="col-md-6 col-lg-3">
+                <div class="statistic__item statistic__item--blue text-center">
+                    <span class="desc">`+subject[i]+`</span>
+                    <br>
+                    <button type="button" class="btn btn-info mb-1" data-toggle="modal" data-target="#staticModal">Assign</button>
+                </div>
+            </div>`
+        ).appendTo('#subjects')
+    }
+
+    for(var i = 0 ; i < 15 ; i++){
+        $(
+            `<div class="col-md-6 col-lg-2">
+                <div class="statistic__item statistic__item--green text-center">
+                    <h3 class="number" style="color:white;"><small>Grade 7</small></h3>
+                    <span class="desc">Section `+section[i]+`</span>
+                    <br>
+                    <a href="assignteacher.html" class="btn btn-secondary btn-sm">Enter</a>
+                </div>
+            </div>`
+        ).appendTo('#classes')
+    }
+    for(var i = 0 ; i < 6 ; i++){
+        $(
+            `<div class="col-md-6 col-lg-2">
+                <div class="statistic__item statistic__item--green text-center">
+                    <h3 class="number" style="color:white;"><small>Grade 7</small></h3>
+                    <span class="desc">Section `+section[i]+`</span>
+                    <br>
+                    <a href="studentlist.html" class="btn btn-secondary btn-sm">Enter</a>
+                </div>
+            </div>`
+        ).appendTo('#tclasses')
+    }
+
+    $('#filter').click(function(){
+        var grlevel = $('#gradelevel').val();
+        var color
+        var glabel
+        $('#classes').empty();
+
+        if(grlevel == 1){
+            glabel = gl[0]
+            color = 'green'
+        }else if(grlevel == 2){
+            glabel = gl[1]
+            color = 'yellow'
+        }else if(grlevel == 3){
+            glabel = gl[2]
+            color = 'red'
+        }else if(grlevel == 4){
+            glabel = gl[3]
+            color = 'blue'
+        }else if(grlevel == 5){
+            glabel = gl[4]
+            color = 'purple'
+        }else if(grlevel == 6){
+            glabel = gl[5]
+            color = 'orange'
+        }
+        for(var i = 0 ; i < 15 ; i++){
+            $(
+                `<div class="col-md-6 col-lg-2">
+                    <div class="statistic__item statistic__item--`+color+` text-center">
+                        <h3 class="number" style="color:white;"><small>`+glabel+`</small></h3>
+                        <span class="desc">Section `+section[i]+`</span>
+                        <br>
+                        <a href="assignteacher.html" class="btn btn-secondary btn-sm">Enter</a>
+                    </div>
+                </div>`
+            ).appendTo('#classes')
+        }
+    });
+});

@@ -12,16 +12,14 @@
     <!-- Title Page-->
     <title>SMS - Registrar</title>
 
-     <!-- Bootstrap CSS-->
-     <link href="{{ url('/assets/vendor/bootstrap-4.1/bootstrap.min.css') }}" rel="stylesheet" media="all">
-
     <!-- Fontfaces CSS-->
     <link href="{{ url('/css/font-face.css') }}" rel="stylesheet" media="all">
     <link href="{{ url('/assets/vendor/font-awesome-4.7/css/font-awesome.min.css') }}" rel="stylesheet" media="all">
     <link href="{{ url('/assets/vendor/font-awesome-5/css/fontawesome-all.min.css') }}" rel="stylesheet" media="all">
     <link href="{{ url('/assets/vendor/mdi-font/css/material-design-iconic-font.min.css') }}" rel="stylesheet" media="all">
 
-   
+    <!-- Bootstrap CSS-->
+    <link href="{{ url('/assets/vendor/bootstrap-4.1/bootstrap.min.css') }}" rel="stylesheet" media="all">
 
     <!-- Vendor CSS-->
     <link href="{{ url('/assets/vendor/animsition/animsition.min.css') }}" rel="stylesheet" media="all">
@@ -31,20 +29,12 @@
     <link href="{{ url('/assets/vendor/slick/slick.css')}}" rel="stylesheet" media="all">
     <link href="{{ url('/assets/vendor/select2/select2.min.css') }}" rel="stylesheet" media="all">
     <link href="{{ url('/assets/vendor/perfect-scrollbar/perfect-scrollbar.css')}}" rel="stylesheet" media="all">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
 
     <!-- Main CSS-->
     <link href="{{ url('/css/theme.css') }}" rel="stylesheet" media="all">
 
     <!-- Jquery JS-->
     <script src="{{ url('/assets/vendor/jquery-3.2.1.min.js')}}"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/patternomaly@1.3.0/dist/patternomaly.js"></script>
-
-
 
   
 
