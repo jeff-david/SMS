@@ -16,7 +16,7 @@
                                             <a class="nav-item nav-link active" id="aTAB" data-toggle="tab" href="#anouncementTAB" role="tab" aria-controls="custom-nav-home"
                                                 aria-selected="true">Announcement</a>
                                             <a class="nav-item nav-link" id="unTAB" data-toggle="tab" href="#undeliveredSMSTAB" role="tab" aria-controls="custom-nav-profile"
-                                                aria-selected="false">Delivered SMS</a>
+                                                 aria-selected="false">Delivered SMS</a>
                                         </div>
                                     </nav>
                                     <div class="tab-content pl-3 pt-2" id="nav-tabContent">

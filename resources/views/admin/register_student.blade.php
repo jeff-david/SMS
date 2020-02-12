@@ -247,6 +247,11 @@
                                             <span class="text-danger">{{ $errors->first('cell_1') }}</span>
                                         </div>
                                     </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group has-success">
+                                            <input id="cel1" name="year_level_id" type="hidden" class="form-control" value="1">
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 

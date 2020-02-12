@@ -13,7 +13,8 @@ var year = d.getFullYear();
 var dateToday = monthname[month - 1]+" "+date+", "+year
 
 var idno = Math.floor(Math.random() * 90000) + 10000 
-var lrn = Math.floor(Math.random() * 900000000) + 100000000
+
+
 
 $(document).ready(function(){
     for(var i = 0 ; i < 6 ;i++){
@@ -102,6 +103,6 @@ $(document).ready(function(){
     }
     $('#idno').val(year+" - "+idno);
    
-    $('#lrn').val(lrn);
+    
     $('#datetoday').val(dateToday);
 });
