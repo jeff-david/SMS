@@ -53,10 +53,10 @@ class AdminController extends Controller
         {
             \DB::rollback();
 
-            return redirect()->back()->withInput()->withErrors(['failed'=>'Error in registering the students']);
+            return redirect()->back()->withInput()->with(['failed'=>'Ooppss!!! Error in Registering the Teacher']);
         }
 
-        return redirect()->route('admin.studentlist');
+        return redirect()->route('admin.studentlist')->with(['success'=>'Successfully Registered!']);
 
     }
 
@@ -80,10 +80,10 @@ class AdminController extends Controller
         {
             \DB::rollback();
 
-            return redirect()->back()->withInput()->withErrors(['failed'=>'Error in registering the teachers']);
+            return redirect()->back()->withInput()->with(['failed'=>'Ooppss!!! Error in Registering the Teacher!']);
         }
 
-        return redirect()->route('admin.teacher');
+        return redirect()->route('admin.teacher')->with(['success' =>'Successfully Registered!']);
     }
 
     public function class_view()
@@ -128,10 +128,10 @@ class AdminController extends Controller
         }catch(\Exception $e){
             \DB::rollback();
 
-            return redirect()->back()->withInput()->with(['failed' => 'Please fill up the forms']);
+            return redirect()->back()->withInput()->with(['failed' => 'Username is taken']);
         }
 
-        return redirect()->route('admin.studentlist');
+        return redirect()->route('admin.studentlist')->with(['success' => 'Successfully Registered Student']);
     }
 
     public function teacher_list()
@@ -162,7 +162,7 @@ class AdminController extends Controller
         }catch(\Exception $e){
             \DB::rollback();
 
-            return redirect()->back()->withInput()->withErrors(['failed' => 'Please fill up the forms']);
+            return redirect()->back()->withInput()->with(['failed' => 'Please fill up the forms']);
         }
 
         return redirect()->route('admin.teacher');
