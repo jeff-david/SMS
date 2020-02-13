@@ -9,6 +9,12 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card" style="padding: 10px;margin-top: 45px;">
+                    @if (Session::has('failed'))
+                            <div class="alert alert-danger alert-block">
+                                <button type="button" class="close" data-dismiss="alert">×</button>
+                                <strong>{{ Session::get('failed') }}</strong>
+                            </div>
+                            @endif
                         <div class="card-header">
                             <h2><small>Teacher Profile</small></h2>
                         </div>
@@ -174,6 +180,12 @@
                                 <div class="text-center">
                                     <input type="submit" class="btn btn-info mb-1" value="Register"/>
                                 </div>
+                                @if (Session::has('success'))
+                            <div class="alert alert-danger alert-block">
+                                <button type="button" class="close" data-dismiss="alert">×</button>
+                                <strong>{{ Session::get('success') }}</strong>
+                            </div>
+                            @endif
                         </form>
                     </div>
                 </div>

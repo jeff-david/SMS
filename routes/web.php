@@ -42,11 +42,9 @@ Route::prefix('admin')->group(function(){
     Route::post('/teacher/update/{id}', 'Admin\AdminController@teacher_update')->name('admin.teacher_update');
 });
 
-Route::get('/principal', function(){
-    return view('principal.dashboard');
-});
 
 Route::prefix('/principal')->group(function(){
+    Route::get('/', 'Principal\PrincipalController@dashboard')->name('principal.dashboard');
     Route::get('/announce', 'Principal\PrincipalController@announce')->name('principal.announcement');
     Route::get('/student', 'Principal\PrincipalController@student_view')->name('principal.student');
     Route::get('/teacher', 'Principal\PrincipalController@teacher_list')->name('principal.teacher');

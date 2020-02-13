@@ -6,6 +6,12 @@
         <div class="container-fluid">
             <section class="p-t-20">
                 <div class="container">
+                            @if (Session::has('success'))
+                            <div class="alert alert-success alert-block">
+                                <button type="button" class="close" data-dismiss="alert">×</button>
+                                <strong>{{ Session::get('success') }}</strong>
+                            </div>
+                            @endif
                     <div class="row">
                         <div class="col-md-12">
                             <div class="table-data__tool">
