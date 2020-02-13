@@ -39,6 +39,10 @@
                                             </td>
                                             <td class="text-center">
                                                 <div class="table-data-feature " style="text-align:center">
+                                                    <a href="" class="item" data-toggle="tooltip" data-placement="top"
+                                                        title="View Student">
+                                                        <i class="zmdi zmdi-view-list"></i>
+                                                    </a>
                                                     <a href="" class="item" data-toggle="modal" data-placement="top"
                                                         title="Edit" data-target="#editstud">
                                                         <i class="zmdi zmdi-edit"></i>
@@ -49,7 +53,7 @@
                                                     </button>
                                                     <a href="{{route('admin.assign_teacher',$sections->year_level_id)}}" class="item" data-toggle="tooltip" data-placement="top"
                                                         title="Assign Teacher">
-                                                        <i class="zmdi zmdi-more"></i>
+                                                        <i class="zmdi zmdi-assignment"></i>
                                                     </a>
                                                 </div>
                                             </td>

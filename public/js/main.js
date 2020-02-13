@@ -1264,7 +1264,7 @@
       loading: true,
       loadingParentElement: 'body',
       loadingClass: 'page-loader',
-      loadingInner: '<div class="page-loader__spin"></div>',
+      loadingInner: '<img src="/images/loader.png" />',
       timeout: false,
       timeoutCountdown: 5000,
       onLoadEvent: true,
@@ -1276,6 +1276,7 @@
         window.location.href = url;
       }
     });
+    
   
   
   })(jQuery);

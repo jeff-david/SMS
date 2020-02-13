@@ -4,6 +4,8 @@ namespace SMS\Http\Requests\Student;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+use Validator;
+
 class StudentRequest extends FormRequest
 {
     /**
@@ -50,7 +52,7 @@ class StudentRequest extends FormRequest
             'mother_tounge'=>['required'],
             'dialects'=>['required'],
             'ethnicities'=>['required'],
-            'cell_1' => ['required'],
+            'cell_1' => 'required|min:11|numeric',
             'year_level_id' => ['required'],
         ];
     }
