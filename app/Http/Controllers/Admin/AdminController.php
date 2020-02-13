@@ -53,7 +53,11 @@ class AdminController extends Controller
         {
             \DB::rollback();
 
+<<<<<<< HEAD
+            return redirect()->back()->withInput()->with(['failed'=>'Error in registering the students']);
+=======
             return redirect()->back()->withInput()->with(['failed'=>'Ooppss!!! Error in Registering the Teacher']);
+>>>>>>> 23b22690f44bf65dc70cb78fcfe9bf34d38e7a5a
         }
 
         return redirect()->route('admin.studentlist')->with(['success'=>'Successfully Registered!']);
@@ -80,10 +84,17 @@ class AdminController extends Controller
         {
             \DB::rollback();
 
+<<<<<<< HEAD
+            return redirect()->back()->withInput()->with(['failed'=>'Error in registering the teachers']);
+        }
+
+        return redirect()->route('admin.teacher')->with(['success'=>'Successfully Registered!']);;
+=======
             return redirect()->back()->withInput()->with(['failed'=>'Ooppss!!! Error in Registering the Teacher!']);
         }
 
         return redirect()->route('admin.teacher')->with(['success' =>'Successfully Registered!']);
+>>>>>>> 23b22690f44bf65dc70cb78fcfe9bf34d38e7a5a
     }
 
     public function class_view()
@@ -131,7 +142,11 @@ class AdminController extends Controller
             return redirect()->back()->withInput()->with(['failed' => 'Username is taken']);
         }
 
+<<<<<<< HEAD
+        return redirect()->route('admin.studentlist')->with(['success' => 'Successfully Edited!']);
+=======
         return redirect()->route('admin.studentlist')->with(['success' => 'Successfully Registered Student']);
+>>>>>>> 23b22690f44bf65dc70cb78fcfe9bf34d38e7a5a
     }
 
     public function teacher_list()
@@ -165,7 +180,7 @@ class AdminController extends Controller
             return redirect()->back()->withInput()->with(['failed' => 'Please fill up the forms']);
         }
 
-        return redirect()->route('admin.teacher');
+        return redirect()->route('admin.teacher')->with(['success' => 'Successfully Edited!']);
     }
 
     public function assign_teacher($id)

@@ -18,12 +18,8 @@ use DB;
 
 class PrincipalController extends Controller
 {
-    private $principalService;
+   
 
-    function _construct(PrincipalService $principalService)
-    {
-        $this->principalService = $principalService;
-    }
     public function dashboard()
     {
         $g7 = Student::where('year_level_id','=','1')->count();
