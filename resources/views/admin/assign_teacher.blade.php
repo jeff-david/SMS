@@ -285,6 +285,12 @@
                                 <div class="text-center">
                                     <input type="submit" class="btn btn-info mb-1" value="Assign"/>
                                 </div>
+                                @if (Session::has('success'))
+                                <div class="alert alert-danger alert-block">
+                                    <button type="button" class="close" data-dismiss="alert">×</button>
+                                    <strong>{{ Session::get('success') }}</strong>
+                                </div>
+                                 @endif
                         </form>
                     </div>
                 </div>

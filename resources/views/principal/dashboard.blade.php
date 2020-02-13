@@ -23,7 +23,7 @@
                     <div class="row">
                         <div class="col-md-6 col-lg-2">
                             <div class="statistic__item statistic__item--green">
-                                <h2 class="number">{{$g7}}</h2>
+                                <h2 class="number">{{ $g7 }}</h2>
                                 <span class="desc">Grade 7</span>
                             </div>
                         </div>

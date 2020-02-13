@@ -3,6 +3,8 @@
 namespace SMS\Http\Controllers\Principal;
 
 use Illuminate\Http\Request;
+use SMS\Http\Requests\Student\StudentRequest;
+use SMS\Http\Requests\Teacher\TeacherRequest;
 use SMS\Http\Controllers\Controller;
 use SMS\Services\AdminService;
 use SMS\Models\Department;
@@ -26,9 +28,8 @@ class PrincipalController extends Controller
         $g10 = Student::where('year_level_id','=','4')->count();
         $g11 = Student::where('year_level_id','=','5')->count();
         $g12 = Student::where('year_level_id','=','6')->count();
-        return view('admin.dashboard',compact('g7','g8','g9','g10','g11','g12'));
+        return view('principal.dashboard',compact('g7','g8','g9','g10','g11','g12'));
     }
-
     public function announce()
     {
         return view('principal.announcement');

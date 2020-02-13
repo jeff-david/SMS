@@ -43,6 +43,7 @@ Route::prefix('admin')->group(function(){
 });
 
 
+
 Route::prefix('/principal')->group(function(){
     Route::get('/', 'Principal\PrincipalController@dashboard')->name('principal.dashboard');
     Route::get('/announce', 'Principal\PrincipalController@announce')->name('principal.announcement');
