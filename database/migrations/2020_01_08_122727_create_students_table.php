@@ -44,6 +44,7 @@ class CreateStudentsTable extends Migration
             $table->string('cell_1');
             $table->tinyInteger('year_level_id');
             $table->tinyInteger('section_id')->nullable();
+            $table->tinyInteger('type_id')->nullable();
             $table->string('is_student')->default(false);
             $table->timestamps();
         });

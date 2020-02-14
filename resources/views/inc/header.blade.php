@@ -70,7 +70,7 @@
                             </div>
                             <div class="account-dropdown__body">
                                 <div class="account-dropdown__item">
-                                    <a href="smsLAYOUTsetting.html">
+                                    <a href="{{route('admin.announcement')}}">
                                         <i class="zmdi zmdi-notifications"></i>Announcement</a>
                                 </div>
                                 <div class="account-dropdown__item">

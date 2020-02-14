@@ -34,6 +34,7 @@ class CreateTeachersTable extends Migration
             $table->tinyInteger('age');
             $table->tinyInteger('section_id')->nullable();
             $table->tinyInteger('handle_classes')->nullable();
+            $table->tinyInteger('type_id')->nullable();
             $table->string('is_teacher')->default(false);
             $table->timestamps();
         });

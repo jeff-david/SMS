@@ -16,6 +16,8 @@ class PrincipalTableSeeder extends Seeder
             'last_name' => 'principal',
             'middle_name' => 'principal',
             'username' => 'principal',
+            'type_id'=> 3,
+            'user_id'=>2,
             'password' => bcrypt('principal')
          ]);
     }

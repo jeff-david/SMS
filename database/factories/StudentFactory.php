@@ -38,6 +38,7 @@ $factory->define(Student::class, function (Faker $faker) {
         'mother_tounge' => 'Pilipino',
         'dialects' => 'Bisaya',
         'ethnicities'=> 'Pilipino',
+        'type_id'=> 1,
         'section_id' => $faker->numberBetween(1,12),
         'created_at' => $faker->date($format = 'Y-m-d', $max = 'now'),
         'updated_at' => $faker->date($format = 'Y-m-d', $max = 'now'),

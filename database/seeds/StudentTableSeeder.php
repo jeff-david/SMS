@@ -14,5 +14,7 @@ class StudentTableSeeder extends Seeder
     {
         $count = 50;
         factory(Student::class, $count)->create();
+
+      
     }
 }

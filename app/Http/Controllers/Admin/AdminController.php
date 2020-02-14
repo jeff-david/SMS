@@ -5,6 +5,7 @@ namespace SMS\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use SMS\Http\Requests\Student\StudentRequest;
 use SMS\Http\Requests\Teacher\TeacherRequest;
+use SMS\Http\Requests\Admin\AdminRequest;
 use SMS\Http\Controllers\Controller;
 use SMS\Services\AdminService;
 use SMS\Models\Department;
@@ -14,6 +15,8 @@ use SMS\Models\Section;
 use SMS\Models\Teacher;
 use SMS\Models\Classes;
 use SMS\Models\Subject;
+use SMS\Models\Announcement;
+use Auth;
 use DB;
 
 class AdminController extends Controller
@@ -200,6 +203,30 @@ class AdminController extends Controller
         }
 
         return redirect()->route('admin.teacher')->with('success','Successfully Assign Teacher');
+    }
+
+    public function announcement()
+    {
+        $announcement = Announcement::get();
+        return view('admin.announcement',compact('announcement'));
+    }
+
+    public function post_announcement(Request $request)
+    {
+        $data = $request->all();
+
+        \DB::beginTransaction();
+        try{
+            $rtn = $this->adminService->store_announcement($data);
+    
+            \DB::commit();
+        }catch(\Exception $e){
+            \DB::rollback();
+
+            return redirect()->back()->withInput()->with(['failed' => 'Error in posting announcement']);
+        }
+
+        return redirect()->back()->withInput()->with('success','Successfully Posted Announcement');
     }
 
 }
