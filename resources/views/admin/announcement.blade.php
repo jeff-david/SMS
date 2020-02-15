@@ -1,4 +1,4 @@
-@extends('layout.principal')
+@extends('layout.admin')
 
 @section('content')
 <div class="main-content">
@@ -7,8 +7,8 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-header">
-                        <button class="btn btn-primary" data-toggle="modal" data-target="#postannouncement">Post
-                            Announcement</button>
+                        <button class="btn btn-primary" data-toggle="modal" id="posts"
+                            data-target="#postannouncement">Post Announcement</button>
                     </div>
                     <div class="card-body">
                         <div class="custom-tab">
@@ -98,8 +98,9 @@
     aria-hidden="true" data-backdrop="send">
     <div class="modal-dialog modal-m" role="document">
         <div class="modal-content" style="margin-top: 15%;">
-            <form action="{{route('principal.post_announcement')}}" method="POST">
-            @csrf
+            <div class="alert alert-danger" style="display:none"></div>
+            <form method="POST" action="{{ route('admin.announcement') }}">
+                @csrf
                 <div class="modal-header">
                     <h5 class="modal-title" id="postmodallabel">Post Announcement</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -109,7 +110,7 @@
                 <div class="modal-body" style="background-color: #f2f2f2;">
                     <div class="col-md-12">
                         <label for="topic">Topic</label>
-                        <input style="font-size: 12px;" type="text" id="topic" name="topic" class="form-control"
+                        <input style="font-size: 12px;" type="text" name="topic" id="topic" class="form-control"
                             placeholder="topic here. . .">
                     </div>
                     <div class="col-md-12">
@@ -127,7 +128,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary btn-block">Post</button>
+                    <button type="submit" class="btn btn-primary btn-block" id="post">Post</button>
                     <button type="button" class="btn btn-danger btn-block" data-dismiss="modal"
                         style="margin-top: 0rem;">Cancel</button>
                 </div>
@@ -136,50 +137,5 @@
     </div>
 </div>
 <!-- end modal post -->
-<!-- modal edit -->
-<div class="modal fade" id="editannouncement" tabindex="-1" role="dialog" aria-labelledby="sendModalLabel"
-    aria-hidden="true" data-backdrop="send">
-    <div class="modal-dialog modal-m" role="document">
-        <div class="modal-content" style="margin-top: 15%;">
-            <form action="">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="postmodallabel">Edit Announcement</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body" style="background-color: #f2f2f2;">
-                    <div class="col-md-12">
-                        <label for="topic">Topic</label>
-                        <input style="font-size: 12px;" type="text" id="topic" class="form-control"
-                            value="SUSPENSION OF WORK AND CLASSES AT 3:00 PM TODAY APRIL 24, 2019">
-                    </div>
-                    <div class="col-md-12">
-                        <label for="topictype">Type</label>
-                        <select style="font-size: 12px;" name="" id="topictype" class="form-control myselect">
-                            <option value="">General</option>
-                            <option value="" selected>Teacher Only</option>
-                            <option value="">Parent Only</option>
-                        </select>
-                    </div>
-                    <div class="col-md-12">
-                        <label for="content">Content</label>
-                        <textarea style="font-size: 12px; text-align: justify;" name="content" id="content" rows="6"
-                            class="form-control" placeholder="content here. . .">
-    The celebration of the National Youth Day kicks off today at 2:00 p.m. and the procession from the City Sports Center to the Basilica del Sto. Niño has been scheduled at 6:00 p.m. However, the roads for the procession route will be closed earlier. Traffic congestion is expected because of the said activity.In this vein, work and classes will be until 3:00 this afternoon only due to the closure of some roads.
-
-    Work and classes will resume tomorrow, April 25, 2019, except for the classes at the Lower Basic Education that have assigned non-contact activities to the students for the whole week.
-                                </textarea>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary btn-block" data-dismiss="modal">Save</button>
-                    <button type="button" class="btn btn-danger btn-block" data-dismiss="modal"
-                        style="margin-top: 0rem;">Cancel</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
 
 @endsection

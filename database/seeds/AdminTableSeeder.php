@@ -18,6 +18,8 @@ class AdminTableSeeder extends Seeder
         'last_name' => 'admin',
         'middle_name' => 'admin',
         'username' => 'admin',
+        'type_id'=> 4,
+        'user_id'=> 1,
         'password' => bcrypt('admin')
      ]);
     }

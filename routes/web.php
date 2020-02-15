@@ -35,6 +35,8 @@ Route::prefix('admin')->group(function(){
     Route::get('/register/student/edit/{id}','Admin\AdminController@student_edit')->name('admin.student_edit');
     Route::get('/register/teacher/edit/{id}','Admin\AdminController@teacher_edit')->name('admin.teacher_edit');
     Route::get('/class/{id}','Admin\AdminController@view_section')->name('admin.view_section');
+    Route::get('/announcement','Admin\AdminController@announcement')->name('admin.announcement');
+    Route::post('/announcement','Admin\AdminController@post_announcement')->name('admin.post_announcement');
     Route::post('/register/student', 'Admin\AdminController@store_student')->name('admin.register_student');
     Route::post('/register/teacher/store', 'Admin\AdminController@store_teacher')->name('admin.register_store_teacher');
     Route::post('/assign_teacher/store/{id}', 'Admin\AdminController@store_assign')->name('admin.store_assign');
@@ -49,6 +51,7 @@ Route::prefix('/principal')->group(function(){
     Route::get('/announce', 'Principal\PrincipalController@announce')->name('principal.announcement');
     Route::get('/student', 'Principal\PrincipalController@student_view')->name('principal.student');
     Route::get('/teacher', 'Principal\PrincipalController@teacher_list')->name('principal.teacher');
+    Route::post('/announce', 'Principal\PrincipalController@post_announce')->name('principal.post_announcement');
     
   
 });
@@ -76,6 +79,7 @@ Route::get('/teacher', function(){
 Route::prefix('teacher')->group(function(){
     Route::get('/announce', 'Teacher\TeacherController@announce')->name('teacher.announce');
     Route::get('/class', 'Teacher\TeacherController@class_list')->name('teacher.class');
+
     
   
 });

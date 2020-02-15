@@ -20,6 +20,8 @@ class CreatePrincipalsTable extends Migration
             $table->string('last_name');
             $table->string('username')->unique();
             $table->string('password');
+            $table->tinyInteger('type_id')->nullable();
+            $table->tinyInteger('user_id')->nullable();
             $table->string('is_principal')->default(false);
             $table->rememberToken();
             $table->timestamps();
