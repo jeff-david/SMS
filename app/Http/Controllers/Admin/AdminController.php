@@ -5,7 +5,9 @@ namespace SMS\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use SMS\Http\Requests\Student\StudentRequest;
 use SMS\Http\Requests\Teacher\TeacherRequest;
+use SMS\Http\Requests\Admin\AdminRequest;
 use SMS\Http\Controllers\Controller;
+use SMS\Events\PostAnnouncement;
 use SMS\Services\AdminService;
 use SMS\Models\Department;
 use SMS\Models\YearLevel;
@@ -13,8 +15,13 @@ use SMS\Models\Student;
 use SMS\Models\Section;
 use SMS\Models\Teacher;
 use SMS\Models\Classes;
+use SMS\Models\Admin;
 use SMS\Models\Subject;
+use SMS\Models\Announcement;
+use Auth;
 use DB;
+
+use Twilio\Rest\Client;
 
 class AdminController extends Controller
 {
@@ -53,7 +60,7 @@ class AdminController extends Controller
         {
             \DB::rollback();
 
-            return redirect()->back()->withInput()->with(['failed'=>'Ooppss!!! Error in Registering the Teacher']);
+            return redirect()->back()->withInput()->with(['failed'=>'Error in registering the students']);
         }
 
         return redirect()->route('admin.studentlist')->with(['success'=>'Successfully Registered!']);
@@ -80,10 +87,10 @@ class AdminController extends Controller
         {
             \DB::rollback();
 
-            return redirect()->back()->withInput()->with(['failed'=>'Ooppss!!! Error in Registering the Teacher!']);
+            return redirect()->back()->withInput()->with(['failed'=>'Error in registering the teachers']);
         }
 
-        return redirect()->route('admin.teacher')->with(['success' =>'Successfully Registered!']);
+        return redirect()->route('admin.teacher')->with(['success'=>'Successfully Registered!']);;
     }
 
     public function class_view()
@@ -131,7 +138,7 @@ class AdminController extends Controller
             return redirect()->back()->withInput()->with(['failed' => 'Username is taken']);
         }
 
-        return redirect()->route('admin.studentlist')->with(['success' => 'Successfully Registered Student']);
+        return redirect()->route('admin.studentlist')->with(['success' => 'Successfully Edited!']);
     }
 
     public function teacher_list()
@@ -165,7 +172,7 @@ class AdminController extends Controller
             return redirect()->back()->withInput()->with(['failed' => 'Please fill up the forms']);
         }
 
-        return redirect()->route('admin.teacher');
+        return redirect()->route('admin.teacher')->with(['success' => 'Successfully Edited!']);
     }
 
     public function assign_teacher($id)
@@ -202,4 +209,44 @@ class AdminController extends Controller
         return redirect()->route('admin.teacher')->with('success','Successfully Assign Teacher');
     }
 
+    public function announcement()
+    {
+        $announcement = Announcement::get();
+        event(new \SMS\Events\PostAnnouncement('Administrator'));
+        return view('admin.announcement',compact('announcement'));
+    }
+
+    public function post_announcement(Request $request)
+    {
+        $data = $request->all();
+
+        \DB::beginTransaction();
+        try{
+            $rtn = $this->adminService->store_announcement($data);
+            \DB::commit();
+        }catch(\Exception $e){
+            \DB::rollback();
+
+            return redirect()->back()->withInput()->with(['failed' => 'Error in posting announcement']);
+        }
+
+        return redirect()->back()->withInput()->with('success','Successfully Posted Announcement');
+    }
+
+    public function send_message(Request $request)
+    {
+        $id = $request->LRN;
+        $message = $request->content;
+
+        $number = Student::where('LRN',$id)->firstorFail();
+        $account_sid = "AC454e23beced5b3cdbabc6e9611bbf3e1";
+        $auth_token = "e150e3d8b1616efa4041960680efb574";
+        $twilio_number = +19204822645;
+        $client = new Client($account_sid,$auth_token);
+        $client->messages->create($number->cell_1,[
+            'from'=> $twilio_number, 'body' => $message
+        ]);
+
+        return redirect()->back()->withInput()->with('success','Successfully Send Message');
+    }
 }

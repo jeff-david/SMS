@@ -9,7 +9,10 @@ use SMS\Models\YearLevel;
 use SMS\Models\Classes;
 use SMS\Models\Subject;
 use SMS\Models\Assign;
+use SMS\Models\Admin;
+use SMS\Models\Announcement;
 use Hash;
+use Carbon\Carbon;
 
 
 class AdminService
@@ -26,6 +29,9 @@ class AdminService
     /** @var \SMS\Models\YearLevel **/
     private $yearlevelList;
 
+    /** @var \SMS\Models\Announcement **/
+    private $announcementList;
+
     /**
      * AdminService constructor.
      *
@@ -33,15 +39,17 @@ class AdminService
      * @param Teacher $teacherList
      * @param Section $sectionList
      * @param Teacher $yearlevelList
+     * @param Announcement $announcementList
      *
      *
      */
-    function __construct(Student $studentList,Teacher $teacherList,Section $sectionList,YearLevel $yearlevelList)
+    function __construct(Student $studentList,Teacher $teacherList,Section $sectionList,YearLevel $yearlevelList,Announcement $announcementList)
     {
         $this->studentList = $studentList;
         $this->teacherList = $teacherList;
         $this->sectionList = $sectionList;
         $this->yearlevelList = $yearlevelList;
+        $this->announcementList = $announcementList;
   
     }
 
@@ -247,5 +255,25 @@ class AdminService
         $teacher8->handle_classes = $teacher8->handle_classes + 1;
         $teacher8->save();
         
+    }
+
+    public function store_announcement($data)
+    {
+        $announcement = [];
+        $announcement['title'] = $data['topic'];
+        $announcement['body'] = $data['content'];
+        $announcement['type_id'] = $data['type'];
+        $announcement['post_date'] = Carbon::now();
+        $announcement['user_id'] = 1;
+
+        $rtn = $this->announcementList->create($announcement);
+        
+        $rtn->save();
+        if($rtn){
+            $id = $rtn->user_id;
+            $username = Admin::where('user_id',$id)->pluck('first_name');
+            event(new \SMS\Events\PostAnnouncement($username));
+        };
+        return $rtn;
     }
 } 

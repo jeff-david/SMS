@@ -8,4 +8,8 @@ $(document).ready(function(){
           ]
     });
     
+    $(document).on("click", ".send_item", function () {
+        var lrn = $(this).data('id');
+        $(".modal-body #LRN").val(lrn);
+   });
 });

@@ -161,6 +161,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        // LaravelHungary\Announcement\PackageServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -171,7 +172,7 @@ return [
          */
         SMS\Providers\AppServiceProvider::class,
         SMS\Providers\AuthServiceProvider::class,
-        // SMS\Providers\BroadcastServiceProvider::class,
+        SMS\Providers\BroadcastServiceProvider::class,
         SMS\Providers\EventServiceProvider::class,
         SMS\Providers\RouteServiceProvider::class,
 
@@ -225,6 +226,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        // 'Announce' => LaravelHungary\Announcement\Facades\Announce::class,
 
     ],
 

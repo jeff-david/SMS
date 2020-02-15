@@ -58,3 +58,5 @@ $(document).ready(function() {
     var lrn = (pattern + number).slice(-7) ;
     $('#lrn').val(lrn);
 }); 
+
+// 

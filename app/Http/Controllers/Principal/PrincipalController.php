@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use SMS\Http\Requests\Student\StudentRequest;
 use SMS\Http\Requests\Teacher\TeacherRequest;
 use SMS\Http\Controllers\Controller;
-use SMS\Services\AdminService;
+use SMS\Services\PrincipalService;
 use SMS\Models\Department;
 use SMS\Models\YearLevel;
 use SMS\Models\Student;
@@ -14,13 +14,14 @@ use SMS\Models\Section;
 use SMS\Models\Teacher;
 use SMS\Models\Classes;
 use SMS\Models\Subject;
+use SMS\Models\Announcement;
 use DB;
 
 class PrincipalController extends Controller
 {
-    private $principalService;
+   
 
-    function _construct(PrincipalService $principalService)
+    public function __construct(PrincipalService $principalService)
     {
         $this->principalService = $principalService;
     }
@@ -36,8 +37,29 @@ class PrincipalController extends Controller
     }
     public function announce()
     {
-        return view('principal.announcement');
+        $announcement = Announcement::get();
+        return view('principal.announcement',compact('announcement'));
     }
+
+    public function post_announce(Request $request)
+    {
+     
+        $data = $request->all();
+
+        \DB::beginTransaction();
+        try{
+            $rtn = $this->principalService->store_announce($data);
+    
+            \DB::commit();
+        }catch(\Exception $e){
+            \DB::rollback();
+
+            return redirect()->back()->withInput()->with(['failed' => 'Error in posting announcement']);
+        }
+
+        return redirect()->back()->withInput()->with('success','Successfully Posted Announcement');
+    }
+
     public function student_view()
     {
         return view('principal.student');
