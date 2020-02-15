@@ -51,6 +51,7 @@ Route::prefix('/principal')->group(function(){
     Route::get('/announce', 'Principal\PrincipalController@announce')->name('principal.announcement');
     Route::get('/student', 'Principal\PrincipalController@student_view')->name('principal.student');
     Route::get('/teacher', 'Principal\PrincipalController@teacher_list')->name('principal.teacher');
+    Route::post('/announce', 'Principal\PrincipalController@post_announce')->name('principal.post_announcement');
     
   
 });
@@ -78,6 +79,7 @@ Route::get('/teacher', function(){
 Route::prefix('teacher')->group(function(){
     Route::get('/announce', 'Teacher\TeacherController@announce')->name('teacher.announce');
     Route::get('/class', 'Teacher\TeacherController@class_list')->name('teacher.class');
+
     
   
 });

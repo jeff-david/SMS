@@ -10,7 +10,7 @@
     <meta name="keywords" content="au theme template">
 
     <!-- Title Page-->
-    <title>SMS - Registrar</title>
+    <title>SMS - Principal</title>
 
     <!-- Fontfaces CSS-->
     <link href="{{ url('/css/font-face.css') }}" rel="stylesheet" media="all">

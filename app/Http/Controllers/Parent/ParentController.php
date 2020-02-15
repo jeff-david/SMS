@@ -18,10 +18,10 @@ class ParentController extends Controller
 
     public function announcement()
     {
-        $announcement = Announcement::where('type_id',1)->pluck('type_id');
-        dd($announcement);
+        $announcement = Announcement::where('type_id','>=',0)->pluck('type_id')->toArray();
+        
         $announcement = $this->parentService->announcement($announcement);
-        dd($announcement);
+       
         return view('parent.announcement',compact('announcement'));
     }
 
