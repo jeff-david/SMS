@@ -7,6 +7,7 @@ use SMS\Http\Requests\Student\StudentRequest;
 use SMS\Http\Requests\Teacher\TeacherRequest;
 use SMS\Http\Requests\Admin\AdminRequest;
 use SMS\Http\Controllers\Controller;
+use SMS\Events\PostAnnouncement;
 use SMS\Services\AdminService;
 use SMS\Models\Department;
 use SMS\Models\YearLevel;
@@ -14,10 +15,13 @@ use SMS\Models\Student;
 use SMS\Models\Section;
 use SMS\Models\Teacher;
 use SMS\Models\Classes;
+use SMS\Models\Admin;
 use SMS\Models\Subject;
 use SMS\Models\Announcement;
 use Auth;
 use DB;
+
+use Twilio\Rest\Client;
 
 class AdminController extends Controller
 {
@@ -208,6 +212,7 @@ class AdminController extends Controller
     public function announcement()
     {
         $announcement = Announcement::get();
+        event(new \SMS\Events\PostAnnouncement('Administrator'));
         return view('admin.announcement',compact('announcement'));
     }
 
@@ -218,7 +223,6 @@ class AdminController extends Controller
         \DB::beginTransaction();
         try{
             $rtn = $this->adminService->store_announcement($data);
-    
             \DB::commit();
         }catch(\Exception $e){
             \DB::rollback();
@@ -229,4 +233,20 @@ class AdminController extends Controller
         return redirect()->back()->withInput()->with('success','Successfully Posted Announcement');
     }
 
+    public function send_message(Request $request)
+    {
+        $id = $request->LRN;
+        $message = $request->content;
+
+        $number = Student::where('LRN',$id)->firstorFail();
+        $account_sid = "AC454e23beced5b3cdbabc6e9611bbf3e1";
+        $auth_token = "e150e3d8b1616efa4041960680efb574";
+        $twilio_number = +19204822645;
+        $client = new Client($account_sid,$auth_token);
+        $client->messages->create($number->cell_1,[
+            'from'=> $twilio_number, 'body' => $message
+        ]);
+
+        return redirect()->back()->withInput()->with('success','Successfully Send Message');
+    }
 }

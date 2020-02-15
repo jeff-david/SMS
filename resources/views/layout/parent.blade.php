@@ -35,6 +35,7 @@
 
     <!-- Jquery JS-->
     <script src="{{ url('/assets/vendor/jquery-3.2.1.min.js')}}"></script>
+    <script src="https://js.pusher.com/3.1/pusher.min.js"></script>
 
   
 
@@ -68,6 +69,5 @@
     <!-- Main JS-->
     <script src="{{ url('/js/main.js') }}"></script>
     <script src="{{ url('/js/ranking.js')}}"></script>
-    <script src="{{ url('/js/class.js')}}"></script>
-    <script src="{{ url('/js/student.js')}}"></script>
     <script src="{{ url('/js/principal.js')}}"></script>
+    <script src="{{ url('/js/parent.js')}}"></script>

@@ -172,7 +172,7 @@ return [
          */
         SMS\Providers\AppServiceProvider::class,
         SMS\Providers\AuthServiceProvider::class,
-        // SMS\Providers\BroadcastServiceProvider::class,
+        SMS\Providers\BroadcastServiceProvider::class,
         SMS\Providers\EventServiceProvider::class,
         SMS\Providers\RouteServiceProvider::class,
 

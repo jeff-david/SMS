@@ -36,6 +36,24 @@
                 </ul>
             </div>
             <div class="header__tool">
+                <div class="header-button-item has-noti js-item-menu">
+                    <a href="#notifications-panel" class="dropdown-toggle" data-toggle="has-noti">
+                        <i data-count="0" class="zmdi zmdi-notifications"></i>
+                    </a>
+
+                    <div class="notifi-dropdown notifi-dropdown--no-bor js-dropdown">
+                        <div class="notifi__title">
+                            <p>Notifications (<span class="notif-count">0</span>)</p>
+                        </div>
+                        <div class="notifi__item">
+                           
+                        </div>
+                        
+                        <div class="notifi__footer">
+                            <a href="#">All notifications</a>
+                        </div>
+                    </div>
+                </div>
                 <div class="account-wrap">
                     <div class="account-item account-item--style2 clearfix js-item-menu">
                         <div class="image">

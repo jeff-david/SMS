@@ -9,6 +9,7 @@ use SMS\Models\YearLevel;
 use SMS\Models\Classes;
 use SMS\Models\Subject;
 use SMS\Models\Assign;
+use SMS\Models\Admin;
 use SMS\Models\Announcement;
 use Hash;
 use Carbon\Carbon;
@@ -266,9 +267,13 @@ class AdminService
         $announcement['user_id'] = 1;
 
         $rtn = $this->announcementList->create($announcement);
-
+        
         $rtn->save();
-
+        if($rtn){
+            $id = $rtn->user_id;
+            $username = Admin::where('user_id',$id)->pluck('first_name');
+            event(new \SMS\Events\PostAnnouncement($username));
+        };
         return $rtn;
     }
 } 

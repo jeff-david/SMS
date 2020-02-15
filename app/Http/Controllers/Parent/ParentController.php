@@ -21,7 +21,7 @@ class ParentController extends Controller
         $announcement = Announcement::where('type_id','>=',0)->pluck('type_id')->toArray();
         
         $announcement = $this->parentService->announcement($announcement);
-       
+        
         return view('parent.announcement',compact('announcement'));
     }
 

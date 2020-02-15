@@ -5,19 +5,19 @@
     <div class="section__content section__content--p30">
         <div class="container-fluid">
             <section class="p-t-20">
-            @if (Session::has('success'))
-                    <div class="alert alert-danger alert-block">
+                @if (Session::has('success'))
+                <div class="alert alert-danger alert-block">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+                    <strong>{{ Session::get('success') }}</strong>
+                </div>
+                @endif
+                <div class="container">
+                    @if (Session::has('success'))
+                    <div class="alert alert-success alert-block">
                         <button type="button" class="close" data-dismiss="alert">×</button>
                         <strong>{{ Session::get('success') }}</strong>
                     </div>
                     @endif
-                <div class="container">
-                            @if (Session::has('success'))
-                            <div class="alert alert-success alert-block">
-                                <button type="button" class="close" data-dismiss="alert">×</button>
-                                <strong>{{ Session::get('success') }}</strong>
-                            </div>
-                            @endif
                     <div class="row">
                         <div class="col-md-12">
                             <div class="table-data__tool">
@@ -53,11 +53,12 @@
                                             <td class="text-center">{{$students->yearlevel}}</td>
                                             <td class="text-center">
                                                 <div class="table-data-feature " style="text-align:center">
-                                                    <button class="item" title="Send" data-toggle="modal"
-                                                        data-target="#sendModal">
+                                                    <button class="send_item" title="Send" data-toggle="modal"
+                                                        data-target="#sendModal" data-id="{{$students->LRN}}">
                                                         <i class="zmdi zmdi-mail-send"></i>
                                                     </button>
-                                                    <a href="{{route('admin.student_edit', $students->id)}}" class="item" data-toggle="modal" data-placement="top"
+                                                    <a href="{{route('admin.student_edit', $students->id)}}"
+                                                        class="item" data-toggle="modal" data-placement="top"
                                                         title="Edit" data-target="#editstud">
                                                         <i class="zmdi zmdi-edit"></i>
                                                     </a>
@@ -117,20 +118,24 @@
     data-backdrop="send">
     <div class="modal-dialog modal-sm" role="document">
         <div class="modal-content text-center" style="margin-top: 85%;">
-            <div class="modal-header">
-                <h5 class="modal-title" id="staticModalLabel">Send Message</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <textarea name="" id="" cols="30" rows="5" placeholder="type your message here . . ."></textarea>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary btn-block" data-dismiss="modal">Send</button>
-                <button type="button" class="btn btn-danger btn-block" data-dismiss="modal"
-                    style="margin-top: 0rem;">Cancel</button>
-            </div>
+            <form action="{{route('admin.send_message')}}" method="post">
+                @csrf
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticModalLabel">Send Message</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" name="LRN" id="LRN"/>
+                    <textarea name="content" id="" cols="30" rows="5" placeholder="type your message here . . ."></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary btn-block">Send</button>
+                    <button type="button" class="btn btn-danger btn-block" data-dismiss="modal"
+                        style="margin-top: 0rem;">Cancel</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
