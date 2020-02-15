@@ -19,7 +19,7 @@ use DB;
 
 class PrincipalController extends Controller
 {
-    private $principalService;
+   
 
     public function __construct(PrincipalService $principalService)
     {
