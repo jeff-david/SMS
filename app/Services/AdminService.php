@@ -32,6 +32,9 @@ class AdminService
     /** @var \SMS\Models\Announcement **/
     private $announcementList;
 
+    /** @var \SMS\Models\Admin **/
+    private $adminList;
+
     /**
      * AdminService constructor.
      *
@@ -43,13 +46,14 @@ class AdminService
      *
      *
      */
-    function __construct(Student $studentList,Teacher $teacherList,Section $sectionList,YearLevel $yearlevelList,Announcement $announcementList)
+    function __construct(Student $studentList,Teacher $teacherList,Section $sectionList,YearLevel $yearlevelList,Announcement $announcementList,Admin $adminList)
     {
         $this->studentList = $studentList;
         $this->teacherList = $teacherList;
         $this->sectionList = $sectionList;
         $this->yearlevelList = $yearlevelList;
         $this->announcementList = $announcementList;
+        $this->adminList = $adminList;
   
     }
 
@@ -143,6 +147,7 @@ class AdminService
 
     public function student_update($data)
     {
+        dd($data);
         $student = $this->studentList->find($data['id']);
         $student->LRN = $data['LRN'];
         $student->lastname = $data['lastname'];
@@ -171,6 +176,8 @@ class AdminService
         $student->dialects = $data['dialects'];
         $student->ethnicities = $data['ethnicities'];
         $student->cell_1 = $data['cell_1'];
+        $student->type_id = 1;
+        $student->sectio_id = 1;
         $student->save();
 
         return $student;
@@ -275,5 +282,37 @@ class AdminService
             event(new \SMS\Events\PostAnnouncement($username));
         };
         return $rtn;
+    }
+
+    public function change_username($username,$id)
+    {
+        $admin = $this->adminList->find($id);
+        $admin->username = $username;
+        $admin->save();
+        return $admin;
+    }
+
+    public function change_password($new,$id)
+    {
+        $admin = $this->adminList->find($id);
+        $admin->password = Hash::make($new);
+        $admin->save();
+        return $admin;
+    }
+
+    public function change_contact($contact,$id)
+    {
+        $admin = $this->adminList->find($id);
+        $admin->contact_number = $contact;
+        $admin->save();
+        return $admin;
+    }
+
+    public function change_address($address,$id)
+    {
+        $admin = $this->adminList->find($id);
+        $admin->address = $address;
+        $admin->save();
+        return $admin;
     }
 } 

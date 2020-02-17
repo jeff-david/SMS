@@ -23,7 +23,7 @@ Route::post('/parent/login','Auth\LoginController@parentLogin')->name('parent.lo
 Route::post('/principal/login','Auth\LoginController@principalLogin')->name('principal.login'); 
 Route::post('/login/admin','Auth\LoginController@adminLogin')->name('admin.login'); 
 
-Route::prefix('admin')->group(function(){
+Route::prefix('admin')->middleware('auth:admin')->group(function(){
     Route::get('/', 'Admin\AdminController@dashboard')->name('admin.dashboard');
     Route::get('/register/student', 'Admin\AdminController@index')->name('admin.register_student');
     Route::get('/register/teacher', 'Admin\AdminController@register_teacher')->name('admin.register_teacher');
@@ -36,6 +36,8 @@ Route::prefix('admin')->group(function(){
     Route::get('/register/teacher/edit/{id}','Admin\AdminController@teacher_edit')->name('admin.teacher_edit');
     Route::get('/class/{id}','Admin\AdminController@view_section')->name('admin.view_section');
     Route::get('/announcement','Admin\AdminController@announcement')->name('admin.announcement');
+    Route::get('/settings','Admin\AdminController@settings')->name('admin.settings');
+    Route::post('/change_settings/{id}','Admin\AdminController@change_settings')->name('admin.change_settings');
     Route::post('/send_message','Admin\AdminController@send_message')->name('admin.send_message');
     Route::post('/announcement','Admin\AdminController@post_announcement')->name('admin.post_announcement');
     Route::post('/register/student', 'Admin\AdminController@store_student')->name('admin.register_student');
@@ -47,11 +49,12 @@ Route::prefix('admin')->group(function(){
 
 
 
-Route::prefix('/principal')->group(function(){
+Route::prefix('/principal')->middleware('auth:principal')->group(function(){
     Route::get('/', 'Principal\PrincipalController@dashboard')->name('principal.dashboard');
     Route::get('/announce', 'Principal\PrincipalController@announce')->name('principal.announcement');
     Route::get('/student', 'Principal\PrincipalController@student_view')->name('principal.student');
     Route::get('/teacher', 'Principal\PrincipalController@teacher_list')->name('principal.teacher');
+    Route::get('/settings', 'Principal\PrincipalController@teacher_list')->name('principal.settings');
     Route::post('/announce', 'Principal\PrincipalController@post_announce')->name('principal.post_announcement');
     
   
@@ -67,6 +70,7 @@ Route::prefix('parent')->group(function(){
     Route::get('/grade', 'Parent\ParentController@grade')->name('parent.grade');
     Route::get('/profile', 'Parent\ParentController@profile')->name('parent.profile');
     Route::get('/concern', 'Parent\ParentController@concern')->name('parent.concern');
+    Route::get('/settings', 'Parent\ParentController@concern')->name('parent.settings');
 
 
     
@@ -80,6 +84,8 @@ Route::get('/teacher', function(){
 Route::prefix('teacher')->group(function(){
     Route::get('/announce', 'Teacher\TeacherController@announce')->name('teacher.announce');
     Route::get('/class', 'Teacher\TeacherController@class_list')->name('teacher.class');
+    Route::get('/settings', 'Teacher\TeacherController@class_list')->name('teacher.settings');
+
 
     
   

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use SMS\Http\Requests\Student\StudentRequest;
 use SMS\Http\Requests\Teacher\TeacherRequest;
 use SMS\Http\Requests\Admin\AdminRequest;
+use SMS\Http\Requests\Request\SettingsRequest;
 use SMS\Http\Controllers\Controller;
 use SMS\Events\PostAnnouncement;
 use SMS\Services\AdminService;
@@ -19,6 +20,7 @@ use SMS\Models\Admin;
 use SMS\Models\Subject;
 use SMS\Models\Announcement;
 use Auth;
+use Hash;
 use DB;
 
 use Twilio\Rest\Client;
@@ -125,9 +127,10 @@ class AdminController extends Controller
 
     public function student_update(StudentRequest $request,$id)
     {
+        dd($request);
         $data = $request->all();
         $data['id'] = $id;
-        
+    
         \DB::beginTransaction();
         try{
             $this->adminService->student_update($data);
@@ -248,5 +251,83 @@ class AdminController extends Controller
         ]);
 
         return redirect()->back()->withInput()->with('success','Successfully Send Message');
+    }
+
+    public function settings()
+    {
+        return view('admin.settings');
+    }
+
+    public function change_settings(SettingsRequest $request,$id)
+    {
+        $admin = Admin::findorFail($id);
+        $action = $request->action;
+        switch ($action) {
+            case 'username':
+                \DB::beginTransaction();
+                try{
+                    $rtn = $this->adminService->change_username($request->user_name,$id);
+                    \DB::commit();
+                }catch(\Exception $e){
+                    \DB::rollback();
+        
+                    return redirect()->back()->withInput()->with(['failed' => 'Error in Changing Username']);
+                }
+
+                return redirect()->back()->withInput()->with(['success' => 'Successfully Change Username']);
+                break;
+            
+            case 'password':
+                if (Hash::check($request->old_pass,$admin->password)) {
+
+                    \DB::beginTransaction();
+                    try{
+                        $rtn = $this->adminService->change_password($request->new_pass,$id);
+                        \DB::commit();
+                    }catch(\Exception $e){
+                        \DB::rollback();
+            
+                        return redirect()->back()->withInput()->with(['failed' => 'Error in Changing Password']);
+                    }
+    
+                    return redirect()->back()->withInput()->with(['success' => 'Password Change Successfully']);
+                }else{
+                    return redirect()->back()->withInput()->with(['failed' => 'Wrong Password']);
+                }
+                break;
+            
+            case 'contact':
+                \DB::beginTransaction();
+                try{
+                    $rtn = $this->adminService->change_contact($request->contact_number,$id);
+                    \DB::commit();
+                }catch(\Exception $e){
+                    \DB::rollback();
+        
+                    return redirect()->back()->withInput()->with(['failed' => 'Error in Changing Contact Number']);
+                }
+
+                return redirect()->back()->withInput()->with(['success' => 'Contact Change Successfully']);
+
+                break;
+            
+            case 'addressbtn':
+                \DB::beginTransaction();
+                try{
+                    $rtn = $this->adminService->change_address($request->address,$id);
+                    \DB::commit();
+                }catch(\Exception $e){
+                    \DB::rollback();
+        
+                    return redirect()->back()->withInput()->with(['failed' => 'Error in Changing the Address']);
+                }
+
+                return redirect()->back()->withInput()->with(['success' => 'Address Change Successfully']);
+                break;
+
+            default:
+                # code...
+                break;
+        }
     }
 }

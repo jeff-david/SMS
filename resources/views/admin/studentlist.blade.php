@@ -5,12 +5,6 @@
     <div class="section__content section__content--p30">
         <div class="container-fluid">
             <section class="p-t-20">
-                @if (Session::has('success'))
-                <div class="alert alert-danger alert-block">
-                    <button type="button" class="close" data-dismiss="alert">×</button>
-                    <strong>{{ Session::get('success') }}</strong>
-                </div>
-                @endif
                 <div class="container">
                     @if (Session::has('success'))
                     <div class="alert alert-success alert-block">

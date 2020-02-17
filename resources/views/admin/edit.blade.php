@@ -7,13 +7,13 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card" style="padding: 10px;margin-top: 45px;">
-                    @if (Session::has('failed'))
+                        <div class="card-header">
+                            @if (Session::has('failed'))
                             <div class="alert alert-danger alert-block">
                                 <button type="button" class="close" data-dismiss="alert">×</button>
                                 <strong>{{ Session::get('failed') }}</strong>
                             </div>
                             @endif
-                        <div class="card-header">
                             <h2><small>Student Profile</small></h2>
                         </div>
                         <form action="{{route('admin.student_update', $student->id)}}" method="POST">
