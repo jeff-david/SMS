@@ -330,4 +330,26 @@ class AdminController extends Controller
                 break;
         }
     }
+
+    public function add_class(Request $request)
+    {
+        $data = $request->add_class;
+
+        \DB::beginTransaction();
+        try{
+            
+            $class = new Classes();
+            $class->class_name = $data;
+            $class->save();
+            \DB::commit();
+        }catch(\Exception $e){
+            \DB::rollback();
+
+            return redirect()->back()->withInput()->with(['failed' => 'Error in Adding a Batch']);
+
+        }
+        return redirect()->back()->withInput()->with(['success' => 'Class Successfully Created']);
+
+
+    }
 }
