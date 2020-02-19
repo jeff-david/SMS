@@ -38,6 +38,7 @@
 
     <!-- Main CSS-->
     <link href="{{ url('/css/theme.css') }}" rel="stylesheet" media="all">
+    <link href="{{ url('/css/custom.css') }}" rel="stylesheet" media="all">
 
     <!-- Jquery JS-->
     <script src="{{ url('/assets/vendor/jquery-3.2.1.min.js')}}"></script>
