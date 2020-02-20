@@ -101,19 +101,19 @@
                 <div class="container-fluid">
                     <ul class="navbar-mobile__list list-unstyled">
                         <li>
-                            <a href="dashboard.html"><i class="fas fa-th-large"></i> Dashboard</a>
+                            <a href="{{url('/teacher')}}"><i class="fas fa-th-large"></i> Dashboard</a>
                         </li>
                         <li>
-                            <a href="announcement.html"><i class="fas fa-file-text"></i>Announcemt</a>
+                            <a href="{{route('teacher.announce')}}"><i class="fas fa-file-text"></i>Announcemt</a>
                         </li>
                         <li>
-                            <a href="classlist.html"><i class="fas fa-list-ul"></i>Class</a>
+                            <a href="{{route('teacher.class')}}"><i class="fas fa-list-ul"></i>Class</a>
                         </li>
                         <li class="has-sub">
                             <a class="js-arrow" href="#"><i class="fas fa-user"></i> Account</a>
                             <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
                                 <li>
-                                    <a href="#"><i class="fas fa-cog"></i> General Settings</a>
+                                    <a href=""><i class="fas fa-cog"></i> General Settings</a>
                                 </li>
                                 <li>
                                     <a href="#"><i class="fas fa-cog"></i> Security Settings</a>
@@ -121,7 +121,7 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="../index.html"><i class="fas fa-power-off"></i> Logout</a>
+                            <a href="{{route('logout')}}"><i class="fas fa-power-off"></i> Logout</a>
                         </li>
                     </ul>
                 </div>
