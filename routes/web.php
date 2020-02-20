@@ -65,7 +65,7 @@ Route::get('/parent', function(){
 });
 
 
-Route::prefix('parent')->group(function(){
+Route::prefix('parent')->middleware('auth:student')->group(function(){
     Route::get('/announce', 'Parent\ParentController@announcement')->name('parent.announcement');
     Route::get('/grade', 'Parent\ParentController@grade')->name('parent.grade');
     Route::get('/profile', 'Parent\ParentController@profile')->name('parent.profile');
@@ -81,7 +81,7 @@ Route::get('/teacher', function(){
     return view('teacher.dashboard');
 });
 
-Route::prefix('teacher')->group(function(){
+Route::prefix('teacher')->middleware('auth:teacher')->group(function(){
     Route::get('/announce', 'Teacher\TeacherController@announce')->name('teacher.announce');
     Route::get('/class', 'Teacher\TeacherController@class_list')->name('teacher.class');
     Route::get('/settings', 'Teacher\TeacherController@class_list')->name('teacher.settings');
