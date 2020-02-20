@@ -23,7 +23,7 @@
                                     <h3><small>Student's Information</small></h3>
                                 </div>
                                 <div class="row">
-                                    <div class="col col-md-8">
+                                    <div class="col col-md-">
                                         <div class="form-group has-success">
                                             <label for="lrn" class="control-label mb-1"><small>LRN</small></label>
                                             <input id="lrn" name="LRN" type="text" class="form-control" value="{{old('LRN')}}">
