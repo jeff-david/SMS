@@ -117,10 +117,10 @@
                     <a class="js-arrow" href="#"><i class="fas fa-cogs"></i> Manage User</a>
                     <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
                         <li>
-                            <a href="registerstudent.html"><i class="fas fa-plus-square"></i> Register Student</a>
+                            <a href="{{route('admin.register_student')}}"><i class="fas fa-plus-square"></i> Register Student</a>
                         </li>
                         <li>
-                            <a href="registerteacher.html"><i class="fas fa-plus-square"></i> Teacher</a>
+                            <a href="{{route('admin.register_teacher')}}"><i class="fas fa-plus-square"></i> Teacher</a>
                         </li>
                     </ul>
                 </li>
@@ -128,10 +128,10 @@
                     <a href="classlist.html"><i class="fas fa-list-ul"></i>Class</a>
                 </li>
                 <li>
-                    <a href="studentlist.html"><i class="fas fa-list-ul"></i>Student</a>
+                    <a href="{{route('principal.student')}}"><i class="fas fa-list-ul"></i>Student</a>
                 </li>
                 <li>
-                    <a href="teacherlist.html"><i class="fas fa-list-ul"></i>Teacher</a>
+                    <a href="{{route('principal.teacher')}}"><i class="fas fa-list-ul"></i>Teacher</a>
                 </li>
                 <li class="has-sub">
                     <a class="js-arrow" href="#"><i class="fas fa-user"></i> Account</a>
@@ -145,7 +145,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="../index.html"><i class="fas fa-power-off"></i> Logout</a>
+                    <a href="{{route('logout')}}"><i class="fas fa-power-off"></i> Logout</a>
                 </li>
             </ul>
         </div>

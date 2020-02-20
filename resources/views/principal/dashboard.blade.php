@@ -7,7 +7,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            <h1 class="title-4">Welcome back
+                            <h1 class="title-4">Welcome back {{ Auth::user()->last_name}}
                                
                             </h1>
                             <hr class="line-seprate">
