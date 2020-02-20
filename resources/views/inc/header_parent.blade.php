@@ -117,19 +117,19 @@
                     <a href="dashboard.html"><i class="fas fa-th-large"></i> Dashboard</a>
                 </li>
                 <li>
-                    <a href="announcement.html"><i class="fas fa-bullhorn"></i>Announcement</a>
+                    <a href="{{route('parent.announcement')}}"><i class="fas fa-bullhorn"></i>Announcement</a>
                 </li>
                 <li>
-                    <a href="studentgrades.html"><i class="fas fa-list-ul"></i>Grades</a>
+                    <a href="{{route('parent.grade')}}"><i class="fas fa-list-ul"></i>Grades</a>
                 </li>
                 <li>
-                    <a href="profile.html"><i class="fas fa-user"></i>Profile</a>
+                    <a href="{{route('parent.profile')}}"><i class="fas fa-user"></i>Profile</a>
                 </li>
                 <li>
-                    <a href="concern.html"><i class="fas fa-user"></i>Concern</a>
+                    <a href="{{route('parent.concern')}}"><i class="fas fa-user"></i>Concern</a>
                 </li>
                 <li>
-                    <a href="../index.html"><i class="fas fa-power-off"></i> Logout</a>
+                    <a href="{{route('logout')}}"><i class="fas fa-power-off"></i> Logout</a>
                 </li>
             </ul>
         </div>
