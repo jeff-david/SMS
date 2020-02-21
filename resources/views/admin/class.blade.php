@@ -39,29 +39,36 @@
                                     <thead>
                                         <tr>
                                             <th class="text-center">Id</th>
+                                            <th class="text-center" style="display:none"></th>
                                             <th class="text-center">Name</th>
+                                            <th class="text-center">Number of Section</th>
                                             <th class="text-center">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @php
+                                        $i = 1
+                                        @endphp
                                         @foreach($class as $classes)
                                         <tr>
-                                            <td class="text-center">{{$classes->id}}</td>
+                                            <td class="text-center">{{$i++}}</td>
+                                            <td class="text-center" style="display:none">{{$classes->id}}</td>
                                             <td class="text-center">{{$classes->class_name}}
                                             </td>
+                                            <td class="text-center">{{$classes->num_section}}</td>
                                             <td class="text-center">
                                                 <div class="table-data-feature " style="text-align:center">
-                                                    <a href="" class="item" data-toggle="modal" data-placement="top"
-                                                        title="Edit" data-target="#editstud">
-                                                        <i class="zmdi zmdi-edit"></i>
-                                                    </a>
-                                                    <button class="item" title="Delete" data-toggle="modal"
+                                                    <button class="item" data-toggle="modal" data-placement="top"
+                                                        title="Edit" data-target="#editModal"  data-id="{{$classes->id}}" data-name="{{$classes->class_name}}">
+                                                        <i class="zmdi zmdi-edit" style="color:green"></i>
+                                                    </button>
+                                                    <button class="item delete" data-id="{{$classes->id}}" title="Delete" data-toggle="modal"
                                                         data-target="#deleteModal">
-                                                        <i class="zmdi zmdi-delete"></i>
+                                                        <i class="zmdi zmdi-delete" style="color:red"></i>
                                                     </button>
                                                     <a href="{{route('admin.view_section',$classes->id)}}" class="item"
                                                         data-toggle="tooltip" data-placement="top" title="View Section">
-                                                        <i class="zmdi zmdi-view-list"></i>
+                                                        <i class="zmdi zmdi-view-list" style="color:blue"></i>
                                                     </a>
                                                 </div>
                                             </td>
@@ -112,4 +119,82 @@
     </div>
 </div>
 
+<!-- modal edit -->
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="sendModalLabel" aria-hidden="true"
+    data-backdrop="send">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content text-center" style="margin-top: 85%;">
+            <form action="{{route('admin.edit_class')}}" method="post">
+                @csrf
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticModalLabel">EDIT CLASS</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col col-md-12">
+                            <div class="form-group has-success">
+                                <input id="id" name="id" type="hidden" class="form-control" value="{{old('id')}}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-md-12">
+                            <div class="form-group has-success">
+                                <input id="class_name" name="class_name" type="text" class="form-control class_name"
+                                    placeholder="Enter Class Name" value="{{old('class_name')}}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary btn-block">EDIT</button>
+                    <button type="button" class="btn btn-danger btn-block" data-dismiss="modal"
+                        style="margin-top: 0rem;">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- modal delete -->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="sendModalLabel" aria-hidden="true"
+    data-backdrop="send">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content text-center" style="margin-top: 85%;">
+            <form action="{{route('admin.delete_class')}}" method="post">
+                @csrf   
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticModalLabel">DELETE CLASS</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col col-md-12">
+                            <div class="form-group has-success">
+                                <input id="id" name="id" type="hidden" class="form-control" value="{{old('id')}}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-md-12">
+                            <div class="form-group has-success">
+                                <label for="lrn" class="control-label mb-1"><small>Are you sure you want to delete this Class</small></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary btn-block">DELETE</button>
+                    <button type="button" class="btn btn-danger btn-block" data-dismiss="modal"
+                        style="margin-top: 0rem;">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 @endsection

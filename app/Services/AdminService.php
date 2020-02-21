@@ -35,6 +35,9 @@ class AdminService
     /** @var \SMS\Models\Admin **/
     private $adminList;
 
+     /** @var \SMS\Models\Classes **/
+     private $classesList;
+
     /**
      * AdminService constructor.
      *
@@ -42,11 +45,13 @@ class AdminService
      * @param Teacher $teacherList
      * @param Section $sectionList
      * @param Teacher $yearlevelList
+     * @param Classes $classesList
      * @param Announcement $announcementList
      *
      *
      */
-    function __construct(Student $studentList,Teacher $teacherList,Section $sectionList,YearLevel $yearlevelList,Announcement $announcementList,Admin $adminList)
+    function __construct(Student $studentList,Teacher $teacherList,Section $sectionList,YearLevel $yearlevelList,Announcement $announcementList,
+                        Admin $adminList,Classes $classesList)
     {
         $this->studentList = $studentList;
         $this->teacherList = $teacherList;
@@ -54,6 +59,7 @@ class AdminService
         $this->yearlevelList = $yearlevelList;
         $this->announcementList = $announcementList;
         $this->adminList = $adminList;
+        $this->classesList = $classesList;
   
     }
 
@@ -314,5 +320,13 @@ class AdminService
         $admin->address = $address;
         $admin->save();
         return $admin;
+    }
+
+    public function edit_class($data)
+    {
+        $class = $this->classesList->find($data['id']);
+        $class->class_name = $data['class_name'];
+        $class->save();
+        return $class;
     }
 } 

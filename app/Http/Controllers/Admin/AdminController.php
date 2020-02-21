@@ -92,13 +92,60 @@ class AdminController extends Controller
             return redirect()->back()->withInput()->with(['failed'=>'Error in registering the teachers']);
         }
 
-        return redirect()->route('admin.teacher')->with(['success'=>'Successfully Registered!']);;
+        return redirect()->route('admin.teacher')->with(['success'=>'Successfully Registered!']);
     }
 
     public function class_view()
     {
-        $class = Classes::all();
+
+        $class = Classes::leftJoin('sections','classes.id' ,'=', 'sections.class_id')
+                ->selectRaw('classes.*, count(sections.class_id) as num_section')
+                ->groupBy('classes.id','classes.class_name','classes.created_at','classes.updated_at','classes.deleted_at')
+                ->get();
+
         return view('admin.class',compact('class'));
+    }
+
+    public function edit_class(Request $request)
+    {
+        $data = $request->all();
+
+        \DB::beginTransaction();
+
+        try
+        {
+            $save = $this->adminService->edit_class($data);
+            \DB::commit(); 
+        }catch(\Exception $th)
+        {
+            \DB::rollback();
+
+            return redirect()->back()->withInput()->with(['failed'=>'Error in Editing the Class']);
+        }
+
+        return redirect()->back()->with(['success'=>'Successfully Edit in Class !']);
+
+    }
+
+    public function delete_class(Request $request)
+    {
+        $id = $request->id;
+
+        \DB::beginTransaction();
+
+        try
+        {
+            $class = Classes::find($id);
+            $class->delete();
+            \DB::commit(); 
+        }catch(\Exception $th)
+        {
+            \DB::rollback();
+
+            return redirect()->back()->withInput()->with(['failed'=>'Error in Deleting the Class']);
+        }
+
+        return redirect()->back()->with(['success'=>'Successfully Deleting a Class !']);
     }
 
     public function view_section(Request $request, $id)

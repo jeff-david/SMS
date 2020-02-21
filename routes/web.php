@@ -37,6 +37,8 @@ Route::prefix('admin')->middleware('auth:admin')->group(function(){
     Route::get('/class/{id}','Admin\AdminController@view_section')->name('admin.view_section');
     Route::get('/announcement','Admin\AdminController@announcement')->name('admin.announcement');
     Route::get('/settings','Admin\AdminController@settings')->name('admin.settings');
+    Route::post('/delete_class','Admin\AdminController@delete_class')->name('admin.delete_class');
+    Route::post('/edit_class','Admin\AdminController@edit_class')->name('admin.edit_class');
     Route::post('/change_settings/{id}','Admin\AdminController@change_settings')->name('admin.change_settings');
     Route::post('/send_message','Admin\AdminController@send_message')->name('admin.send_message');
     Route::post('/add_class','Admin\AdminController@add_class')->name('admin.add_class');
