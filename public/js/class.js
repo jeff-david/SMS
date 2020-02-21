@@ -1,7 +1,9 @@
 $(document).ready(function(){
     $('#class').DataTable({
         "columnDefs": [
-            { "width": "10%", "targets": 2 },
+            { "width": "25%", "targets": 2 },
+            { "width": "25%", "targets": 3 },
+            { "width": "15%", "targets": 4 },
             { "width": "15%", "targets": 0 },
             { "width": "20%", "targets": 0 }
           ]
@@ -162,3 +164,16 @@ $(document).ready(function(){
     });
     
 }); 
+
+$(document).on('click','.item',function() {
+    var class_name = $(this).data('name');
+    var id = $(this).data('id');
+    $('.modal-body #class_name').val(class_name);
+    $('.modal-body #id').val(id);
+});
+
+
+$(document).on('click','.delete',function() {
+    var id = $(this).data('id');
+    $('.modal-body #id').val(id);
+});
