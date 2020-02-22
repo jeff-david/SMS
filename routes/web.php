@@ -37,11 +37,15 @@ Route::prefix('admin')->middleware('auth:admin')->group(function(){
     Route::get('/class/{id}','Admin\AdminController@view_section')->name('admin.view_section');
     Route::get('/announcement','Admin\AdminController@announcement')->name('admin.announcement');
     Route::get('/settings','Admin\AdminController@settings')->name('admin.settings');
+    Route::get('/view_student/{class_id}/{section_id}','Admin\AdminController@view_student')->name('admin.view_student');
+    Route::post('/delete_section','Admin\AdminController@delete_section')->name('admin.delete_section');
+    Route::post('/edit_section','Admin\AdminController@edit_section')->name('admin.edit_section');
     Route::post('/delete_class','Admin\AdminController@delete_class')->name('admin.delete_class');
     Route::post('/edit_class','Admin\AdminController@edit_class')->name('admin.edit_class');
     Route::post('/change_settings/{id}','Admin\AdminController@change_settings')->name('admin.change_settings');
     Route::post('/send_message','Admin\AdminController@send_message')->name('admin.send_message');
     Route::post('/add_class','Admin\AdminController@add_class')->name('admin.add_class');
+    Route::post('/add_section','Admin\AdminController@add_section')->name('admin.add_section');
     Route::post('/announcement','Admin\AdminController@post_announcement')->name('admin.post_announcement');
     Route::post('/register/student', 'Admin\AdminController@store_student')->name('admin.register_student');
     Route::post('/register/teacher/store', 'Admin\AdminController@store_teacher')->name('admin.register_store_teacher');
@@ -63,12 +67,9 @@ Route::prefix('/principal')->middleware('auth:principal')->group(function(){
   
 });
 
-Route::get('/parent', function(){
-    return view('parent.dashboard');
-});
-
 
 Route::prefix('parent')->middleware('auth:student')->group(function(){
+    Route::get('/', 'Parent\ParentController@dashboard')->name('principal.dashboard');
     Route::get('/announce', 'Parent\ParentController@announcement')->name('parent.announcement');
     Route::get('/grade', 'Parent\ParentController@grade')->name('parent.grade');
     Route::get('/profile', 'Parent\ParentController@profile')->name('parent.profile');
@@ -80,11 +81,8 @@ Route::prefix('parent')->middleware('auth:student')->group(function(){
   
 });
 
-Route::get('/teacher', function(){
-    return view('teacher.dashboard');
-});
-
 Route::prefix('teacher')->middleware('auth:teacher')->group(function(){
+    Route::get('/', 'Teacher\TeacherController@dashboard')->name('principal.dashboard');
     Route::get('/announce', 'Teacher\TeacherController@announce')->name('teacher.announce');
     Route::get('/class', 'Teacher\TeacherController@class_list')->name('teacher.class');
     Route::get('/settings', 'Teacher\TeacherController@class_list')->name('teacher.settings');

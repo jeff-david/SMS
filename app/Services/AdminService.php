@@ -148,12 +148,12 @@ class AdminService
                     ->select('sections.*')
                     ->where('sections.class_id','=',$id)
                     ->get();
+
         return $section;
     }
 
     public function student_update($data)
     {
-        dd($data);
         $student = $this->studentList->find($data['id']);
         $student->LRN = $data['LRN'];
         $student->lastname = $data['lastname'];
@@ -328,5 +328,13 @@ class AdminService
         $class->class_name = $data['class_name'];
         $class->save();
         return $class;
+    }
+
+    public function edit_section($data)
+    {
+        $section = $this->sectionList->find($data['id']);
+        $section->section_name = $data['section_name'];
+        $section->save();
+        return $section;
     }
 } 

@@ -9,6 +9,13 @@ $(document).ready(function(){
           ]
     });
 
+
+    $('#section').DataTable({
+        "columnDefs": [
+            { "width": "25%", "targets": 2 },
+            { "width": "10%", "targets": 3 },
+          ]
+    });
     $('select[name = "subject1"]').on('change',function(){
         var subjectId = $(this).val();
         if (subjectId) {
@@ -177,3 +184,52 @@ $(document).on('click','.delete',function() {
     var id = $(this).data('id');
     $('.modal-body #id').val(id);
 });
+
+
+$(document).on('click','#add',function() {
+    var id = $(this).data('id');
+    $('.modal-body #id').val(id);
+});
+
+$(document).on('click','.view_student',function() {
+    var class_id = $(this).data('class');
+    var section_id = $(this).data('section');
+    var text = 'No Student in this Section';
+
+    $.ajax({
+        type:'GET',
+        url: '/admin/view_student/'+class_id+'/'+section_id,
+        success:function(data) {
+
+            if (data.length == 0) {
+                $('.modal-body .nodata').text(text);
+                $('.modal-body .details').html('');
+            } else {
+                $('.modal-body .nodata').text('');
+                var details='';
+                i = 0;
+                $.each(data, function (i,item) {
+                    details +='<p>' + item.LRN+" "+ item.lastname +" "+item.firstname+ '</p>';
+                });
+                $('.modal-body .details').html(details);
+            }
+            
+        }
+    });
+
+});
+
+$(document).on('click','.editSection',function() {
+    var section_name = $(this).data('name');
+    var id = $(this).data('id');
+    var classes_id = $(this).data('classes');
+    $('.modal-body #section_name').val(section_name);
+    $('.modal-body #id').val(id);
+    $('.modal-body #classes_id').val(classes_id);
+});
+
+$(document).on('click','.delete_section',function() {
+    var id = $(this).data('section');
+    $('.modal-body #id').val(id);
+});
+

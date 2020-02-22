@@ -17,8 +17,9 @@ class CreateSectionsTable extends Migration
             $table->bigIncrements('id');
             $table->string('section_name');
             $table->tinyInteger('section_id');
-            $table->tinyInteger('year_level_id');
+            $table->tinyInteger('year_level_id')->nullable();
             $table->tinyInteger('class_id');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

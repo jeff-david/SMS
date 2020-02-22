@@ -16,6 +16,11 @@ class ParentController extends Controller
         $this->parentService = $parentService;
     }
 
+    public function dashboard()
+    {
+        return view('parent.dashboard');
+    }
+
     public function announcement()
     {
         $announcement = Announcement::where('type_id','>=',0)->pluck('type_id')->toArray();

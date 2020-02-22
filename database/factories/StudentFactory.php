@@ -40,6 +40,7 @@ $factory->define(Student::class, function (Faker $faker) {
         'ethnicities'=> 'Pilipino',
         'type_id'=> 1,
         'section_id' => $faker->numberBetween(1,12),
+        'class_id' => $faker->numberBetween(1,6),
         'created_at' => $faker->date($format = 'Y-m-d', $max = 'now'),
         'updated_at' => $faker->date($format = 'Y-m-d', $max = 'now'),
     ];
