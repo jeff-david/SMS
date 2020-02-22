@@ -16,6 +16,11 @@ class TeacherController extends Controller
         $this->teacherService = $teacherService;
     }
 
+    public function dashboard()
+    {
+        return view('teacher.dashboard');
+    }
+
     public function announce()
     {
        

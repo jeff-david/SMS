@@ -148,11 +148,87 @@ class AdminController extends Controller
         return redirect()->back()->with(['success'=>'Successfully Deleting a Class !']);
     }
 
+    public function delete_section(Request $request)
+    {
+        $id = $request->id;
+
+        \DB::beginTransaction();
+
+        try
+        {
+            $section = Section::find($id);
+            $section->forceDelete();
+
+            \DB::commit(); 
+        }catch(\Exception $th)
+        {
+            \DB::rollback();
+
+            return redirect()->back()->withInput()->with(['failed'=>'Error in Deleting the Section']);
+        }
+
+        return redirect()->back()->with(['success'=>'Successfully Deleting a Section !']);
+    }
     public function view_section(Request $request, $id)
     {
+
         $section = $this->adminService->get_Section($id);
+        return view('admin.view_section', compact('section','id'));
+    }
+
+    public function edit_section(Request $request)
+    {
+        $data = $request->all();
+
+        \DB::beginTransaction();
+
+        try
+        {
+           
+            $save = $this->adminService->edit_section($data);          
+            \DB::commit(); 
+        }catch(\Exception $th)
+        {
+            \DB::rollback();
+
+            return redirect()->back()->withInput()->with(['failed'=>'Error in Editing the Section']);
+        }
+
+        return redirect()->back()->with(['success'=>'Successfully Edit in Section !']);
+    }
+
+    public function view_student($class_id,$section_id)
+    {
+        $conditions = ['section_id' => $section_id, 'class_id' => $class_id];
+
+        $students = Student::where($conditions)
+                ->get();
+        return $students;
+    }
+
+    public function add_section(Request $request)
+    {
         
-        return view('admin.view_section', compact('section'));
+        $data = $request->add_section;
+        $id = $request->id;
+
+        \DB::beginTransaction();
+        try{
+            
+            $section = new Section();
+            $section->section_name = $data;
+            $section->class_id = $id;
+            $section->section_id = $id;
+            $section->year_level_id = 0;
+            $section->save();
+            \DB::commit();
+        }catch(\Exception $e){
+            \DB::rollback();
+
+            return redirect()->back()->withInput()->with(['failed' => 'Error in Adding a Section']);
+
+        }
+        return redirect()->back()->withInput()->with(['success' => 'Section Successfully Created']);
     }
 
    
