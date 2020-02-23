@@ -128,14 +128,14 @@
 </div>
 
 <!-- modal view student -->
-<div class="modal fade" id="view_studentModal" tabindex="-1" role="dialog" aria-labelledby="sendModalLabel" aria-hidden="true"
+<div class="modal fade" id="view_studentModal"  tabindex="-1" role="dialog" aria-labelledby="sendModalLabel" aria-hidden="true"
     data-backdrop="send">
-    <div class="modal-dialog modal-sm" role="document">
-        <div class="modal-content text-center" style="margin-top: 85%;">
+    <div class="modal-dialog  modal-lg" role="document">
+        <div class="modal-content text-center" style="margin-top: 25%;">
             <form action="{{route('admin.add_section')}}" method="post">
                 @csrf
                 <div class="modal-header">
-                    <h5 class="modal-title" id="staticModalLabel">VIEW STUDENT</h5>
+                    <h5 class="modal-title text-center" id="staticModalLabel">VIEW STUDENT</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -143,6 +143,19 @@
                 <div class="modal-body">    
                     <p class="nodata"></p>
                     <p class="details"></p>
+                    <table class="table" id="view_student">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>LRN</th>
+                                <th>Lastname</th>
+                                <th>Firstname</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                        </tbody>
+                    </table>
                 </div>
                 <div class="modal-footer">
                 </div>

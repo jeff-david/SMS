@@ -10,7 +10,7 @@ $factory->define(Student::class, function (Faker $faker) {
     $relation = $faker->randomElement(['Father', 'Mother']);
 
     return [
-        'LRN' => $faker->unique()->numberBetween(100,200),
+        'LRN' => $faker->unique()->numberBetween(100,2000),
         'cell_1' => $faker->e164PhoneNumber,
         'year_level_id' => $faker->numberBetween(1,6),
         'lastname' => $faker->lastName,
