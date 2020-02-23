@@ -12,7 +12,7 @@ class StudentTableSeeder extends Seeder
      */
     public function run()
     {
-        $count = 1000;
+        $count = 750;
         factory(Student::class, $count)->create();
 
       
