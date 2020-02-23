@@ -87,7 +87,7 @@
                 <div class="container-fluid">
                     <div class="header-mobile-inner">
                         <a class="logo" href="dashboard.html">
-                            <img src="../images/icon/logo-mini.png" alt="CoolAdmin" />
+                            <img src="{{ url('/images/logo-mini.png')}}" alt="SMS" />
                         </a>
                         <button class="hamburger hamburger--slider" type="button">
                             <span class="hamburger-box">
@@ -104,21 +104,13 @@
                             <a href="{{url('/teacher')}}"><i class="fas fa-th-large"></i> Dashboard</a>
                         </li>
                         <li>
-                            <a href="{{route('teacher.announce')}}"><i class="fas fa-file-text"></i>Announcemt</a>
+                            <a href="{{route('teacher.announce')}}"><i class="fas fa-file-text"></i>Announcement</a>
                         </li>
                         <li>
                             <a href="{{route('teacher.class')}}"><i class="fas fa-list-ul"></i>Class</a>
                         </li>
                         <li class="has-sub">
                             <a class="js-arrow" href="#"><i class="fas fa-user"></i> Account</a>
-                            <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
-                                <li>
-                                    <a href=""><i class="fas fa-cog"></i> General Settings</a>
-                                </li>
-                                <li>
-                                    <a href="#"><i class="fas fa-cog"></i> Security Settings</a>
-                                </li>
-                            </ul>
                         </li>
                         <li>
                             <a href="{{route('logout')}}"><i class="fas fa-power-off"></i> Logout</a>
