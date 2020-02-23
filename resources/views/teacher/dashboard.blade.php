@@ -53,7 +53,7 @@
                         </div>
                         <div class="col-md-6 col-lg-2">
                             <div class="statistic__item statistic__item--orange">
-                                <h2 class="number">{{$g14}}</h2>
+                                <h2 class="number">{{$g12}}</h2>
                                 <span class="desc">Grade 12</span>
                             </div>
                         </div>
