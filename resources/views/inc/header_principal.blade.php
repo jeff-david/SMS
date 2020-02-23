@@ -125,7 +125,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="classlist.html"><i class="fas fa-list-ul"></i>Class</a>
+                    <a href="{{route('admin.register_class')}}"><i class="fas fa-list-ul"></i>Class</a>
                 </li>
                 <li>
                     <a href="{{route('principal.student')}}"><i class="fas fa-list-ul"></i>Student</a>
@@ -134,15 +134,7 @@
                     <a href="{{route('principal.teacher')}}"><i class="fas fa-list-ul"></i>Teacher</a>
                 </li>
                 <li class="has-sub">
-                    <a class="js-arrow" href="#"><i class="fas fa-user"></i> Account</a>
-                    <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
-                        <li>
-                            <a href="#"><i class="fas fa-cog"></i> General Settings</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fas fa-cog"></i> Security Settings</a>
-                        </li>
-                    </ul>
+                    <a class="js-arrow" href="#"><i class="fas fa-user"></i> Account Settings</a>
                 </li>
                 <li>
                     <a href="{{route('logout')}}"><i class="fas fa-power-off"></i> Logout</a>
