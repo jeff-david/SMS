@@ -95,7 +95,7 @@
                                     <div class="col col-md-2">
                                         <div class="form-group has-success">
                                             <label for="age" class="control-label mb-1"><small>Age</small></label>
-                                            <input id="age" name="age" type="number" class="form-control"value="{{old('age')}}">
+                                            <input id="age" name="age" type="number" min = 21 class="form-control"value="{{old('age')}}">
                                             <span class="text-danger">{{ $errors->first('age') }}</span>
                                         </div>
                                     </div>
