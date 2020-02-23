@@ -9,6 +9,12 @@ $(document).ready(function(){
           ]
     });
 
+    $('#view_student').DataTable({
+        'language': {
+            'emptyTable' : 'No Student in this Section'
+        }
+    });
+
 
     $('#section').DataTable({
         "columnDefs": [
@@ -202,16 +208,24 @@ $(document).on('click','.view_student',function() {
         success:function(data) {
 
             if (data.length == 0) {
-                $('.modal-body .nodata').text(text);
-                $('.modal-body .details').html('');
+               console.log(data);
             } else {
-                $('.modal-body .nodata').text('');
+                $('#view_student').on('draw.dt',function() {
+                    $(this).find('.dataTables_empty').parents('tbody').empty();
+                }).DataTable();
                 var details='';
                 i = 0;
+                $('.modal-body tbody').empty();
                 $.each(data, function (i,item) {
-                    details +='<p>' + item.LRN+" "+ item.lastname +" "+item.firstname+ '</p>';
+                    details += '<tr>'
+                    + '<td>' + (i+1) + '</td>' +
+                    '<td>' + item.LRN + '</td>' +
+                    '<td>' + item.lastname + '</td>' +
+                    '<td>' + item.firstname + '</td>' +
+                    '</tr>';
                 });
-                $('.modal-body .details').html(details);
+                $('.modal-body tbody').append(details);
+                
             }
             
         }
@@ -232,4 +246,6 @@ $(document).on('click','.delete_section',function() {
     var id = $(this).data('section');
     $('.modal-body #id').val(id);
 });
+
+
 
