@@ -30,7 +30,6 @@ $(document).ready(function(){
                 type: "GET",
                 dataType: "json",
                 success:function(data) {
-                    console.log(data);
                     $('select[name="teacher1"]').empty();
                     $.each(data,function(key,value) {
                         $('select[name="teacher1"]').append('<option value="' + key + '">' + value + '</option>');    
@@ -38,7 +37,7 @@ $(document).ready(function(){
                 }
             });
         }else{
-            $('select[name="teacher1"]').empty
+            $('select[name="teacher1"]').empty();
         }
     });
 
@@ -58,7 +57,7 @@ $(document).ready(function(){
                 }
             });
         }else{
-            $('select[name="teacher2"]').empty
+            $('select[name="teacher2"]').empty();
         }
     });
     $('select[name = "subject3"]').on('change',function(){
@@ -77,7 +76,7 @@ $(document).ready(function(){
                 }
             });
         }else{
-            $('select[name="teacher3"]').empty
+            $('select[name="teacher3"]').empty();
         }
     });
     $('select[name = "subject4"]').on('change',function(){
@@ -96,7 +95,7 @@ $(document).ready(function(){
                 }
             });
         }else{
-            $('select[name="teacher4"]').empty
+            $('select[name="teacher4"]').empty();
         }
     });
     $('select[name = "subject5"]').on('change',function(){
@@ -115,7 +114,7 @@ $(document).ready(function(){
                 }
             });
         }else{
-            $('select[name="teache5r"]').empty
+            $('select[name="teache5r"]').empty();
         }
     });
     $('select[name = "subject6"]').on('change',function(){
@@ -153,7 +152,7 @@ $(document).ready(function(){
                 }
             });
         }else{
-            $('select[name="teacher7"]').empty
+            $('select[name="teacher7"]').empty();
         }
     });
     $('select[name = "subject8"]').on('change',function(){
@@ -172,7 +171,7 @@ $(document).ready(function(){
                 }
             });
         }else{
-            $('select[name="teacher8"]').empty
+            $('select[name="teacher8"]').empty();
         }
     });
     
@@ -247,5 +246,49 @@ $(document).on('click','.delete_section',function() {
     $('.modal-body #id').val(id);
 });
 
+$(document).ready(function() {
+    var backups = {};
+    $('select[id^=schedule]').on('change',function() {
+        var v = $(this).val();
+        var f = false;
+        $('select[id^=schedule]').not(this).each(function() {
+            if ($(this).val() == v) {
+                f = true;
+                return
+            }
+        });
+
+        if (f) {
+            $(this).val(backups[$(this).attr('id')]);
+            alert('Duplicate Value');
+        }else{
+            backups[$(this).attr('id') = v];
+        }
+    }).val(null);
+});
+
+
+$(document).ready(function() {
+    var backups = {};
+    $('select[id^=subject]').on('change',function() {
+        var v = $(this).val();
+        var f = false;
+        $('select[id^=subject]').not(this).each(function() {
+            if ($(this).val() == v) {
+                f = true;
+                return
+            }
+        });
+
+        if (f) {
+            // $(this).val(backups[$(this).attr('id')]);
+            alert('Duplicate Subjects');
+            $('select[id^="teacher"]').empty();
+        }else{
+            backups[$(this).attr('id') = v];
+            $('select[id^="teacher"]').empty();
+        }
+    }).val(null);
+});
 
 
