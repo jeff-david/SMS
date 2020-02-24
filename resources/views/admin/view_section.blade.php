@@ -150,6 +150,7 @@
                                 <th>LRN</th>
                                 <th>Lastname</th>
                                 <th>Firstname</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
