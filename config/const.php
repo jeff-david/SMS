@@ -2,6 +2,12 @@
 
 return [
 
+    'upload_local_temp_path' => 'storage/tmp',
+    'upload_path_img_student' => 'app/public/student/',
+    'upload_path_img_teacher' => 'app/public/teacher/',
+    'upload_path_img_principal' => 'app/public/principal/',
+
+
     'gender' => [
         1 => 'Male',
         2 => 'Female'

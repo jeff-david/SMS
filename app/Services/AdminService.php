@@ -10,6 +10,7 @@ use SMS\Models\Classes;
 use SMS\Models\Subject;
 use SMS\Models\Assign;
 use SMS\Models\Admin;
+use SMS\Helper\FileHelper;
 use SMS\Models\Announcement;
 use Hash;
 use Carbon\Carbon;
@@ -71,11 +72,12 @@ class AdminService
         $student['lastname'] = $data['lastname'];
         $student['firstname'] = $data['firstname'];
         $student['middlename'] = $data['middlename'];
-        $student['register_date'] = $data['register_date'];
+        $student['age'] = $data['age'];
+        $student['register_date'] = Carbon::parse($data['register_date']);
         $student['username'] = $data['username'];
         $student['password'] = Hash::make($data['password']);
         $student['gender'] = $data['gender'];
-        $student['birthday'] = $data['birthday'];
+        $student['birthday'] = Carbon::parse($data['birthday']);
         $student['religion'] = $data['religion'];
         $student['city'] = $data['city'];
         $student['street_address'] = $data['street_address'];
@@ -95,11 +97,27 @@ class AdminService
         $student['year_level_id'] = $data['year_level_id'];
         $student['ethnicities'] = $data['ethnicities'];
         $student['cell_1'] = $data['cell_1'];
-    
-
+        $student['photo_img'] = $data['photo_img'];
         $rtn = $this->studentList->create($student);
 
-        $rtn->save();
+        if ($rtn) {
+            if (!empty($rtn->photo_img)) {
+                $sourcepath = FileHelper::getServerPath($rtn->photo_img);
+                if (file_exists($sourcepath)) {
+                    $fileinfo = pathinfo($sourcepath);
+                    $target_path = 'storage/app/public' . config('const.upload_path_img_student') .'lrn/';
+                    FileHelper::addDirectory($target_path, 777);
+                    $target_path = $target_path . $fileinfo['basename'];
+                    if (!\File::move($sourcepath, $target_path)) {
+                        throw new \Exception('The file could not be moved.');
+                    } else {
+                        $rtn->photo_img = FileHelper::getServerPath($target_path);
+                        $rtn->save();
+                    }
+                }
+            }
+        }
+        
         
         return $rtn;    
        
@@ -183,7 +201,7 @@ class AdminService
         $student->ethnicities = $data['ethnicities'];
         $student->cell_1 = $data['cell_1'];
         $student->type_id = 1;
-        $student->sectio_id = 1;
+        $student->section_id = 1;
         $student->save();
 
         return $student;

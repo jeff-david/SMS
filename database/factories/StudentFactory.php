@@ -38,6 +38,8 @@ $factory->define(Student::class, function (Faker $faker) {
         'mother_tounge' => 'Pilipino',
         'dialects' => 'Bisaya',
         'ethnicities'=> 'Pilipino',
+        'age' => $faker->numberBetween(12,18),
+        'photo_img' => $faker->imageUrl($width = 640, $height = 480),
         'type_id'=> 1,
         'section_id' => $faker->numberBetween(1,12),
         'class_id' => $faker->numberBetween(1,6),

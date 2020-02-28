@@ -42,6 +42,8 @@ class CreateStudentsTable extends Migration
             $table->string('dialects');
             $table->string('ethnicities');
             $table->string('cell_1');
+            $table->tinyInteger('age');
+            $table->string('photo_img');
             $table->tinyInteger('year_level_id');
             $table->tinyInteger('section_id')->nullable();
             $table->tinyInteger('class_id')->nullable();
