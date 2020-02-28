@@ -35,6 +35,7 @@
                                             <th class="text-center">LRN</th>
                                             <th class="text-center">Name</th>
                                             <th class="text-center">Grade Level</th>
+                                            <th class="text-center">View Grades</th>
                                             <th class="text-center">Action</th>
                                         </tr>
                                     </thead>
@@ -45,24 +46,24 @@
                                             <td class="text-center">{{$students->lastname}} {{$students->firstname}}
                                             </td>
                                             <td class="text-center">{{$students->yearlevel}}</td>
+                                            <td class="text-center"><button  class="item view_grade" data-id="{{$students->id}}" data-class="{{$students->class_id}}" data-toggle="modal"
+                                                    data-placement="top" data-target="#view_gradeModal">
+                                                    <i class="zmdi zmdi-view-list" style="color:orange"> View Grades</i>
+                                                </button></td>
                                             <td class="text-center">
                                                 <div class="table-data-feature " style="text-align:center">
                                                     <button class="send_item" title="Send" data-toggle="modal"
-                                                        data-target="#sendModal" data-id="{{$students->LRN}}">
+                                                        data-target="#sendModal" style="color:blue" data-id="{{$students->LRN}}">
                                                         <i class="zmdi zmdi-mail-send"></i>
                                                     </button>
                                                     <a href="{{route('admin.student_edit', $students->id)}}"
                                                         class="item" data-toggle="modal" data-placement="top"
                                                         title="Edit" data-target="#editstud">
-                                                        <i class="zmdi zmdi-edit"></i>
+                                                        <i class="zmdi zmdi-edit" style="color:green"></i>
                                                     </a>
                                                     <button class="item" title="Delete" data-toggle="modal"
                                                         data-target="#deleteModal">
-                                                        <i class="zmdi zmdi-delete"></i>
-                                                    </button>
-                                                    <button class="item" data-toggle="tooltip" data-placement="top"
-                                                        title="More" onclick="window.location='viewstudent.html'">
-                                                        <i class="zmdi zmdi-more"></i>
+                                                        <i class="zmdi zmdi-delete" style="color:red"></i>
                                                     </button>
                                                 </div>
                                             </td>
@@ -79,6 +80,44 @@
     </div>
 </div>
 
+
+<!-- modal view student -->
+<div class="modal fade" id="view_gradeModal"  tabindex="-1" role="dialog" aria-labelledby="sendModalLabel" aria-hidden="true"
+    data-backdrop="send">
+    <div class="modal-dialog  modal-lg" role="document">
+        <div class="modal-content text-center">
+            <form action="{{route('admin.add_section')}}" method="post">
+                @csrf
+                <div class="modal-header">
+                    <h5 class="modal-title text-center" id="staticModalLabel">VIEW GRADES</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">    
+                    <p class="nodata"></p>
+                    <p class="details"></p>
+                    <table class="table" id="view_student">
+                        <thead>
+                            <tr>
+                                <th>SUBJECTS</th>
+                                <th>1st GRADING</th>
+                                <th>2nd GRADING</th>
+                                <th>3rd GRADING</th>
+                                <th>4th GRADING</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
 
 <!-- modal delete -->

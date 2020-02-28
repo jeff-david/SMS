@@ -1,9 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use SMS\Models\Student;
-
-class StudentTableSeeder extends Seeder
+use SMS\Models\Grades;
+class GradesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,9 +11,7 @@ class StudentTableSeeder extends Seeder
      */
     public function run()
     {
-        $count = 250;
-        factory(Student::class, $count)->create();
-
-      
+        $count = 16500;
+        factory(Grades::class, $count)->create();
     }
 }

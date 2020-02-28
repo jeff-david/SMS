@@ -24,7 +24,7 @@ class SettingsRequest extends FormRequest
     public function rules()
     {
         return [
-            'contact_number' => 'min:11|numeric',
+           
         ];
     }
 }
