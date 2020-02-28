@@ -22,14 +22,20 @@
                         <div class="col-md-12">
                             <div class="table-data__tool">
                                 <div class="table-data__tool-right">
-                                    <button style="margin-top: 25px;" data-toggle="modal" data-target="#addModal"
+                                    <button style="margin-top: 3px;" data-toggle="modal" data-target="#addModal"
                                         class="au-btn au-btn-icon au-btn--green au-btn--small">
                                         <i class="zmdi zmdi-plus"></i>add class
                                     </button>
+                                   
                                 </div>
+                                <input style="width:175px " class="form-control" type="text" placeholder="LRN" aria-label="Search" >
+                                <input style="width:175px" class="form-control" type="text" placeholder="Name" aria-label="Search" >
+                                <input style="width:175px" class="form-control" type="text" placeholder="Grade Level" aria-label="Search" >  
+                                <button class="btn btn-success form-control "  type="submit" style="margin-right:225px;width:100px">Search</button>                              
                             </div>
                         </div>
                     </div>
+                    
                     <div class="row">
 
                         <div class="col-md-12">
