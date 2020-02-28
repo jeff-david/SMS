@@ -27,9 +27,10 @@ class StudentRequest extends FormRequest
     {
         return [
             'LRN'=>['required'],
-            'firstname'=>['required'],
-            'lastname'=>['required'],
-            'middlename' => ['required'],
+            'firstname'=>'required',
+            'photo_img' => 'image|required|mimes:jpeg,png,jpg',
+            'lastname'=>'required | regex:/^[a-zA-Z]+$/u',
+            'middlename' => 'required | regex:/^[a-zA-Z]+$/u',
             'register_date' => ['required'],
             'username' => ['required'],
             'password' => ['required'],
@@ -52,7 +53,7 @@ class StudentRequest extends FormRequest
             'mother_tounge'=>['required'],
             'dialects'=>['required'],
             'ethnicities'=>['required'],
-            'cell_1' => 'required|min:11|numeric',
+            'cell_1' => 'required|min:11|numeric|',
             'year_level_id' => ['required'],
         ];
     }

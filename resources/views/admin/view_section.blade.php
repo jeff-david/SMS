@@ -104,7 +104,7 @@
                     <div class="row">
                         <div class="col col-md-12">
                             <div class="form-group has-success">
-                                <input id="slname" name="add_section" type="text" class="form-control"
+                                <input name="add_section" type="text" class="form-control"
                                     placeholder="Enter Section Name" value="{{old('lastname')}}">
                             </div>
                         </div>
@@ -150,6 +150,7 @@
                                 <th>LRN</th>
                                 <th>Lastname</th>
                                 <th>Firstname</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
