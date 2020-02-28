@@ -16,6 +16,7 @@ use SMS\Models\Student;
 use SMS\Models\Section;
 use SMS\Models\Teacher;
 use SMS\Models\Classes;
+use SMS\Models\Grades;
 use SMS\Models\Admin;
 use SMS\Models\Subject;
 use SMS\Models\Announcement;
@@ -51,6 +52,7 @@ class AdminController extends Controller
 
     public function store_student(StudentRequest $request)
     {
+        
         $data = $request->all();
 
         \DB::beginTransaction();
@@ -248,9 +250,9 @@ class AdminController extends Controller
         return view('admin.edit', compact('student'));
     }
 
-    public function student_update(StudentRequest $request,$id)
+    public function student_update(Request $request,$id)
     {
-        dd($request);
+        
         $data = $request->all();
         $data['id'] = $id;
     
@@ -310,7 +312,7 @@ class AdminController extends Controller
 
     public function get_teacher($id)
     {
-        $teacher = DB::table('teachers')->where('departments_id', $id)->pluck('lastname','id');
+        $teacher = DB::table('teachers')->where('departments_id', $id)->pluck('lastname','id'); 
         return json_encode($teacher);
     }
 
@@ -474,5 +476,17 @@ class AdminController extends Controller
         return redirect()->back()->withInput()->with(['success' => 'Class Successfully Created']);
 
 
+    }
+
+    public function view_grade($id,$class_id)
+    {
+
+        $grades = Grades::select('grades.first_grading','grades.second_grading','grades.third_grading','grades.fourth_grading','subjects.subject_name')
+                ->join('subjects','subjects.department_id','=','grades.subject_id')
+                ->where('grades.user_id',$id)
+                ->where('grades.class_id',$class_id)
+                ->groupBy('subjects.subject_name','grades.first_grading','grades.second_grading','grades.third_grading','grades.fourth_grading')
+                ->get();
+        return $grades;
     }
 }

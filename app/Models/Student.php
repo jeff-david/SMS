@@ -13,8 +13,10 @@ class Student extends Authenticatable
     protected $fillable = [
         
         'LRN',
+        'photo_img',
         'firstname',
         'lastname',
+        'age',
         'middlename',
         'register_date',
         'gender',

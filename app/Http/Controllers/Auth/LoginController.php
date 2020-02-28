@@ -106,8 +106,9 @@ class LoginController extends Controller
         return view('auth.parent_login');
     }
 
-    public function parentLogin(LoginRequest $request)
+    public function parentLogin(Request $request)
     {
+        
         try{
             if (Auth::guard('student')->attempt(['username' => $request->username,'password' => $request->password])) {
                 return redirect()->intended('/parent');

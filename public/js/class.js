@@ -11,8 +11,13 @@ $(document).ready(function(){
 
     $('#view_student').DataTable({
         'language': {
-            'emptyTable' : 'No Student in this Section'
-        }
+            'emptyTable' : 'No Student Graades'
+        },
+        'searching':false,
+        'lengthChange':false,
+        'ordering':false,
+        'info':false,
+        'paging':false,
     });
 
 
@@ -221,6 +226,7 @@ $(document).on('click','.view_student',function() {
                     '<td>' + item.LRN + '</td>' +
                     '<td>' + item.lastname + '</td>' +
                     '<td>' + item.firstname + '</td>' +
+                    '<td> <button class="btn btn-primary btn-block"> View Details </button> </td>' +
                     '</tr>';
                 });
                 $('.modal-body tbody').append(details);
@@ -260,7 +266,7 @@ $(document).ready(function() {
 
         if (f) {
             $(this).val(backups[$(this).attr('id')]);
-            alert('Duplicate Value');
+            alert('Time Duplicated!');
         }else{
             backups[$(this).attr('id') = v];
         }
