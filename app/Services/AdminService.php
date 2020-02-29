@@ -10,6 +10,7 @@ use SMS\Models\Classes;
 use SMS\Models\Subject;
 use SMS\Models\Assign;
 use SMS\Models\Admin;
+use SMS\Models\Grades;
 use SMS\Helper\FileHelper;
 use SMS\Models\Announcement;
 use Hash;
@@ -355,4 +356,52 @@ class AdminService
         $section->save();
         return $section;
     }
+
+    public function edit_grade($data)
+    {   
+        switch ($data['id']) {
+            case 1:
+                $grade = Grades::where('subject_id',$data['subject'])
+                    ->where('user_id',$data['user'])
+                    ->where('class_id',$data['class'])
+                    ->update(['first_grading' => $data['value']]);
+
+                return $grade;
+                break;
+            case 2:
+                $grade = Grades::where('subject_id',$data['subject'])
+                    ->where('user_id',$data['user'])
+                    ->where('class_id',$data['class'])
+                    ->update(['second_grading' => $data['value']]);
+
+                return $grade;
+                break;
+            case 3:
+                $grade = Grades::where('subject_id',$data['subject'])
+                    ->where('user_id',$data['user'])
+                    ->where('class_id',$data['class'])
+                    ->update(['third_grading' => $data['value']]);
+
+                return $grade;
+
+                break;
+
+            case 4:
+                $grade = Grades::where('subject_id',$data['subject'])
+                    ->where('user_id',$data['user'])
+                    ->where('class_id',$data['class'])
+                    ->update(['fourth_grading' => $data['value']]);
+
+                return $grade;
+
+                break;
+            default:
+                # code...
+                break;
+        }
+       
+        return $save;
+    }
+
+
 } 

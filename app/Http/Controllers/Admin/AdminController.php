@@ -480,13 +480,30 @@ class AdminController extends Controller
 
     public function view_grade($id,$class_id)
     {
-
-        $grades = Grades::select('grades.first_grading','grades.second_grading','grades.third_grading','grades.fourth_grading','subjects.subject_name')
+        $grades = Grades::select('grades.first_grading','grades.second_grading','grades.third_grading','grades.fourth_grading','subjects.subject_name','grades.subject_id','grades.user_id','grades.class_id')
                 ->join('subjects','subjects.department_id','=','grades.subject_id')
                 ->where('grades.user_id',$id)
                 ->where('grades.class_id',$class_id)
-                ->groupBy('subjects.subject_name','grades.first_grading','grades.second_grading','grades.third_grading','grades.fourth_grading')
+                ->groupBy('subjects.subject_name','grades.first_grading','grades.second_grading','grades.third_grading','grades.fourth_grading','grades.subject_id','grades.user_id','grades.class_id')
                 ->get();
         return $grades;
+    }
+
+    public function edit_grade(Request $request)
+    {
+        $data = $request->all();
+
+        \DB::beginTransaction();
+
+        try
+        {
+            $save = $this->adminService->edit_grade($data);
+            \DB::commit(); 
+        }catch(\Exception $th)
+        {
+            \DB::rollback();
+        }
+
+        return $save;
     }
 }
