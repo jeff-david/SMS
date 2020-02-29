@@ -39,6 +39,7 @@ Route::prefix('admin')->middleware('auth:admin')->group(function(){
     Route::get('/settings','Admin\AdminController@settings')->name('admin.settings');
     Route::get('/view_student/{class_id}/{section_id}','Admin\AdminController@view_student')->name('admin.view_student');
     Route::get('/view_grade/{lrn}/{class_id}','Admin\AdminController@view_grade')->name('admin.view_grade');
+    Route::post('/edit_grade','Admin\AdminController@edit_grade')->name('admin.edit_grade');
     Route::post('/delete_section','Admin\AdminController@delete_section')->name('admin.delete_section');
     Route::post('/edit_section','Admin\AdminController@edit_section')->name('admin.edit_section');
     Route::post('/delete_class','Admin\AdminController@delete_class')->name('admin.delete_class');

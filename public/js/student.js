@@ -94,10 +94,10 @@ $(document).on('click','.view_grade',function() {
                 $.each(data, function (i,item) {
                     details += '<tr>'
                     + '<td>' + item.subject_name + '</td>' +
-                    '<td>' +  item.first_grading + '</td>' +
-                    '<td>' + item.second_grading + '</td>' +
-                    '<td>' + item.third_grading + '</td>' +
-                    '<td>' + item.fourth_grading + '</td>' +
+                    '<td contenteditable="true" class="editGrade" data-id="1" data-subject="'+ item.subject_id +'" data-user="'+ item.user_id +'" data-class="'+ item.class_id+ '">' + item.first_grading + '</td>' +
+                    '<td contenteditable="true" class="editGrade" data-id="2" data-subject="'+ item.subject_id +'" data-user="'+ item.user_id +'" data-class="'+ item.class_id+ '">' + item.second_grading + '</td>' +
+                    '<td contenteditable="true" class="editGrade" data-id="3" data-subject="'+ item.subject_id +'" data-user="'+ item.user_id +'" data-class="'+ item.class_id+ '">' + item.third_grading + '</td>' +
+                    '<td contenteditable="true" class="editGrade" data-id="4" data-subject="'+ item.subject_id +'" data-user="'+ item.user_id +'" data-class="'+ item.class_id+ '">' + item.fourth_grading + '</td>' +
                     '</tr>';
                 });
                 $('.modal-body tbody').append(details);
@@ -109,4 +109,23 @@ $(document).on('click','.view_grade',function() {
         console.log(err);
     });
 
+});
+
+$(document).on('focusout','.editGrade',function() {
+       var user_id = $(this).data('user');
+       var class_id = $(this).data('class');
+       var subject_id = $(this).data('subject');
+       var value = $(this).text();
+       var id = $(this).data('id');
+
+       $.ajax({
+        type:'POST',
+        url: '/admin/edit_grade/',
+        data:{"_token": $('meta[name="csrf-token"]').attr('content'),"value":value, "user":user_id,"class":class_id,"subject":subject_id,"id":id},
+        success:function(data) {
+            console.log(data);
+        }
+    }).fail(function(err){
+        console.log(err);
+    });
 });
