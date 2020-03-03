@@ -15,6 +15,11 @@ $(document).on("click", ".send_item", function () {
     $(".modal-body #LRN").val(lrn);
 });
 
+$(document).on("click", ".delete", function () {
+    var id = $(this).data('id');
+    $(".modal-body #student").val(id);
+});
+
 
 
 $( function() {

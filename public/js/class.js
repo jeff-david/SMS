@@ -11,7 +11,7 @@ $(document).ready(function(){
 
     $('#view_student').DataTable({
         'language': {
-            'emptyTable' : 'No Student Graades'
+            'emptyTable' : 'No Student in this Section'
         },
         'searching':false,
         'lengthChange':false,
