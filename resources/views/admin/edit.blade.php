@@ -30,12 +30,34 @@
                                             <span class="text-danger">{{ $errors->first('LRN') }}</span>
                                         </div>
                                     </div>
+                                    <div class="row">
+                                        <div class="col col-md-12" id="image-preview" style="left:100%;width:125px">
+                                            <img src="{{ url($student->photo_img) }}" id="img" style="max-width:110%;max-height:110%;" alt="">
+                                        </div>
+                                    </div>
                                     <div class="col col-md-4">
                                         <div class="form-group has-success">
                                             <label for="datetoday"
                                                 class="control-label mb-1"><small>Date</small></label>
                                             <input id="register_date" name="register_date" type="date" class="form-control" value="{{old('register_date',$student->register_date)}}">
                                             <span class="text-danger">{{ $errors->first('register_date') }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="col col-md-4">
+                                        <div class="form-group has-success">
+                                            <label for="birthDate" class="control-label mb-1"><small>Birth
+                                                    Date</small></label>
+                                            <input id="birthday" name="birthday" type="date" class="form-control" value="{{old('birthday',$student->birthday)}}">
+                                            <span class="text-danger">{{ $errors->first('birthday') }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="col col-md-4">
+                                        <div class="form-group has-success">
+                                            <label for="birthDate" class="control-label mb-1"><small>Image Upload</small></label>
+                                            <input type="hidden" name="hidden_img" value="{{$student->photo_img}}">
+                                            <input id="image-photo" name="photo_img" type="file"  accept="image/*" class="form-control"
+                                                value="{{ old('photo_img') }}">
+                                            <span class="text-danger">{{ $errors->first('photo-img') }}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -67,18 +89,18 @@
                                 </div>
                                 <div class="row">
                                     <div class="col col-md-4">
-                                    <div class="form-group has-success">
-                                            <label for="birthDate" class="control-label mb-1"><small>Gender</small></label>
-                                            <input id="gender" name="gender" type="text" class="form-control" value="Male" readonly>
-                                            <span class="text-danger">{{ $errors->first('gender') }}</span>
+                                        <div class="form-group has-success">
+                                                <label for="birthDate" class="control-label mb-1"><small>Gender</small></label>
+                                                <input id="gender" name="gender" type="text" class="form-control" value="Male" readonly>
+                                                <span class="text-danger">{{ $errors->first('gender') }}</span>
+                                            </div>
                                         </div>
-                                    </div>
                                     <div class="col col-md-4">
                                         <div class="form-group has-success">
-                                            <label for="birthDate" class="control-label mb-1"><small>Birth
-                                                    Date</small></label>
-                                            <input id="birthday" name="birthday" type="date" class="form-control" value="{{old('birthday',$student->birthday)}}">
-                                            <span class="text-danger">{{ $errors->first('birthday') }}</span>
+                                            <label for="birthDate" class="control-label mb-1"><small>Age</small></label>
+                                            <input id="age" name="age" type="number" min="12" class="form-control"
+                                                value="{{ old('age',$student->age) }}">
+                                            <span class="text-danger">{{ $errors->first('age') }}</span>
                                         </div>
                                     </div>
                                     <div class="col col-md-4">

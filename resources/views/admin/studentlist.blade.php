@@ -46,14 +46,17 @@
                                             <td class="text-center">{{$students->lastname}} {{$students->firstname}}
                                             </td>
                                             <td class="text-center">{{$students->yearlevel}}</td>
-                                            <td class="text-center"><button  class="item view_grade" data-id="{{$students->id}}" data-class="{{$students->class_id}}" data-toggle="modal"
-                                                    data-placement="top" data-target="#view_gradeModal">
+                                            <td class="text-center"><button class="item view_grade"
+                                                    data-id="{{$students->id}}" data-class="{{$students->class_id}}"
+                                                    data-toggle="modal" data-placement="top"
+                                                    data-target="#view_gradeModal">
                                                     <i class="zmdi zmdi-view-list" style="color:orange"> View Grades</i>
                                                 </button></td>
                                             <td class="text-center">
                                                 <div class="table-data-feature " style="text-align:center">
                                                     <button class="send_item" title="Send" data-toggle="modal"
-                                                        data-target="#sendModal" style="color:blue" data-id="{{$students->LRN}}">
+                                                        data-target="#sendModal" style="color:blue"
+                                                        data-id="{{$students->LRN}}">
                                                         <i class="zmdi zmdi-mail-send"></i>
                                                     </button>
                                                     <a href="{{route('admin.student_edit', $students->id)}}"
@@ -61,7 +64,8 @@
                                                         title="Edit" data-target="#editstud">
                                                         <i class="zmdi zmdi-edit" style="color:green"></i>
                                                     </a>
-                                                    <button class="item" title="Delete" data-toggle="modal"
+                                                    <button class="item delete" title="Delete"
+                                                        data-id="{{$students->id}}" data-toggle="modal"
                                                         data-target="#deleteModal">
                                                         <i class="zmdi zmdi-delete" style="color:red"></i>
                                                     </button>
@@ -82,8 +86,8 @@
 
 
 <!-- modal view student -->
-<div class="modal fade" id="view_gradeModal"  tabindex="-1" role="dialog" aria-labelledby="sendModalLabel" aria-hidden="true"
-    data-backdrop="send">
+<div class="modal fade" id="view_gradeModal" tabindex="-1" role="dialog" aria-labelledby="sendModalLabel"
+    aria-hidden="true" data-backdrop="send">
     <div class="modal-dialog  modal-lg" role="document">
         <div class="modal-content text-center">
             <form action="{{route('admin.add_section')}}" method="post">
@@ -94,7 +98,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">    
+                <div class="modal-body">
                     <p class="nodata"></p>
                     <p class="details"></p>
                     <table class="table" id="view_student">
@@ -108,7 +112,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            
+
                         </tbody>
                     </table>
                 </div>
@@ -124,24 +128,28 @@
 <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
     aria-hidden="true" data-backdrop="delete">
     <div class="modal-dialog modal-sm" role="document">
-        <div class="modal-content text-center" style="margin-top: 85%;">
-            <div class="modal-header">
-                <h5 class="modal-title" id="staticModalLabel">Delete Student</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+        <form action="{{route('student.delete')}}" method="post">
+            @csrf
+            <div class="modal-content text-center" style="margin-top: 85%;">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticModalLabel">Delete Student</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        Do you wish to delete this applicant?
+                        <input type="hidden" id="student" name="id">
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary btn-block">Yes</button>
+                    <button type="button" class="btn btn-danger btn-block" data-dismiss="modal"
+                        style="margin-top: 0rem;">No</button>
+                </div>
             </div>
-            <div class="modal-body">
-                <p>
-                    Do you wish to delete this applicant?
-                </p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary btn-block" data-dismiss="modal">Yes</button>
-                <button type="button" class="btn btn-danger btn-block" data-dismiss="modal"
-                    style="margin-top: 0rem;">No</button>
-            </div>
-        </div>
+        </form>
     </div>
 </div>
 <!-- end modal delete -->
@@ -160,8 +168,9 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <input type="hidden" name="LRN" id="LRN"/>
-                    <textarea name="content" id="" cols="30" rows="5" placeholder="type your message here . . ."></textarea>
+                    <input type="hidden" name="LRN" id="LRN" />
+                    <textarea name="content" id="" cols="30" rows="5"
+                        placeholder="type your message here . . ."></textarea>
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-primary btn-block">Send</button>

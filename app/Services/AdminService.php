@@ -179,6 +179,7 @@ class AdminService
         $student->firstname = $data['firstname'];
         $student->middlename = $data['middlename'];
         $student->register_date = $data['register_date'];
+        $student->age = $data['age'];
         $student->username = $data['username'];
         $student->password = Hash::make($data['password']);
         $student->gender = $data['gender'];
@@ -203,7 +204,27 @@ class AdminService
         $student->cell_1 = $data['cell_1'];
         $student->type_id = 1;
         $student->section_id = 1;
-        $student->save();
+        $student->photo_img = $data['photo_img'];
+        if ($student) {
+            dd( );
+            if (!empty($student->photo_img)) {
+                $sourcepath = FileHelper::getServerPath($student->photo_img);
+                if (file_exists($sourcepath)) {
+                    dd($sourcepath);
+                    $fileinfo = pathinfo($sourcepath);
+                    $target_path = 'storage/app/public' . config('const.upload_path_img_student') .'lrn/';
+                    dd($target_path);
+                    FileHelper::addDirectory($target_path, 777);
+                    $target_path = $target_path . $fileinfo['basename'];
+                    if (!\File::move($sourcepath, $target_path)) {
+                        throw new \Exception('The file could not be moved.');
+                    } else {
+                        $student->photo_img = FileHelper::getServerPath($target_path);
+                        $student->save();
+                    }
+                }
+            }
+        }
 
         return $student;
     }

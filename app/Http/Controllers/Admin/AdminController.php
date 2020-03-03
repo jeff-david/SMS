@@ -506,4 +506,26 @@ class AdminController extends Controller
 
         return $save;
     }
+
+
+    public function delete_student(Request $request)
+    {
+        $id = $request->id;
+
+        \DB::beginTransaction();
+
+        try
+        {
+            $student= Student::find($id);
+            $student->delete();
+            \DB::commit(); 
+        }catch(\Exception $th)
+        {
+            \DB::rollback();
+
+            return redirect()->back()->withInput()->with(['failed'=>'Error in Deleting a Student']);
+        }
+
+        return redirect()->back()->with(['success'=>'Successfully Deleting a Student !']);
+    }
 }
