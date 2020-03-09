@@ -30,6 +30,7 @@ class TeacherTableSeeder extends Seeder
             'cell_no' => '09553204588',
             'street_address' => 'DaanLungsod,Oslob,Cebu',
             'city' => 'Cebu',
+            'type_id' => 2,
             'province' => 'Cebu City',
             'date_graduated' => '1992-10-23',
             'school_graduated' => 'USC',
