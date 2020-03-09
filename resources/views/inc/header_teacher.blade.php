@@ -124,6 +124,43 @@
                         <a class="logo" href="dashboard.html">
                             <img src="{{ url('/images/logo-mini.png')}}" alt="SMS" />
                         </a>
+                        <div class="header-button2">
+                        @if(Auth::check())
+                        <div class="header-button-item noti__item js-item-menu">
+                            <i class="zmdi zmdi-notifications"></i>
+                            <span class="quantity">{{auth()->user()->unreadNotifications->count()}}</span>
+                            <div class="notifi-dropdown js-dropdown">
+                                <div class="notifi__title">
+                                    <p>Notifications {{auth()->user()->unreadNotifications->count()}} </p>
+                                </div>
+                                @if(auth()->user()->unreadNotifications->count())
+                                @foreach(auth()->user()->unreadNotifications as $notifications)
+                                <div class="notifi__item">
+                                    <div class="bg-c1 img-cir img-40">
+                                        <i class="zmdi zmdi-notifications"></i>
+                                    </div>
+                                    <div class="content">
+                                        <p>{{$notifications->data['announcement']['title']}}</p>
+                                        @php
+                                            $temp = explode(' ',$notifications->data['announcement']['created_at']);
+                                            $time = \Carbon\Carbon::parse($temp[1])->timezone('GMT+8')->format('g:i a');
+                                        @endphp
+                                        <span class="date">{{\Carbon\Carbon::parse($temp[0])->format('F j Y')}} {{ $time }}</span>
+                                    </div>
+                                </div>
+                                @endforeach
+                                @else
+                                <div class="notifi__item">
+                                    No Notifications
+                                </div>
+                                @endif
+                                <div class="notifi__footer">
+                                    <a href="#">All notifications</a>
+                                </div>
+                            </div>
+                        </div>
+                        @endif
+                        </div>
                         <button class="hamburger hamburger--slider" type="button">
                             <span class="hamburger-box">
                                 <span class="hamburger-inner"></span>
