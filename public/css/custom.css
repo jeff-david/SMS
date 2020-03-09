@@ -31,3 +31,25 @@
 #browse{
     top: 100px;
 }
+#lrn_scol{
+    width: 200px;
+    margin-left: 100px;
+    border-radius: 10px;
+}
+#stud_name{
+    width: 175px;
+    margin-left: 2px;
+    border-radius: 10px;
+
+}
+#grade_level{
+    width: 175px;
+    margin-left: 2px;
+    border-radius: 10px;
+}
+#search_btn{
+    width: 150px;
+    margin-left: 2px;
+    border-radius: 10px;
+    margin-right: 170px;
+}

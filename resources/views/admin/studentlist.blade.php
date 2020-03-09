@@ -16,14 +16,25 @@
                         <div class="col-md-12">
                             <div class="table-data__tool">
                                 <div class="table-data__tool-right">
-                                    <a style="margin-top: 25px;" href="{{route('admin.register_student')}}"
+                                    <button style="margin-top: 3px;" href="{{route('admin.register_student')}}"
                                         class="au-btn au-btn-icon au-btn--green au-btn--small">
                                         <i class="zmdi zmdi-plus"></i>add student
-                                    </a>
+                                    </button>
+                                    
                                 </div>
+                                
+                                    <input class="form-control" id="lrn_scol" type="text" placeholder="LRN" aria-label="Search" >
+                                    <input  class="form-control" id="stud_name" type="text" placeholder="Name" aria-label="Search" >
+                                    <input class="form-control" id="grade_level"  type="text" placeholder="Grade Level" aria-label="Search" >  
+                                    <button class="btn btn-success form-control " id="search_btn"  type="submit" >Search</button> 
+                                
                             </div>
-                        </div>
+                        <div>
+                                
                     </div>
+                </div>
+            </div>
+  
                     <div class="row">
 
                         <div class="col-md-12">
