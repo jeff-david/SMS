@@ -20,6 +20,8 @@ use SMS\Models\Grades;
 use SMS\Models\Admin;
 use SMS\Models\Subject;
 use SMS\Models\Announcement;
+use SMS\Notifications\NewMessageNotifications;
+use Session;
 use Auth;
 use Hash;
 use DB;
@@ -339,9 +341,10 @@ class AdminController extends Controller
 
     public function announcement()
     {
-        $announcement = Announcement::get();
+        $announcement = Announcement::where('posted',0)->get();
+        $post_announcement = Announcement::where('posted',1)->get();
         event(new \SMS\Events\PostAnnouncement('Administrator'));
-        return view('admin.announcement',compact('announcement'));
+        return view('admin.announcement',compact('announcement','post_announcement'));
     }
 
     public function post_announcement(Request $request)
@@ -383,7 +386,7 @@ class AdminController extends Controller
         return view('admin.settings');
     }
 
-    public function change_settings(SettingsRequest $request,$id)
+    public function change_settings(Request $request,$id)
     {
         $admin = Admin::findorFail($id);
         $action = $request->action;
@@ -420,36 +423,6 @@ class AdminController extends Controller
                     return redirect()->back()->withInput()->with(['failed' => 'Wrong Password']);
                 }
                 break;
-            
-            case 'contact':
-                \DB::beginTransaction();
-                try{
-                    $rtn = $this->adminService->change_contact($request->contact_number,$id);
-                    \DB::commit();
-                }catch(\Exception $e){
-                    \DB::rollback();
-        
-                    return redirect()->back()->withInput()->with(['failed' => 'Error in Changing Contact Number']);
-                }
-
-                return redirect()->back()->withInput()->with(['success' => 'Contact Change Successfully']);
-
-                break;
-            
-            case 'addressbtn':
-                \DB::beginTransaction();
-                try{
-                    $rtn = $this->adminService->change_address($request->address,$id);
-                    \DB::commit();
-                }catch(\Exception $e){
-                    \DB::rollback();
-        
-                    return redirect()->back()->withInput()->with(['failed' => 'Error in Changing the Address']);
-                }
-
-                return redirect()->back()->withInput()->with(['success' => 'Address Change Successfully']);
-                break;
-
             default:
                 # code...
                 break;
@@ -527,5 +500,31 @@ class AdminController extends Controller
         }
 
         return redirect()->back()->with(['success'=>'Successfully Deleting a Student !']);
+    }
+
+    public static function post_notify(Request $request)
+    {
+        $id = $request->LRN;
+        $type_id = $request->type_id;
+
+        if ($type_id == 2) {
+            $announcement = Announcement::find($id);
+            $announcement->posted = true;
+            $announcement->save();
+
+            $announce = Announcement::where('id',$id)->get();
+            foreach ($announce as $value) {
+                $account_sid = "AC012d513e05776664ab32be52ddae87df";
+                $auth_token = "b5cc26161dc46418022d305b031c682b";
+                $twilio_number = +19493536231;
+                $client = new Client($account_sid,$auth_token);
+                $client->messages->create('+639302664420',[
+                    'from'=> $twilio_number, 'body' => $value->title . $value->body
+                ]);
+            }
+
+            return redirect()->back()->withInput()->with('success','Successfully Send Message');
+            
+        }       
     }
 }

@@ -90,39 +90,6 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="row form-group">
-                                            <div class="col col-md-4">
-                                                <label for="text-input" class=" form-control-label"><small>Contact
-                                                        number : </small> {{Auth::user()->contact_number}}</label>
-                                            </div>
-                                            <div class="col col-md-12">
-                                                <div class="input-group">
-                                                    <input type="text" id="input2-group2" name="contact_number"
-                                                        placeholder="new Contact number" class="form-control">
-                                                    <div class="input-group-btn">
-                                                        <button type="submit" name="action" value="contact"
-                                                            class="btn btn-primary">Change</button>
-                                                    </div>
-                                                </div>
-                                                <span class="text-danger">{{ $errors->first('contact_number') }}</span>
-                                            </div>
-                                        </div>
-                                        <div class="row form-group">
-                                            <div class="col col-md-6">
-                                                <label for="text-input" class=" form-control-label"><small>Address :
-                                                    </small> {{Auth::user()->address}}</label>
-                                            </div>
-                                            <div class="col col-md-12">
-                                                <div class="input-group">
-                                                    <input type="text" id="input2-group2" name="address"
-                                                        placeholder="new Address" class="form-control">
-                                                    <div class="input-group-btn">
-                                                        <button type="submit" name="action" value="addressbtn"
-                                                            class="btn btn-primary">Change</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
                                     </form>
                                 </div>
                             </div>

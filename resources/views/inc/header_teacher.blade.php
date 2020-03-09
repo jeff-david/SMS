@@ -41,6 +41,41 @@
                         </ul>
                     </div>
                     <div class="header__tool">
+                        @if(Auth::check())
+                        <div class="noti__item js-item-menu">
+                            <i class="zmdi zmdi-notifications"></i>
+                            <span class="quantity">{{auth()->user()->unreadNotifications->count()}}</span>
+                            <div class="notifi-dropdown js-dropdown">
+                                <div class="notifi__title">
+                                    <p>Notifications {{auth()->user()->unreadNotifications->count()}} </p>
+                                </div>
+                                @if(auth()->user()->unreadNotifications->count())
+                                @foreach(auth()->user()->unreadNotifications as $notifications)
+                                <div class="notifi__item">
+                                    <div class="bg-c1 img-cir img-40">
+                                        <i class="zmdi zmdi-notifications"></i>
+                                    </div>
+                                    <div class="content">
+                                        <p>{{$notifications->data['announcement']['title']}}</p>
+                                        @php
+                                            $temp = explode(' ',$notifications->data['announcement']['created_at']);
+                                            $time = \Carbon\Carbon::parse($temp[1])->timezone('GMT+8')->format('g:i a');
+                                        @endphp
+                                        <span class="date">{{\Carbon\Carbon::parse($temp[0])->format('F j Y')}} {{ $time }}</span>
+                                    </div>
+                                </div>
+                                @endforeach
+                                @else
+                                <div class="notifi__item">
+                                    No Notifications
+                                </div>
+                                @endif
+                                <div class="notifi__footer">
+                                    <a href="#">All notifications</a>
+                                </div>
+                            </div>
+                        </div>
+                        @endif
                         <div class="account-wrap">
                             <div class="account-item account-item--style2 clearfix js-item-menu">
                                 <div class="image">
@@ -121,31 +156,31 @@
         </header>
         <!-- END HEADER MOBILE -->
 
-       
-    <!-- Jquery JS-->
-    <script src="../vendor/jquery-3.2.1.min.js"></script>
-    <!-- Bootstrap JS-->
-    <script src="../vendor/bootstrap-4.1/popper.min.js"></script>
-    <script src="../vendor/bootstrap-4.1/bootstrap.min.js"></script>
-    <!-- Vendor JS       -->
-    <script src="../vendor/slick/slick.min.js">
-    </script>
-    <script src="../vendor/wow/wow.min.js"></script>
-    <script src="../vendor/animsition/animsition.min.js"></script>
-    <script src="../vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
-    </script>
-    <script src="../vendor/counter-up/jquery.waypoints.min.js"></script>
-    <script src="../vendor/counter-up/jquery.counterup.min.js">
-    </script>
-    <script src="../vendor/circle-progress/circle-progress.min.js"></script>
-    <script src="../vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
-    <script src="../vendor/chartjs/Chart.bundle.min.js"></script>
-    <script src="../vendor/select2/select2.min.js">
-    </script>
 
-    <!-- Main JS-->
-    <script src="../js/main.js"></script>
-    <script src="../js/ranking.js"></script>
+        <!-- Jquery JS-->
+        <script src="../vendor/jquery-3.2.1.min.js"></script>
+        <!-- Bootstrap JS-->
+        <script src="../vendor/bootstrap-4.1/popper.min.js"></script>
+        <script src="../vendor/bootstrap-4.1/bootstrap.min.js"></script>
+        <!-- Vendor JS       -->
+        <script src="../vendor/slick/slick.min.js">
+        </script>
+        <script src="../vendor/wow/wow.min.js"></script>
+        <script src="../vendor/animsition/animsition.min.js"></script>
+        <script src="../vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
+        </script>
+        <script src="../vendor/counter-up/jquery.waypoints.min.js"></script>
+        <script src="../vendor/counter-up/jquery.counterup.min.js">
+        </script>
+        <script src="../vendor/circle-progress/circle-progress.min.js"></script>
+        <script src="../vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
+        <script src="../vendor/chartjs/Chart.bundle.min.js"></script>
+        <script src="../vendor/select2/select2.min.js">
+        </script>
+
+        <!-- Main JS-->
+        <script src="../js/main.js"></script>
+        <script src="../js/ranking.js"></script>
 
 
 </body>

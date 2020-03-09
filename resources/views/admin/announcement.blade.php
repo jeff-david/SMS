@@ -40,13 +40,14 @@
                                                         @foreach($announcement as $announcements)
                                                         <tr style="font-size:12px">
                                                             <td>{{$announcements->title}}</td>
-                                                            <td class="text-center">{{$announcements->post_date}}</td>
+                                                            <td class="text-center">{{ Carbon\Carbon::parse($announcements->created_at)->format('m/d/Y')}}</td>
                                                             <td class="table-data-feature" style="text-align:center;">
                                                                 <button class="item" title="edit" data-toggle="modal"
                                                                     data-target="#editannouncement">
                                                                     <i class="zmdi zmdi-edit"></i>
                                                                 </button>
-                                                                <button class="item sendsms" title="send">
+                                                                <button class="item sendannounce" title="Send" data-id="{{$announcements->id}}" data-type="{{$announcements->type_id}}" data-toggle="modal"
+                                                        data-target="#sendModal">
                                                                     <i class="zmdi zmdi-mail-send"></i>
                                                                 </button>
                                                             </td>
@@ -72,11 +73,22 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr>
-                                                            <td>Emergency Meetings</td>
-                                                            <td class="text-center">General</td>
-                                                            <td class="text-center">Sat-Nov-20-2019-10:30PM</td>
+                                                    @foreach($post_announcement as $post_announcements)
+                                                        <tr style="font-size:12px">
+                                                            <td>{{$post_announcements->title}}</td>
+                                                            <td class="text-center">
+                                                                @if($post_announcements->type_id == 2)
+                                                                    Teacher  
+                                                                @endif
+                                                            </td>
+                                                            @php
+                                                                $time = \Carbon\Carbon::parse($announcements->updated_at)->toTimeString();
+                                                                $total = strtotime($time) + 60*60*8 ;
+                                                                $total_time = date('g:i a', $total);
+                                                            @endphp
+                                                            <td class="text-center">{{$total_time}}</td>
                                                         </tr>
+                                                        @endforeach
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -137,5 +149,33 @@
     </div>
 </div>
 <!-- end modal post -->
+
+
+<div class="modal fade" id="sendModal" tabindex="-1" role="dialog" aria-labelledby="sendModalLabel" aria-hidden="true"
+    data-backdrop="send">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content text-center" style="margin-top: 85%;">
+            <form action="{{route('admin.post_notify')}}" method="post">
+                @csrf
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" name="LRN" id="LRN" />
+                    <input type="hidden" name="type_id" id="type_id" />
+                    <h5 class="modal-title" id="staticModalLabel">Are you sure you want send this announcement?</h5>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary btn-block">Send</button>
+                    <button type="button" class="btn btn-danger btn-block" data-dismiss="modal"
+                        style="margin-top: 0rem;">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 
 @endsection
