@@ -13,6 +13,7 @@ use SMS\Models\Admin;
 use SMS\Models\Grades;
 use SMS\Helper\FileHelper;
 use SMS\Models\Announcement;
+use SMS\Notifications\NewAnnouncementNotification;
 use Hash;
 use Carbon\Carbon;
 
@@ -316,18 +317,22 @@ class AdminService
         $announcement['title'] = $data['topic'];
         $announcement['body'] = $data['content'];
         $announcement['type_id'] = $data['type'];
-        $announcement['post_date'] = Carbon::now();
+        $announcement['post_time'] = Carbon::now();
         $announcement['user_id'] = 1;
 
         $rtn = $this->announcementList->create($announcement);
         
         $rtn->save();
         if($rtn){
-            $id = $rtn->user_id;
-            $username = Admin::where('user_id',$id)->pluck('first_name');
-            event(new \SMS\Events\PostAnnouncement($username));
+            $id = $rtn->type_id;
+            if ($id == 2) {
+                $user = Teacher::where('type_id',$id)->get();
+                if (\Notification::send($user, new NewAnnouncementNotification(Announcement::latest('id')->first()))) {
+                    return $rtn;
+                }
+            }
+
         };
-        return $rtn;
     }
 
     public function change_username($username,$id)
@@ -346,21 +351,6 @@ class AdminService
         return $admin;
     }
 
-    public function change_contact($contact,$id)
-    {
-        $admin = $this->adminList->find($id);
-        $admin->contact_number = $contact;
-        $admin->save();
-        return $admin;
-    }
-
-    public function change_address($address,$id)
-    {
-        $admin = $this->adminList->find($id);
-        $admin->address = $address;
-        $admin->save();
-        return $admin;
-    }
 
     public function edit_class($data)
     {

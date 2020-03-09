@@ -17,9 +17,10 @@ class CreateAnnouncementsTable extends Migration
             $table->bigIncrements('id');
             $table->string('title');
             $table->string('body');
-            $table->date('post_date');
             $table->tinyInteger('type_id');
             $table->tinyInteger('user_id');
+            $table->timestamp('post_time')->nullable();
+            $table->boolean('posted')->default(false);
             $table->timestamps();
         });
     }

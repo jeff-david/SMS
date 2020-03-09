@@ -75,19 +75,9 @@
                 <div class="chart-percent-2">
                     <h3 class="title-3 m-b-30">Overall Status</h3>
                     <div class="chart-wrap">
-                        <canvas id="percent-chart2"></canvas>
+                        <canvas id="mybarChart"></canvas>
                         <div id="chartjs-tooltip">
                             <table></table>
-                        </div>
-                    </div>
-                    <div class="chart-info">
-                        <div class="chart-note">
-                            <span class="dot dot--blue"></span>
-                            <span>Passed</span>
-                        </div>
-                        <div class="chart-note">
-                            <span class="dot dot--red"></span>
-                            <span>Failed</span>
                         </div>
                     </div>
                 </div>

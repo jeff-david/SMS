@@ -47,6 +47,7 @@ Route::prefix('admin')->middleware('auth:admin')->group(function(){
     Route::post('/edit_class','Admin\AdminController@edit_class')->name('admin.edit_class');
     Route::post('/change_settings/{id}','Admin\AdminController@change_settings')->name('admin.change_settings');
     Route::post('/send_message','Admin\AdminController@send_message')->name('admin.send_message');
+    Route::post('/post_notify','Admin\AdminController@post_notify')->name('admin.post_notify');
     Route::post('/add_class','Admin\AdminController@add_class')->name('admin.add_class');
     Route::post('/add_section','Admin\AdminController@add_section')->name('admin.add_section');
     Route::post('/announcement','Admin\AdminController@post_announcement')->name('admin.post_announcement');
