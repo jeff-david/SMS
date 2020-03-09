@@ -2361,7 +2361,9 @@ section {
 
 .header-button2 .header-button-item:last-child {
     margin-right: 0;
+    left: 78px;
 }
+
 
 .header-button2 .header-button-item {
     cursor: pointer;
