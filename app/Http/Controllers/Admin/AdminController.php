@@ -518,7 +518,7 @@ class AdminController extends Controller
                 $auth_token = "b5cc26161dc46418022d305b031c682b";
                 $twilio_number = +19493536231;
                 $client = new Client($account_sid,$auth_token);
-                $client->messages->create('+639302664420',[
+                $client->messages->create('+639553204588',[
                     'from'=> $twilio_number, 'body' => $value->title . $value->body
                 ]);
             }
