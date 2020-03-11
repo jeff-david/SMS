@@ -514,11 +514,11 @@ class AdminController extends Controller
 
             $announce = Announcement::where('id',$id)->get();
             foreach ($announce as $value) {
-                $account_sid = "AC012d513e05776664ab32be52ddae87df";
-                $auth_token = "b5cc26161dc46418022d305b031c682b";
-                $twilio_number = +19493536231;
+                $account_sid = "ACdde64cdd349ae0f29e63abbb88897785";
+                $auth_token = "a48145583530ce0b9347df6ed9e10132";
+                $twilio_number = +12053465684;
                 $client = new Client($account_sid,$auth_token);
-                $client->messages->create('+639553204588',[
+                $client->messages->create('+639302664420',[
                     'from'=> $twilio_number, 'body' => $value->title . $value->body
                 ]);
             }
