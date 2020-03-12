@@ -114,7 +114,7 @@
                             placeholder="topic here. . .">
                     </div>
                     <div class="col-md-12">
-                        <label for="topictype">Type</label>
+                        <label for="topictype">Recipient</label>
                         <select style="font-size: 12px;" name="type" id="topictype" class="form-control myselect">
                             <option value="0">General</option>
                             <option value="1">Parent</option>

@@ -35,6 +35,12 @@ class AdminController extends Controller
     {
         $this->adminService = $adminService;
     }
+
+    public function landing()
+    {
+        return view('landing.front_page');
+    }
+    
     public function dashboard()
     {
         $g7 = Student::where('year_level_id','=','1')->count();
@@ -67,7 +73,7 @@ class AdminController extends Controller
             return redirect()->back()->withInput()->with(['failed'=>'Error in registering the students']);
         }
 
-        return redirect()->route('admin.studentlist')->with(['success'=>'Successfully Registered!']);
+        return redirect()->route('admin.studentlist')->with(['success'=>'Successfully Registered.']);
 
     }
 
@@ -94,7 +100,7 @@ class AdminController extends Controller
             return redirect()->back()->withInput()->with(['failed'=>'Error in registering the teachers']);
         }
 
-        return redirect()->route('admin.teacher')->with(['success'=>'Successfully Registered!']);
+        return redirect()->route('admin.teacher')->with(['success'=>'Successfully Registered.']);
     }
 
     public function class_view()
@@ -125,7 +131,7 @@ class AdminController extends Controller
             return redirect()->back()->withInput()->with(['failed'=>'Error in Editing the Class']);
         }
 
-        return redirect()->back()->with(['success'=>'Successfully Edit in Class !']);
+        return redirect()->back()->with(['success'=>'Successfully Edited.']);
 
     }
 
@@ -147,7 +153,7 @@ class AdminController extends Controller
             return redirect()->back()->withInput()->with(['failed'=>'Error in Deleting the Class']);
         }
 
-        return redirect()->back()->with(['success'=>'Successfully Deleting a Class !']);
+        return redirect()->back()->with(['success'=>'Successfully Deleted.']);
     }
 
     public function delete_section(Request $request)
@@ -169,7 +175,7 @@ class AdminController extends Controller
             return redirect()->back()->withInput()->with(['failed'=>'Error in Deleting the Section']);
         }
 
-        return redirect()->back()->with(['success'=>'Successfully Deleting a Section !']);
+        return redirect()->back()->with(['success'=>'Successfully Deleted']);
     }
     public function view_section(Request $request, $id)
     {
@@ -196,7 +202,7 @@ class AdminController extends Controller
             return redirect()->back()->withInput()->with(['failed'=>'Error in Editing the Section']);
         }
 
-        return redirect()->back()->with(['success'=>'Successfully Edit in Section !']);
+        return redirect()->back()->with(['success'=>'Successfully Edited']);
     }
 
     public function view_student($class_id,$section_id)

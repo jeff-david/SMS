@@ -22,6 +22,7 @@ Route::post('/login/teacher','Auth\LoginController@teacherLogin')->name('teacher
 Route::post('/parent/login','Auth\LoginController@parentLogin')->name('parent.login');
 Route::post('/principal/login','Auth\LoginController@principalLogin')->name('principal.login'); 
 Route::post('/login/admin','Auth\LoginController@adminLogin')->name('admin.login'); 
+Route::get('/landing', 'Admin\AdminController@landing')-> name('landing.front_page');
 
 Route::prefix('admin')->middleware('auth:admin')->group(function(){
     Route::get('/', 'Admin\AdminController@dashboard')->name('admin.dashboard');
