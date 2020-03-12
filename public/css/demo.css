@@ -559,7 +559,9 @@
 }
 
 .page-header{
-  background-image: url('/images/sms-background.png')
+  background-image: url('/images/sms-background.png');
+  background-size: cover; 
+  background-position: top center;
 }
 /*  PRESENTION PAGE   */
 
