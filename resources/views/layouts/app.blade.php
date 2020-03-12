@@ -34,6 +34,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
 
+    <!-- CSS Files -->
+    <link href="{{url('/css/material-kit.css')}}" rel="stylesheet" />
+    <!-- CSS Just for demo purpose, don't include it in your project -->
+    <link href="{{url('/css/demo.css')}}" rel="stylesheet" />
+
     <!-- Main CSS-->
     <link href="{{ url('/css/theme.css') }}" rel="stylesheet" media="all">
 
