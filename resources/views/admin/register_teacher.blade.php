@@ -27,7 +27,7 @@
                                 <div class="row">
                                     <div class="col col-md-4">
                                         <div class="form-group has-success">
-                                            <label for="profession"
+                                            <label for="profession" id="required-field" 
                                                 class="control-label mb-1"><small>Department</small></label>
                                             <select name="department" class="form-control">
                                                 <option value="" selected="selected">-------------Select Departments------------</option>
@@ -40,14 +40,14 @@
                                     </div>
                                     <div class="col col-md-4">
                                         <div class="form-group has-success">
-                                            <label for="lrn" class="control-label mb-1"><small>Cell no:</small></label>
-                                            <input id="cell_no" name="cell_no" type="text" class="form-control" value="{{old('cell_no')}}">
+                                            <label for="lrn" id="required-field"  class="control-label mb-1"><small>Cell no:</small></label>
+                                            <input id="cell_no" name="cell_no" maxlength="11" type="text" class="form-control" value="{{old('cell_no')}}">
                                             <span class="text-danger">{{ $errors->first('cell_no') }}</span>
                                         </div>
                                     </div>
                                     <div class="col col-md-4">
                                         <div class="form-group has-success">
-                                            <label for="datetoday"
+                                            <label for="datetoday" id="required-field" 
                                                 class="control-label mb-1"><small>Register Date</small></label>
                                             <input id="register_date" name="register_date" type="date" class="form-control" value="{{old('register_date')}}">
                                             <span class="text-danger">{{ $errors->first('register_date') }}</span>
@@ -57,7 +57,7 @@
                                 <div class="row">
                                     <div class="col col-md-4">
                                         <div class="form-group has-success">
-                                            <label for="lastname" class="control-label mb-1"><small>Last
+                                            <label for="lastname" id="required-field"  class="control-label mb-1"><small>Last
                                                     Name</small></label>
                                             <input id="slname" name="lastname" type="text" class="form-control" value="{{old('lastname')}}">
                                             <span class="text-danger">{{ $errors->first('lastname') }}</span>
@@ -65,7 +65,7 @@
                                     </div>
                                     <div class=" col-md-4">
                                         <div class="form-group has-success">
-                                            <label for="sfname" class="control-label mb-1"><small>First
+                                            <label for="sfname" id="required-field"  class="control-label mb-1"><small>First
                                                     Name</small></label>
                                             <input id="sfname" name="firstname" type="text" class="form-control" value="{{old('firstname')}}">
                                             <span class="text-danger">{{ $errors->first('firstname') }}</span>
@@ -83,7 +83,7 @@
                                 <div class="row">
                                     <div class="col col-md-2">
                                         <div class="form-group has-success">
-                                            <label for="gender" class="control-label mb-1"><small>Gender</small></label>
+                                            <label for="gender" id="required-field"  class="control-label mb-1"><small>Gender</small></label>
                                             <select name="gender" id="gender" class="form-control">
                                                 @foreach(config('const.gender') as $id => $gender)
                                                     <option value={{$gender}} {{old('gender') == $gender ? 'selected' : '' }}>{{$gender}}</option>
@@ -92,34 +92,39 @@
                                             <span class="text-danger">{{ $errors->first('gender') }}</span>
                                         </div>
                                     </div>
-                                    <div class="col col-md-2">
-                                        <div class="form-group has-success">
-                                            <label for="age" class="control-label mb-1"><small>Age</small></label>
-                                            <input id="age" name="age" type="number" min = 21 class="form-control"value="{{old('age')}}">
-                                            <span class="text-danger">{{ $errors->first('age') }}</span>
-                                        </div>
-                                    </div>
+
                                     <div class="col col-md-4">
                                         <div class="form-group has-success">
-                                            <label for="birthDate" class="control-label mb-1"><small>Birth
+                                            <label for="birthDate" id="required-field"  class="control-label mb-1"><small>Birth
                                                     Date</small></label>
                                             <input id="birthDate" name="birthdate" type="date" class="form-control" value="{{old('birthdate')}}">
                                             <span class="text-danger">{{ $errors->first('birthdate') }}</span>
                                         </div>
                                     </div>
-                                    <div class="col col-md-4">
+                                    <div class="col col-md-2">
                                         <div class="form-group has-success">
-                                            <label for="religion"
-                                                class="control-label mb-1"><small>Religion</small></label>
-                                            <input id="religion" name="religion" type="text" class="form-control" value="{{old('religion')}}">
-                                            <span class="text-danger">{{ $errors->first('religion') }}</span>
+                                            <label for="age" id="required-field"  class="control-label mb-1"><small>Age</small></label>
+                                            <input id="age" name="age" type="number" min = 21 class="form-control"value="{{old('age')}}">
+                                            <span class="text-danger">{{ $errors->first('age') }}</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col col-md-4">
+                                    <div class="form-group has-success">
+                                        <select class="selectpicker" id="required-field" style="width:350px;height:40px;margin-left:0px;margin-top:27px;">
+                                            <option>Roman Catholic</option>
+                                            <option>Baptist</option>
+                                            <option>Protestant</option>
+                                            <option>Jehovas Witness</option>
+                                            <option>Islam</option>
+                                        </select>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group has-success">
-                                            <label for="sAddress" class="control-label mb-1"><small>Street
+                                            <label for="sAddress" id="required-field" class="control-label mb-1"><small>Street
                                                     Address</small></label>
                                             <input id="sAddress" name="street_address" type="text" class="form-control" value="{{old('street_address')}}">
                                             <span class="text-danger">{{ $errors->first('street_address') }}</span>
@@ -127,32 +132,33 @@
                                     </div>
                                     <div class="col col-md-3">
                                         <div class="form-group has-success">
-                                            <label for="city" class="control-label mb-1"><small>City</small></label>
-                                            <input id="city" name="city" type="text" class="form-control" value="{{old('city')}}">
-                                            <span class="text-danger">{{ $errors->first('city') }}</span>
-                                        </div>
-                                    </div>
-                                    <div class="col col-md-3">
-                                        <div class="form-group has-success">
-                                            <label for="province"
+                                            <label for="province" id="required-field"
                                                 class="control-label mb-1"><small>Province</small></label>
                                             <input id="province" name="province" type="text" class="form-control" value="{{old('province')}}">
                                             <span class="text-danger">{{ $errors->first('province') }}</span>
                                         </div>
                                     </div>
+                                    <div class="col col-md-3">
+                                        <div class="form-group has-success">
+                                            <label for="city" id="required-field" class="control-label mb-1"><small>City</small></label>
+                                            <input id="city" name="city" type="text" class="form-control" value="{{old('city')}}">
+                                            <span class="text-danger">{{ $errors->first('city') }}</span>
+                                        </div>
+                                    </div>
+                                    
                                 </div>
                                 <div class="row">
                                     <div class="col-md-8">
                                         <div class="form-group has-success">
-                                            <label for="motherName" class="control-label mb-1"><small>School
-                                                    Graduate</small></label>
+                                            <label for="motherName" id="required-field" class="control-label mb-1"><small>School
+                                                    Graduated</small></label>
                                             <input id="school_graduated" name="school_graduated" type="text" class="form-control" value="{{old('school_graduated')}}">
                                             <span class="text-danger">{{ $errors->first('school_graduated') }}</span>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group has-success">
-                                            <label for="motherOccupation" class="control-label mb-1"><small>Date
+                                            <label for="motherOccupation" id="required-field" class="control-label mb-1"><small>Date
                                                     Graduated:</small></label>
                                             <input id="date_graduated" name="date_graduated" type="date"
                                                 class="form-control" value="{{old('date_graduated')}}">
@@ -163,8 +169,8 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group has-success">
-                                            <label for="username" class="control-label mb-1"><small>Username</small></label>
-                                            <input id="username" name="username" type="text" class="form-control" value="{{old('username')}}">
+                                            <label for="username"  class="control-label mb-1"><small>Username</small></label>
+                                            <input id="username" name="username" type="text" class="form-control" value="{{old('username')}}" disabled>
                                             <span class="text-danger">{{ $errors->first('username') }}</span>
                                         </div>
                                     </div>
@@ -172,7 +178,7 @@
                                         <div class="form-group has-success">
                                             <label for="password" class="control-label mb-1"><small>Password</small></label>
                                             <input id="password" name="password" type="text"
-                                                class="form-control" value="{{old('password')}}">
+                                                class="form-control" value="{{old('password')}}" disabled>
                                             <span class="text-danger">{{ $errors->first('password') }}</span>
                                         </div>
                                     </div>
