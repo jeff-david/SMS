@@ -22,6 +22,8 @@
 
 <body class="login-page sidebar-collapse">
     @yield('content')
+
+    @include('inc.front_footer')
 </body>
 
 </html>
