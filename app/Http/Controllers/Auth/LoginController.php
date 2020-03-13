@@ -24,6 +24,12 @@ class LoginController extends Controller
         $this->middleware('guest:student')->except('logout');
     }
 
+    public function showLanding()
+    {
+        return view('landing.front_page');
+    }
+
+
     public function showLoginForm()
     {
         return view('auth.admin_login');
@@ -60,26 +66,26 @@ class LoginController extends Controller
     {
         if(Auth::guard('admin')->check()) {
 
-            Auth::guard('admin') -> logout();
+            Auth::guard('admin')->logout();
 
-            return redirect('/login/admin');
+            return redirect('/');
 
         }elseif(Auth::guard('principal')->check()) {
 
             Auth::guard('principal')->logout();
 
-            return redirect('/login/principal');
+            return redirect('/');
 
         }elseif(Auth::guard('teacher')->check()) {
 
         Auth::guard('teacher')->logout();
         
-        return redirect('/login/teacher');
+        return redirect('/');
 
         }elseif (Auth::guard('student')->check()) {
             Auth::guard('student')->logout();
 
-            return redirect('/login/parent');
+            return redirect('/');
         }
     }
 
