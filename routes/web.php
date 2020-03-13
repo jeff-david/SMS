@@ -14,14 +14,16 @@
 
 
 Route::get('/login/admin','Auth\LoginController@showAdminLoginForm');
-Route::get('/login/parent','Auth\LoginController@showParentLoginForm');
+Route::get('/','Auth\LoginController@showLanding')->name('landing');
+Route::get('/login/parent','Auth\LoginController@showParentLoginForm')->name('login.parent');
 Route::get('/login/principal','Auth\LoginController@showPrincipalLoginForm');
 Route::get('/logout','Auth\LoginController@logout')->name('logout'); 
-Route::get('/login/teacher','Auth\LoginController@showTeacherLoginForm');
+Route::get('/login/teacher','Auth\LoginController@showTeacherLoginForm')->name('login.teacher');
 Route::post('/login/teacher','Auth\LoginController@teacherLogin')->name('teacher.login');
 Route::post('/parent/login','Auth\LoginController@parentLogin')->name('parent.login');
 Route::post('/principal/login','Auth\LoginController@principalLogin')->name('principal.login'); 
 Route::post('/login/admin','Auth\LoginController@adminLogin')->name('admin.login'); 
+
 
 Route::prefix('admin')->middleware('auth:admin')->group(function(){
     Route::get('/', 'Admin\AdminController@dashboard')->name('admin.dashboard');
@@ -60,7 +62,7 @@ Route::prefix('admin')->middleware('auth:admin')->group(function(){
 
 
 
-Route::prefix('/principal')->middleware('auth:principal')->group(function(){
+Route::prefix('principal')->middleware('auth:principal')->group(function(){
     Route::get('/', 'Principal\PrincipalController@dashboard')->name('principal.dashboard');
     Route::get('/announce', 'Principal\PrincipalController@announce')->name('principal.announcement');
     Route::get('/student', 'Principal\PrincipalController@student_view')->name('principal.student');
@@ -99,6 +101,6 @@ Route::prefix('teacher')->middleware('auth:teacher')->group(function(){
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+
 
 
