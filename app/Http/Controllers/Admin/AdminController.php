@@ -67,7 +67,9 @@ class AdminController extends Controller
                     ->take(10)
                     ->get();
 
+        dd($g7rank);
         $g7_list =  round($g7[0]['count'] / $g7_count,2);
+
         $total_g7_first = round($g7first[0]['count'] / $g7_count,2);
 
         $g7second = Grades::select(DB::raw("SUM(second_grading) as count"))
