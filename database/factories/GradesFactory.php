@@ -18,6 +18,7 @@ $factory->define(Grades::class, function (Faker $faker) {
         'second_grading' => $faker->numberBetween(75,99),
         'third_grading' => $faker->numberBetween(75,99),
         'fourth_grading' => $faker->numberBetween(75,99),
+        'year_level_id' => $faker->numberBetween(1,6),
         
 
     ];

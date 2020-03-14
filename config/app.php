@@ -162,6 +162,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
+        Laracasts\Utilities\JavaScript\JavaScriptServiceProvider::class,
         // LaravelHungary\Announcement\PackageServiceProvider::class,
 
         /*
@@ -227,7 +228,8 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-        'Image' => Intervention\Image\Facades\Image::class
+        'Image' => Intervention\Image\Facades\Image::class,
+        'JavaScript'=>Laracasts\Utilities\JavaScript\JavaScriptFacade::class,
         // 'Announce' => LaravelHungary\Announcement\Facades\Announce::class,
 
     ],
