@@ -61,14 +61,13 @@ class AdminController extends Controller
                         ->get();
         $g7_count = Grades::where('year_level_id','=',1)->count();
 
-        $g7rank = Grades::select('students.firstname','students.lastname', DB::raw("ROUND(((grades.first_grading + grades.second_grading + grades.third_grading + grades.fourth_grading)/4),2) as Average"))
+        $g7rank = Grades::select('students.firstname','students.lastname', DB::raw("ROUND(((grades.first_grading + grades.second_grading + grades.third_grading + grades.fourth_grading)/4),2) as total"))
                     ->join('students','students.id','=','grades.user_id')
                     ->where('grades.year_level_id','=',1)
-                    ->orderBy('Average','DESC')
+                    ->orderBy('total','DESC')
                     ->take(10)
                     ->get();
 
-    
 
         $total_g7_first = round($g7first[0]['count'] / $g7_count,2);
 
@@ -101,10 +100,10 @@ class AdminController extends Controller
         $g8_count = Grades::where('year_level_id','=',2)->count();
         $total_g8_first = round($g8first[0]['count'] / $g8_count,2);
 
-        $g8rank = Grades::select('students.firstname','students.lastname', DB::raw("ROUND(((grades.first_grading + grades.second_grading + grades.third_grading + grades.fourth_grading)/4),2) as Average"))
+        $g8rank = Grades::select('students.firstname','students.lastname', DB::raw("ROUND(((grades.first_grading + grades.second_grading + grades.third_grading + grades.fourth_grading)/4),2) as total"))
                     ->join('students','students.id','=','grades.user_id')
                     ->where('grades.year_level_id','=',2)
-                    ->orderBy('Average','DESC')
+                    ->orderBy('total','DESC')
                     ->take(10)
                     ->get();
 
@@ -131,10 +130,10 @@ class AdminController extends Controller
 
         // Grade 9
 
-        $g9rank = Grades::select('students.firstname','students.lastname', DB::raw("ROUND(((grades.first_grading + grades.second_grading + grades.third_grading + grades.fourth_grading)/4),2) as Average"))
+        $g9rank = Grades::select('students.firstname','students.lastname', DB::raw("ROUND(((grades.first_grading + grades.second_grading + grades.third_grading + grades.fourth_grading)/4),2) as total"))
                     ->join('students','students.id','=','grades.user_id')
                     ->where('grades.year_level_id','=',3)
-                    ->orderBy('Average','DESC')
+                    ->orderBy('total','DESC')
                     ->take(10)
                     ->get();
 
@@ -167,10 +166,10 @@ class AdminController extends Controller
         $total_g9_fourth = round($g9fourth[0]['count'] / $g9_count,2);
         
         // Grade 10
-        $g10rank = Grades::select('students.firstname','students.lastname', DB::raw("ROUND(((grades.first_grading + grades.second_grading + grades.third_grading + grades.fourth_grading)/4),2) as Average"))
+        $g10rank = Grades::select('students.firstname','students.lastname', DB::raw("ROUND(((grades.first_grading + grades.second_grading + grades.third_grading + grades.fourth_grading)/4),2) as total"))
                     ->join('students','students.id','=','grades.user_id')
                     ->where('grades.year_level_id','=',4)
-                    ->orderBy('Average','DESC')
+                    ->orderBy('total','DESC')
                     ->take(10)
                     ->get();
 
@@ -204,10 +203,10 @@ class AdminController extends Controller
         $total_g10_fourth = round($g10fourth[0]['count'] / $g10_count,2);
 
         // Grade 11
-        $g11rank = Grades::select('students.firstname','students.lastname', DB::raw("ROUND(((grades.first_grading + grades.second_grading + grades.third_grading + grades.fourth_grading)/4),2) as Average"))
+        $g11rank = Grades::select('students.firstname','students.lastname', DB::raw("ROUND(((grades.first_grading + grades.second_grading + grades.third_grading + grades.fourth_grading)/4),2) as total"))
                     ->join('students','students.id','=','grades.user_id')
                     ->where('grades.year_level_id','=',5)
-                    ->orderBy('Average','DESC')
+                    ->orderBy('total','DESC')
                     ->take(10)
                     ->get();
 
@@ -241,10 +240,10 @@ class AdminController extends Controller
 
         // Grade 12
 
-        $g12rank = Grades::select('students.firstname','students.lastname', DB::raw("ROUND(((grades.first_grading + grades.second_grading + grades.third_grading + grades.fourth_grading)/4),2) as Average"))
+        $g12rank = Grades::select('students.firstname','students.lastname', DB::raw("ROUND(((grades.first_grading + grades.second_grading + grades.third_grading + grades.fourth_grading)/4),2) as total"))
                     ->join('students','students.id','=','grades.user_id')
                     ->where('grades.year_level_id','=',6)
-                    ->orderBy('Average','DESC')
+                    ->orderBy('total','DESC')
                     ->take(10)
                     ->get();
 
