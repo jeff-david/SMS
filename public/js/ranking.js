@@ -31,7 +31,7 @@ $(document).ready(function() {
         `<tr>
             <td>`+element.lastname+`</td>
             <td>`+element.firstname+`</td>
-            <td>`+element.Average+`</td>
+            <td>`+element.total+`</td>
         </tr>`
     ).appendTo('#gr7');
    }); 
@@ -40,7 +40,7 @@ $(document).ready(function() {
         `<tr>
             <td>`+element.lastname+`</td>
             <td>`+element.firstname+`</td>
-            <td>`+element.Average+`</td>
+            <td>`+element.total+`</td>
         </tr>`
     ).appendTo('#gr8');
    }); 
@@ -49,7 +49,7 @@ $(document).ready(function() {
         `<tr>
             <td>`+element.lastname+`</td>
             <td>`+element.firstname+`</td>
-            <td>`+element.Average+`</td>
+            <td>`+element.total+`</td>
         </tr>`
     ).appendTo('#gr9');
    }); 
@@ -58,7 +58,7 @@ $(document).ready(function() {
         `<tr>
             <td>`+element.lastname+`</td>
             <td>`+element.firstname+`</td>
-            <td>`+element.Average+`</td>
+            <td>`+element.total+`</td>
         </tr>`
     ).appendTo('#gr10');
    }); 
@@ -67,7 +67,7 @@ $(document).ready(function() {
         `<tr>
             <td>`+element.lastname+`</td>
             <td>`+element.firstname+`</td>
-            <td>`+element.Average+`</td>
+            <td>`+element.total+`</td>
         </tr>`
     ).appendTo('#gr11');
    }); 
@@ -76,7 +76,7 @@ $(document).ready(function() {
         `<tr>
             <td>`+element.lastname+`</td>
             <td>`+element.firstname+`</td>
-            <td>`+element.Average+`</td>
+            <td>`+element.total+`</td>
         </tr>`
     ).appendTo('#gr12');
    }); 
