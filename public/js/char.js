@@ -5,7 +5,7 @@
         var chart = document.getElementById("mybarChart");
         var firsGrading = {
             label: "1st Grading",
-            data: [56, 95, 81, 80, 65, 55],
+            data: [window.g7_first, window.g8_first, window.g9_first, window.g10_first, window.g11_first, window.g12_first],
             borderColor:"#4CAF50", 
             borderWidth: "0",
             backgroundColor:"#C8E6C9",
@@ -13,7 +13,7 @@
         }
         var secondGrading = {
             label:"2nd Grading",
-            data: [82, 84, 41, 91, 86, 72],
+            data: [window.g7_second, window.g8_second, window.g9_second, window.g10_second, window.g11_second, window.g12_second],
             borderColor: "#FF5722",
             borderWidth: "0",
             backgroundColor:  "#FFCCBC",
@@ -21,7 +21,7 @@
         };
         var thirdGrading = {
             label: "3rd Grading",
-            data: [82, 84, 41, 91, 68, 72],
+            data: [window.g7_third, window.g8_third, window.g9_third, window.g10_third, window.g11_third, window.g12_third],
             borderColor: "#03A9F4",
             borderWidth: "0",
             backgroundColor:  "#B3E5FC",
@@ -29,7 +29,7 @@
         };
         var fourthGrading = {
             label: "4th Grading",
-            data: [82, 84, 41, 91, 68, 72, 19],
+            data: [window.g7_fourth, window.g8_fourth, window.g9_fourth, window.g10_fourth, window.g11_fourth, window.g12_fourth],
             borderColor: "#673AB7",
             borderWidth: "0",
             backgroundColor: "#D1C4E9",

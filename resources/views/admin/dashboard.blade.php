@@ -94,5 +94,6 @@
             </div>
         </div>
     </section>
+    @include('footervarview')
     <!-- END STATISTIC CHART-->
     @endsection

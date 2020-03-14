@@ -23,6 +23,7 @@ class CreateGradesTable extends Migration
             $table->bigInteger('second_grading');
             $table->bigInteger('third_grading');
             $table->bigInteger('fourth_grading');
+            $table->bigInteger('year_level_id');
             $table->timestamps();
         });
     }
