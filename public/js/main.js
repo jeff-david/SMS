@@ -1253,18 +1253,19 @@
 
 
 (function ($) {
+  
     // USE STRICT
     "use strict";
     $('.animsition').animsition({
       inClass: 'fade-in',
       outClass: 'fade-out',
-      inDuration: 1000,
-      outDuration: 1000,
+      inDuration: 1500,
+      outDuration: 800,
       linkElement: 'a:not([target="_blank"]):not([href^="#"]):not([class^="chosen-single"])',
       loading: true,
       loadingParentElement: 'body',
-      loadingClass: 'page-loader',
-      loadingInner: '<img src="/images/loader.png" />',
+      loadingClass: 'animsition-loading',
+      loadingInner: '<img src="http://localhost:8000/images/loader.gif">',
       timeout: false,
       timeoutCountdown: 5000,
       onLoadEvent: true,

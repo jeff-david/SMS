@@ -27,6 +27,7 @@ Route::post('/login/admin','Auth\LoginController@adminLogin')->name('admin.login
 
 Route::prefix('admin')->middleware('auth:admin')->group(function(){
     Route::get('/', 'Admin\AdminController@dashboard')->name('admin.dashboard');
+    Route::get('/getMunicipality/{pro}', 'Admin\AdminController@getMunicipality')->name('admin.municipality');
     Route::get('/register/student', 'Admin\AdminController@index')->name('admin.register_student');
     Route::get('/register/teacher', 'Admin\AdminController@register_teacher')->name('admin.register_teacher');
     Route::get('/register/class', 'Admin\AdminController@class_view')->name('admin.register_class');
