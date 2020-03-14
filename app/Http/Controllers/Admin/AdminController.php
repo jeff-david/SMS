@@ -68,7 +68,7 @@ class AdminController extends Controller
                     ->get();
 
 
-        dd($g7rank);
+        dd($g7_count);
         $g7_list =  round($g7[0]['count'] / $g7_count,2);
 
 
