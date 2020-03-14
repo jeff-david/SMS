@@ -141,3 +141,26 @@ $(document).on('focusout','.editGrade',function() {
         console.log(err);
     });
 });
+
+
+$('select[name = "province"]').on('change',function(){
+    var province = $(this).val();
+    if (province) {
+        $.ajax({
+            url:'/admin/getMunicipality/' + province,
+            type: "GET",
+            dataType: "json",
+            success:function(data) {
+                console.log(data);
+                $('select[name="city"]').empty();
+                $.each(data,function(key,value) {
+                    $('select[name="city"]').append('<option value="' + value + '">' + value + '</option>');    
+                });
+            } 
+        }).fail(function(err) {
+            console.log(err);
+        });
+    }else{
+        // $('select[name="teacher2"]').empty();
+    }
+});

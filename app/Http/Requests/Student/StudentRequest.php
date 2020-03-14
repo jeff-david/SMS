@@ -28,7 +28,7 @@ class StudentRequest extends FormRequest
         return [
             'LRN'=>['required'],
             'firstname'=>'required',
-            'photo_img' => 'image|required|mimes:jpeg,png,jpg',
+            'photo_img' => 'required|image|required|mimes:jpeg,png,jpg|max:2048',
             'lastname'=>'required | regex:/^[a-zA-Z]+$/u',
             'middlename' => 'required | regex:/^[a-zA-Z]+$/u',
             'register_date' => ['required'],
