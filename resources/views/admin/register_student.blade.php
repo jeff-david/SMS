@@ -137,6 +137,7 @@
                                             <label for="province" id="required-field"
                                                 class="control-label mb-1"><small>Province</small></label>
                                             <select name="province" class="form-control">
+                                                <option value=""></option>
                                                 @foreach(config('const.province') as $id => $province)
                                                     <option value={{$province}} {{old('province') == $province ? 'selected' : '' }}>{{$province}}</option>
                                                 @endforeach
@@ -146,7 +147,7 @@
                                     </div>
                                     <div class="col col-md-3">
                                         <div class="form-group has-success">
-                                            <label for="city" id="required-field" class="control-label mb-1"><small>Municipality</small></label>
+                                            <label for="city" id="required-field" class="control-label mb-1"><small>Municipality / City</small></label>
                                             <select name="city" class="form-control">
 
                                             </select>
