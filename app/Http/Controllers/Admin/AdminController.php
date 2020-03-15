@@ -19,6 +19,7 @@ use SMS\Models\Classes;
 use SMS\Models\Grades;
 use SMS\Models\Admin;
 use SMS\Models\Subject;
+use Config;
 use SMS\Models\Announcement;
 use SMS\Notifications\NewMessageNotifications;
 use JavaScript;
@@ -570,7 +571,19 @@ class AdminController extends Controller
         $subject = $this->adminService->get_Subject($id);
      
         return view('admin.assign_teacher',compact('subject','id')); 
-    }   
+    }
+    
+    public function getMunicipality($province)
+    {
+        $municipality = Config::get('const.municipality');
+        foreach ($municipality as $key => $val) {
+            if ($key == $province) {
+                return json_encode($val);
+            }
+        }
+        return null;
+        
+    }
 
     public function get_teacher($id)
     {

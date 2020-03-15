@@ -69,6 +69,14 @@ class AdminService
 
     public function store($data)
     {
+        $file = $data['photo_img'];
+        $filename = $file->getClientOriginalName();
+        
+       if (substr($data['cell_1'], 0,1) === '0') {
+           $sample = substr_replace('0','+63',0);
+           $newcell = $sample . substr($data['cell_1'], 1);
+      }
+
         $student = [];
         $student['LRN'] = $data['LRN'];
         $student['lastname'] = $data['lastname'];
@@ -98,29 +106,11 @@ class AdminService
         $student['dialects'] = $data['dialects'];
         $student['year_level_id'] = $data['year_level_id'];
         $student['ethnicities'] = $data['ethnicities'];
-        $student['cell_1'] = $data['cell_1'];
-        $student['photo_img'] = $data['photo_img'];
+        $student['cell_1'] = $newcell;
+        $student['photo_img'] = $filename;
+        $file->storeAs('public/student',$filename);
         $rtn = $this->studentList->create($student);
-
-        if ($rtn) {
-            if (!empty($rtn->photo_img)) {
-                $sourcepath = FileHelper::getServerPath($rtn->photo_img);
-                if (file_exists($sourcepath)) {
-                    $fileinfo = pathinfo($sourcepath);
-                    $target_path = 'storage/app/public' . config('const.upload_path_img_student') .'lrn/';
-                    FileHelper::addDirectory($target_path, 777);
-                    $target_path = $target_path . $fileinfo['basename'];
-                    if (!\File::move($sourcepath, $target_path)) {
-                        throw new \Exception('The file could not be moved.');
-                    } else {
-                        $rtn->photo_img = FileHelper::getServerPath($target_path);
-                        $rtn->save();
-                    }
-                }
-            }
-        }
-        
-        
+        $rtn->save();
         return $rtn;    
        
     }
@@ -207,7 +197,6 @@ class AdminService
         $student->section_id = 1;
         $student->photo_img = $data['photo_img'];
         if ($student) {
-            dd( );
             if (!empty($student->photo_img)) {
                 $sourcepath = FileHelper::getServerPath($student->photo_img);
                 if (file_exists($sourcepath)) {
