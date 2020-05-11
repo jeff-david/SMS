@@ -47,7 +47,7 @@
                     the Sisters of Mary Schools shall direct their energy and resources to the poorest of the poor youth
                     of the country by way of providing them with high quality Secondary Education intensive on
                     Vocational-Technical Curriculum molding them into citizens committed to serve the nation, to love
-                    their fellow being, and spread moral and spiritual values based on the Gospels.
+                    their fellow being, and spread moral and spiritual values based on the Gospels. Ekang bAYOT
                 </h4>
                 <br>
             </div>
