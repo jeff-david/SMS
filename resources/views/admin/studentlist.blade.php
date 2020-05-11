@@ -13,31 +13,57 @@
                     </div>
                     @endif
                     <div class="row">
-                        <div class="col-md-12">
-                            <div class="table-data__tool">
-                                <div class="table-data__tool-right">
-                                    <button style="margin-top: 3px;" href="{{route('admin.register_student')}}"
-                                        class="au-btn au-btn-icon au-btn--green au-btn--small">
-                                        <i class="zmdi zmdi-plus"></i>add student
-                                    </button>
-                                    
-                                </div>
-                                
-                                    <input class="form-control" id="lrn_scol" type="text" placeholder="LRN" aria-label="Search" >
-                                    <input  class="form-control" id="stud_name" type="text" placeholder="Name" aria-label="Search" >
-                                    <input class="form-control" id="grade_level"  type="text" placeholder="Grade Level" aria-label="Search" >  
-                                    <button class="btn btn-success form-control " id="search_btn"  type="submit" >Search</button> 
-                                
-                            </div>
-                        <div>
-                                
-                    </div>
-                </div>
-            </div>
-  
-                    <div class="row">
+                        <div class="col-md-4">
 
-                        <div class="col-md-12">
+                            <div class="container">
+
+
+                                <!-- The sidebar -->
+                                <div class="sidebar">
+                                    <div class="table-data__tool">
+                                        <div class="table-data__tool-right">
+                                            <button style="margin-top: 3px;" href="{{route('admin.register_student')}}"
+                                                class="au-btn au-btn-icon au-btn--green au-btn--small">
+                                                <i class="zmdi zmdi-plus"></i>add student
+                                            </button>
+
+                                        </div>
+                                    </div>
+                                    <input class="form-control" id="lrn_scol" type="text" placeholder="LRN"
+                                        aria-label="Search"><br>
+                                    <input class="form-control" id="stud_name" type="text" placeholder="Name"
+                                        aria-label="Search"><br>
+                                    <input class="form-control" id="grade_level" type="text" placeholder="Grade Level"
+                                        aria-label="Search"><br>
+
+                                    <div class="dropdown">
+                                        <button class="btn btn-default dropdown-toggle" type="button"
+                                            data-toggle="dropdown">Tutorials
+                                            <span class="caret"></span></button>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="#">HTML</a></li>
+                                            <li><a href="#">CSS</a></li>
+                                            <li><a href="#">JavaScript</a></li>
+                                           
+                                        </ul>
+                                    </div>
+                                    <button class="btn btn-success form-control " id="search_btn"
+                                        type="submit">Search</button>
+
+                                </div>
+
+
+
+
+                            </div>
+                        </div>
+
+
+
+                        <div class="col-md-8">
+
+
+
 
                             <div class="table-responsive">
                                 <table class="table" id="student">
@@ -87,13 +113,17 @@
                                     </tbody>
                                 </table>
                             </div>
+
                         </div>
                     </div>
-                </div>
             </section>
         </div>
     </div>
 </div>
+
+<!--sidebar UI-->
+
+
 
 
 <!-- modal view student -->
