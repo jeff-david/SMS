@@ -53,7 +53,7 @@
             </div>
 
             <div class="col-md-6">
-                <h1 class="title">Vision</h1>
+                <h1 class="title">Eloisa</h1>
                 <h4>The Sisters of Mary School envisions that the graduates, in their everyday life and in the pursuit
                     of their calling, will become the new disciples in spreading the work of redemption, and at the same
                     time teach and lead by example the Marian virtues of simplicity, charity, gratitude and joy.
