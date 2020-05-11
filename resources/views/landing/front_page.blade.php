@@ -42,7 +42,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6">
-                <h1 class="title">Mission</h1>
+                <h1 class="title">Missions</h1>
                 <h4>Inspired by her patroness, the Virgin of the Poor,
                     the Sisters of Mary Schools shall direct their energy and resources to the poorest of the poor youth
                     of the country by way of providing them with high quality Secondary Education intensive on
