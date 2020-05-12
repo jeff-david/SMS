@@ -26,11 +26,13 @@
                                                 class="au-btn au-btn-icon au-btn--green au-btn--small">
                                                 <i class="zmdi zmdi-plus"></i>add student
                                             </button>
+                                            <br><br><br>
 
                                         </div>
                                     </div>
                                     <input class="form-control" id="lrn_scol" type="text" placeholder="LRN"
                                         aria-label="Search"><br>
+                                       
                                     <input class="form-control" id="stud_name" type="text" placeholder="Name"
                                         aria-label="Search"><br>
                                     <input class="form-control" id="grade_level" type="text" placeholder="Grade Level"
@@ -43,20 +45,12 @@
                                 </div>
 
                                 <!-- end of sidebar -->
-
-
-
-
                             </div>
                         </div>
 
 
-
+<!-- the table -->
                         <div class="col-md-8">
-
-
-
-
                             <div class="table-responsive">
                                 <table class="table" id="student">
                                     <thead>
