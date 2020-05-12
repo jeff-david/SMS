@@ -36,21 +36,13 @@
                                     <input class="form-control" id="grade_level" type="text" placeholder="Grade Level"
                                         aria-label="Search"><br>
 
-                                    <div class="dropdown">
-                                        <button class="btn btn-default dropdown-toggle" type="button"
-                                            data-toggle="dropdown">Tutorials
-                                            <span class="caret"></span></button>
-                                        <ul class="dropdown-menu">
-                                            <li><a href="#">HTML</a></li>
-                                            <li><a href="#">CSS</a></li>
-                                            <li><a href="#">JavaScript</a></li>
-                                           
-                                        </ul>
-                                    </div>
+                                   
                                     <button class="btn btn-success form-control " id="search_btn"
                                         type="submit">Search</button>
 
                                 </div>
+
+                                <!-- end of sidebar -->
 
 
 
@@ -121,7 +113,6 @@
     </div>
 </div>
 
-<!--sidebar UI-->
 
 
 
