@@ -3,6 +3,6 @@
     color: red;
 }
 
-.toggle-class #text{
+.toggle-class .text{
     font-size: 10px;
 }
