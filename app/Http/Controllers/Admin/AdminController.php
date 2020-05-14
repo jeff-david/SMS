@@ -365,7 +365,7 @@ class AdminController extends Controller
 
         $class = Classes::leftJoin('sections','classes.id' ,'=', 'sections.class_id')
                 ->selectRaw('classes.*, count(sections.class_id) as num_section')
-                ->groupBy('classes.id','classes.class_name','classes.created_at','classes.updated_at','classes.deleted_at')
+                ->groupBy('classes.id','classes.class_name','classes.description','classes.created_at','classes.updated_at','classes.deleted_at')
                 ->get();
 
         return view('admin.class',compact('class'));

@@ -13,12 +13,12 @@ class ClassTableSeeder extends Seeder
     {
         DB::table('classes')->insert(
             array(
-                array('class_name' => '26 Batch'),
-                array('class_name' => '27 Batch'),
-                array( 'class_name' => '28 Batch'),
-                array('class_name' => '29 Batch'),
-                array('class_name' => '30 Batch'),
-                array('class_name' => '31 Batch'),
+                array('class_name' => '26 Batch','description' => 'sample'),
+                array('class_name' => '27 Batch','description' => 'sample'),
+                array( 'class_name' => '28 Batch','description' => 'sample'),
+                array('class_name' => '29 Batch','description' => 'sample'),
+                array('class_name' => '30 Batch','description' => 'sample'),
+                array('class_name' => '31 Batch','description' => 'sample'),
             )
         );
     }

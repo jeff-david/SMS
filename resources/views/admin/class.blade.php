@@ -28,10 +28,6 @@
                                     </button>
                                    
                                 </div>
-                                <input style="width:175px " class="form-control" type="text" placeholder="LRN" aria-label="Search" >
-                                <input style="width:175px" class="form-control" type="text" placeholder="Name" aria-label="Search" >
-                                <input style="width:175px" class="form-control" type="text" placeholder="Grade Level" aria-label="Search" >  
-                                <button class="btn btn-success form-control "  type="submit" style="margin-right:225px;width:100px">Search</button>                              
                             </div>
                         </div>
                     </div>
@@ -47,6 +43,7 @@
                                             <th class="text-center">Id</th>
                                             <th class="text-center" style="display:none"></th>
                                             <th class="text-center">Name</th>
+                                            <th class="text-center">Description</th>
                                             <th class="text-center">Number of Section</th>
                                             <th class="text-center">Action</th>
                                         </tr>
@@ -60,6 +57,8 @@
                                             <td class="text-center">{{$i++}}</td>
                                             <td class="text-center" style="display:none">{{$classes->id}}</td>
                                             <td class="text-center">{{$classes->class_name}}
+                                            </td>
+                                            <td class="text-center">{{$classes->description}}
                                             </td>
                                             <td class="text-center">{{$classes->num_section}}</td>
                                             <td class="text-center">
