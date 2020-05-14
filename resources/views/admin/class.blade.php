@@ -111,11 +111,6 @@
                                 <input id="slname" name="add_class" type="text" class="form-control"
                                     placeholder="Enter Class Name" value="{{old('lastname')}}">
                             </div>
-                            <div class="form-group has-success">
-                                <textarea id="slname" name="add_description" class="form-control"
-                                    placeholder="Enter Description" value="{{old('lastname')}}">
-                                </textarea>
-                            </div>
                         </div>
                     </div>
                 </div>
