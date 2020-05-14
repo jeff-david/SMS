@@ -15,9 +15,9 @@
         href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
     <!-- CSS Files -->
-    <link href="{{ secure_asset('assets/vendor/css/material-kit.css') }}" rel="stylesheet" />
+    <link href="{{ url('assets/vendor/css/material-kit.css') }}" rel="stylesheet" />
     <!-- CSS Just for demo purpose, don't include it in your project -->
-    <link href="{{ secure_asset('/css/demo.css') }}" rel="stylesheet" />
+    <link href="{{ url('/css/demo.css') }}" rel="stylesheet" />
 </head>
 
 <body class="login-page sidebar-collapse">
@@ -28,14 +28,14 @@
 
 </html>
 <!--   Core JS Files   -->
-<script src="{{secure_asset('/assets/vendor/core/jquery.min.js')}}" type="text/javascript"></script>
-<script src="{{secure_asset('/assets/vendor/core/popper.min.js')}}" type="text/javascript"></script>
-<script src="{{secure_asset('/assets/vendor/core/bootstrap-material-design.min.js')}}" type="text/javascript"></script>
-<script src="{{secure_asset('/assets/vendor/core/moment.min.js')}}"></script>
+<script src="{{url('/assets/vendor/core/jquery.min.js')}}" type="text/javascript"></script>
+<script src="{{url('/assets/vendor/core/popper.min.js')}}" type="text/javascript"></script>
+<script src="{{url('/assets/vendor/core/bootstrap-material-design.min.js')}}" type="text/javascript"></script>
+<script src="{{url('/assets/vendor/core/moment.min.js')}}"></script>
 <!--	Plugin for the Datepicker, full documentation here: https://github.com/Eonasdan/bootstrap-datetimepicker -->
-<script src="{{secure_asset('/assets/vendor/core/bootstrap-datetimepicker.js')}}" type="text/javascript"></script>
+<script src="{{url('/assets/vendor/core/bootstrap-datetimepicker.js')}}" type="text/javascript"></script>
 <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
-<script src="{{secure_asset('/assets/vendor/core/nouislider.min.js')}}" type="text/javascript"></script>
+<script src="{{url('/assets/vendor/core/nouislider.min.js')}}" type="text/javascript"></script>
 
 <!-- Control Center for Material Kit: parallax effects, scripts for the example pages etc -->
-<script src="{{secure_asset('/assets/vendor/core/material-kit.js')}}" type="text/javascript"></script>
+<script src="{{url('/assets/vendor/core/material-kit.js')}}" type="text/javascript"></script>

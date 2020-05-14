@@ -30,6 +30,7 @@
 
                                         </div>
                                     </div>
+                                    
                                     <input class="form-control" id="lrn_scol" type="text" placeholder="LRN"
                                         aria-label="Search"><br>
                                        
