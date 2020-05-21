@@ -1,13 +1,17 @@
 $(document).ready(function(){
     $('#class').DataTable({
         "columnDefs": [
-            { "width": "25%", "targets": 2 },
-            { "width": "25%", "targets": 3 },
-            { "width": "15%", "targets": 4 },
+            { "width": "20%", "targets": 2 },
+            { "width": "20%", "targets": 3 },
+            { "width": "10%", "targets": 6  },
             { "width": "15%", "targets": 0 },
             { "width": "20%", "targets": 0 }
           ]
     });
+
+    var year = (new Date()).getFullYear();
+    $('#class_from').val(year);
+    $('#class_to').val( year + 5);
 
     $('#view_student').DataTable({
         'language': {
@@ -185,8 +189,14 @@ $(document).ready(function(){
 $(document).on('click','.item',function() {
     var class_name = $(this).data('name');
     var id = $(this).data('id');
+    var description = $(this).data('description');
+    var from = $(this).data('from');
+    var to = $(this).data('to');
     $('.modal-body #class_name').val(class_name);
     $('.modal-body #id').val(id);
+    $('.modal-body #description').val(description);
+    $('.modal-body #class_from').val(from);
+    $('.modal-body #class_to').val(to);
 });
 
 

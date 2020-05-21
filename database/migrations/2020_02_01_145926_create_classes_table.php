@@ -16,6 +16,9 @@ class CreateClassesTable extends Migration
         Schema::create('classes', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('class_name');
+            $table->string('description');
+            $table->string('from');
+            $table->string('to');
             $table->softDeletes();
             $table->timestamps();
         });
