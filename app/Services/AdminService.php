@@ -345,6 +345,9 @@ class AdminService
     {
         $class = $this->classesList->find($data['id']);
         $class->class_name = $data['class_name'];
+        $class->description = $data['description'];
+        $class->from = $data['from'];
+        $class->to = $data['to'];
         $class->save();
         return $class;
     }

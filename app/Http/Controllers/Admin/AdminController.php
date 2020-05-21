@@ -365,7 +365,8 @@ class AdminController extends Controller
 
         $class = Classes::leftJoin('sections','classes.id' ,'=', 'sections.class_id')
                 ->selectRaw('classes.*, count(sections.class_id) as num_section')
-                ->groupBy('classes.id','classes.class_name','classes.created_at','classes.updated_at','classes.deleted_at')
+                ->groupBy('classes.id','classes.class_name','classes.description','classes.from','classes.to','classes.created_at','classes.updated_at','classes.deleted_at')
+                ->orderBy('classes.created_at','desc')
                 ->get();
 
         return view('admin.class',compact('class'));
@@ -704,13 +705,19 @@ class AdminController extends Controller
 
     public function add_class(Request $request)
     {
-        $data = $request->add_class;
+        $class_name = $request->add_class;
+        $description = $request->description;
+        $from = $request->from;
+        $to = $request->to;
 
         \DB::beginTransaction();
         try{
             
             $class = new Classes();
-            $class->class_name = $data;
+            $class->class_name = $class_name;
+            $class->description = $description;
+            $class->from = $from;
+            $class->to = $to;
             $class->save();
             \DB::commit();
         }catch(\Exception $e){
