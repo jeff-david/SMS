@@ -33,20 +33,36 @@
 }
 #lrn_scol{
     width: 200px;
-    margin-left: 100px;
+    margin-left: 2px;
     border-radius: 10px;
 }
 #stud_name{
-    width: 175px;
+    width: 200px;
     margin-left: 2px;
     border-radius: 10px;
 
 }
 #grade_level{
-    width: 175px;
+    width: 200px;
     margin-left: 2px;
     border-radius: 10px;
 }
+#batch_name{
+    width: 200px;
+    margin-left: 2px;
+    border-radius: 10px;
+}
+#section{
+    width: 200px;
+    margin-left: 2px;
+    border-radius: 10px;
+}
+#grading{
+    width: 200px;
+    margin-left: 2px;
+    border-radius: 10px;
+}
+
 #search_btn{
     width: 150px;
     margin-left: 2px;

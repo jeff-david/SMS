@@ -32,12 +32,19 @@
                                     </div>
                                     
                                     <input class="form-control" id="lrn_scol" type="text" placeholder="LRN"
-                                        aria-label="Search"><br>
-                                       
+                                        aria-label="Search"><br> 
                                     <input class="form-control" id="stud_name" type="text" placeholder="Name"
                                         aria-label="Search"><br>
                                     <input class="form-control" id="grade_level" type="text" placeholder="Grade Level"
                                         aria-label="Search"><br>
+
+                                        <input class="form-control" id="batch_name" type="text" placeholder="Batch Name"
+                                        aria-label="Search"><br>
+                                        <input class="form-control" id="section" type="text" placeholder="Section"
+                                        aria-label="Search"><br>
+                                        <input class="form-control" id="grading" type="text" placeholder="Grading"
+                                        aria-label="Search"><br>
+                                       
 
                                    
                                     <button class="btn btn-success form-control " id="search_btn"
