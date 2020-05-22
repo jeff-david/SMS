@@ -157,6 +157,7 @@ class AdminService
         $section = Classes::join('sections', 'sections.class_id', '=', 'classes.id')
                     ->select('sections.*')
                     ->where('sections.class_id','=',$id)
+                    ->orderBy('sections.created_at','desc')
                     ->get();
 
         return $section;
@@ -356,6 +357,7 @@ class AdminService
     {
         $section = $this->sectionList->find($data['id']);
         $section->section_name = $data['section_name'];
+        $section->description = $data['description'];
         $section->save();
         return $section;
     }

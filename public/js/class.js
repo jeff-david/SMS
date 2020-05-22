@@ -28,7 +28,8 @@ $(document).ready(function(){
     $('#section').DataTable({
         "columnDefs": [
             { "width": "25%", "targets": 2 },
-            { "width": "10%", "targets": 3 },
+            { "width": "25%", "targets": 3 },
+            { "width": "10%", "targets": 4 },
           ]
     });
     $('select[name = "subject1"]').on('change',function(){
@@ -252,6 +253,8 @@ $(document).on('click','.editSection',function() {
     var section_name = $(this).data('name');
     var id = $(this).data('id');
     var classes_id = $(this).data('classes');
+    var description = $(this).data('description');
+    $('.modal-body #description').val(description);
     $('.modal-body #section_name').val(section_name);
     $('.modal-body #id').val(id);
     $('.modal-body #classes_id').val(classes_id);

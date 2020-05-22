@@ -476,6 +476,7 @@ class AdminController extends Controller
     {
         
         $data = $request->add_section;
+        $description = $request->description;
         $id = $request->id;
 
         \DB::beginTransaction();
@@ -484,6 +485,7 @@ class AdminController extends Controller
             $section = new Section();
             $section->section_name = $data;
             $section->class_id = $id;
+            $section->description = $description;
             $section->section_id = $id;
             $section->year_level_id = 0;
             $section->save();
