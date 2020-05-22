@@ -19,6 +19,7 @@ class CreateSectionsTable extends Migration
             $table->tinyInteger('section_id');
             $table->tinyInteger('year_level_id')->nullable();
             $table->tinyInteger('class_id');
+            $table->string('description');
             $table->softDeletes();
             $table->timestamps();
         });

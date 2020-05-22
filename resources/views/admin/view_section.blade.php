@@ -40,6 +40,7 @@
                                         <tr>
                                             <th class="text-center">Id</th>
                                             <th class="text-center">Name</th>
+                                            <th class="text-center">Description</th>
                                             <th class="text-center">View Student</th>
                                             <th class="text-center">Action</th>
                                         </tr>
@@ -53,18 +54,28 @@
                                             <td class="text-center">{{$i++}}</td>
                                             <td class="text-center">{{$sections->section_name}}
                                             </td>
-                                            <td class="text-center"><button  class="item view_student" data-class="{{$sections->class_id}}" data-section="{{$sections->section_id}}" data-toggle="modal"
+                                            <td class="text-center">{{$sections->description}}</td>
+                                            <td class="text-center"><button class="item view_student"
+                                                    data-class="{{$sections->class_id}}"
+                                                    data-section="{{$sections->section_id}}" data-toggle="modal"
                                                     data-placement="top" data-target="#view_studentModal">
-                                                    <i class="zmdi zmdi-view-list" style="color:orange"> View Student</i>
+                                                    <i class="zmdi zmdi-view-list" style="color:orange"> View
+                                                        Student</i>
                                                 </button></td>
                                             <td class="text-center">
                                                 <div class="table-data-feature " style="text-align:center">
-                                                    <button class="item editSection" data-toggle="modal" data-classes="{{$sections->class_id}}" data-id="{{$sections->id}}"  data-name="{{$sections->section_name}}" data-placement="top"
-                                                        title="Edit" data-target="#editSectionModal">
+                                                    <button class="item editSection" data-toggle="modal"
+                                                        data-classes="{{$sections->class_id}}"
+                                                        data-id="{{$sections->id}}"
+                                                        data-name="{{$sections->section_name}}"
+                                                        data-description="{{$sections->description}}"
+                                                        data-placement="top" title="Edit"
+                                                        data-target="#editSectionModal">
                                                         <i class="zmdi zmdi-edit" style="color:green"></i>
                                                     </button>
-                                                    <button class="item delete_section" title="Delete" data-toggle="modal"
-                                                        data-target="#deleteSectionModal" data-section="{{$sections->id}}">
+                                                    <button class="item delete_section" title="Delete"
+                                                        data-toggle="modal" data-target="#deleteSectionModal"
+                                                        data-section="{{$sections->id}}">
                                                         <i class="zmdi zmdi-delete" style="color:red"></i>
                                                     </button>
                                                     <a href="{{route('admin.assign_teacher',$sections->year_level_id)}}"
@@ -112,6 +123,14 @@
                     <div class="row">
                         <div class="col col-md-12">
                             <div class="form-group has-success">
+                                <textarea name="description" class="form-control" id="description" cols="30" rows="2"
+                                    placeholder="Enter Description . . ."></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-md-12">
+                            <div class="form-group has-success">
                                 <input id="id" name="id" type="hidden" class="form-control">
                             </div>
                         </div>
@@ -128,8 +147,8 @@
 </div>
 
 <!-- modal view student -->
-<div class="modal fade" id="view_studentModal"  tabindex="-1" role="dialog" aria-labelledby="sendModalLabel" aria-hidden="true"
-    data-backdrop="send">
+<div class="modal fade" id="view_studentModal" tabindex="-1" role="dialog" aria-labelledby="sendModalLabel"
+    aria-hidden="true" data-backdrop="send">
     <div class="modal-dialog  modal-lg" role="document">
         <div class="modal-content text-center" style="margin-top: 25%;">
             <form action="{{route('admin.add_section')}}" method="post">
@@ -140,7 +159,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">    
+                <div class="modal-body">
                     <p class="nodata"></p>
                     <p class="details"></p>
                     <table class="table" id="view_student">
@@ -154,7 +173,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            
+
                         </tbody>
                     </table>
                 </div>
@@ -166,8 +185,8 @@
 </div>
 
 
-<div class="modal fade" id="editSectionModal" tabindex="-1" role="dialog" aria-labelledby="sendModalLabel" aria-hidden="true"
-    data-backdrop="send">
+<div class="modal fade" id="editSectionModal" tabindex="-1" role="dialog" aria-labelledby="sendModalLabel"
+    aria-hidden="true" data-backdrop="send">
     <div class="modal-dialog modal-sm" role="document">
         <div class="modal-content text-center" style="margin-top: 85%;">
             <form action="{{route('admin.edit_section')}}" method="post">
@@ -183,7 +202,8 @@
                         <div class="col col-md-12">
                             <div class="form-group has-success">
                                 <input id="id" name="id" type="hidden" class="form-control" value="{{old('id')}}">
-                                <input id="cllasses_id" name="class_id" type="hidden" class="form-control" value="{{old('id')}}">
+                                <input id="classes_id" name="class_id" type="hidden" class="form-control"
+                                    value="{{old('id')}}">
                             </div>
                         </div>
                     </div>
@@ -192,6 +212,14 @@
                             <div class="form-group has-success">
                                 <input id="section_name" name="section_name" type="text" class="form-control class_name"
                                     placeholder="Enter Class Name" value="{{old('class_name')}}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-md-12">
+                            <div class="form-group has-success">
+                                <textarea name="description" class="form-control" id="description" cols="30" rows="2"
+                                    placeholder="Enter Description . . ."></textarea>
                             </div>
                         </div>
                     </div>
@@ -207,12 +235,12 @@
 </div>
 
 <!-- modal delete -->
-<div class="modal fade" id="deleteSectionModal" tabindex="-1" role="dialog" aria-labelledby="sendModalLabel" aria-hidden="true"
-    data-backdrop="send">
+<div class="modal fade" id="deleteSectionModal" tabindex="-1" role="dialog" aria-labelledby="sendModalLabel"
+    aria-hidden="true" data-backdrop="send">
     <div class="modal-dialog modal-sm" role="document">
         <div class="modal-content text-center" style="margin-top: 85%;">
             <form action="{{route('admin.delete_section')}}" method="post">
-                @csrf   
+                @csrf
                 <div class="modal-header">
                     <h5 class="modal-title" id="staticModalLabel">DELETE SECTION</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -230,7 +258,8 @@
                     <div class="row">
                         <div class="col col-md-12">
                             <div class="form-group has-success">
-                                <label for="lrn" class="control-label mb-1"><small>Are you sure you want to delete this Section</small></label>
+                                <label for="lrn" class="control-label mb-1"><small>Are you sure you want to delete this
+                                        Section</small></label>
                             </div>
                         </div>
                     </div>

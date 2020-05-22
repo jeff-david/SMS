@@ -12,6 +12,7 @@ $factory->define(Section::class, function (Faker $faker) {
         'year_level_id' => $faker->numberBetween(1,6),
         'section_name' => $sections,
         'class_id' => $faker->numberBetween(1,6),
-        'section_id' => $faker->numberBetween(1,6)
+        'section_id' => $faker->numberBetween(1,6),
+        'description' => $faker->text($maxNbChars = 100) 
     ];
 });
