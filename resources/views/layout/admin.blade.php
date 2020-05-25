@@ -37,6 +37,8 @@
     <link href="{{ url('/assets/vendor/perfect-scrollbar/perfect-scrollbar.css')}}" rel="stylesheet" media="all">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
+
 
     <!-- Main CSS-->
     <link href="{{ url('/css/theme.css') }}" rel="stylesheet" media="all">
@@ -83,6 +85,8 @@
     <script src="{{ url('/assets/vendor/chartjs/Chart.bundle.min.js') }}"></script>
     <script src="{{ url('/assets/vendor/select2/select2.min.js') }}"></script>
     <script src="{{ url('/assets/vendor/yearpicker/yearpicker.js') }}"></script>
+    <script src="{{ url('/assets/vendor/sweetalert/sweetalert.min.js') }}"></script>
+
 
 
     <!-- Main JS-->

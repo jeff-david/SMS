@@ -20,6 +20,8 @@ class CreateSectionsTable extends Migration
             $table->tinyInteger('year_level_id')->nullable();
             $table->tinyInteger('class_id');
             $table->string('description');
+            $table->bigInteger('from');
+            $table->bigInteger('to');
             $table->softDeletes();
             $table->timestamps();
         });

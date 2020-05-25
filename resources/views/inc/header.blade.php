@@ -29,10 +29,16 @@
                             </li>
                         </ul>
                     </li>
-                    <li>
+                    <li class="has-sub">
                         <a href="{{route('admin.register_class')}}"><i class="fas fa-list-ul"></i>
                             <span class="bot-line"></span> Class
                         </a>
+                        <ul class="header3-sub-list list-unstyled">
+                            <li>
+                                <a href="{{route('admin.diagnostic_exam')}}"><i class="fas fa-plus-square"></i>
+                                    Diagnostic Exam</a>
+                            </li>
+                        </ul>
                     </li>
                     <li>
                         <a href="{{route('admin.studentlist')}}"><i class="fas fa-list-ul"></i>

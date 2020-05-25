@@ -12,7 +12,7 @@ $factory->define(Student::class, function (Faker $faker) {
     return [
         'LRN' => $faker->unique()->numberBetween(100,2000),
         'cell_1' => $faker->e164PhoneNumber,
-        'year_level_id' => $faker->numberBetween(1,6),
+        'year_level_id' => 1,
         'lastname' => $faker->lastName,
         'firstname'=>$faker->firstName,
         'middlename'=>$faker->lastName,
@@ -41,8 +41,8 @@ $factory->define(Student::class, function (Faker $faker) {
         'age' => $faker->numberBetween(12,18),
         'photo_img' => $faker->imageUrl($width = 640, $height = 480),
         'type_id'=> 1,
-        'section_id' => $faker->numberBetween(1,12),
-        'class_id' => $faker->numberBetween(1,6),
+        'section_id' => 0,
+        'class_id' => 1,
         'created_at' => $faker->date($format = 'Y-m-d', $max = 'now'),
         'updated_at' => $faker->date($format = 'Y-m-d', $max = 'now'),
     ];

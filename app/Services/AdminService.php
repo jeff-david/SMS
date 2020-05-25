@@ -11,6 +11,7 @@ use SMS\Models\Subject;
 use SMS\Models\Assign;
 use SMS\Models\Admin;
 use SMS\Models\Grades;
+use SMS\Models\DiagnosticExam;
 use SMS\Helper\FileHelper;
 use SMS\Models\Announcement;
 use SMS\Notifications\NewAnnouncementNotification;
@@ -358,6 +359,8 @@ class AdminService
         $section = $this->sectionList->find($data['id']);
         $section->section_name = $data['section_name'];
         $section->description = $data['description'];
+        $section->from = $data['from'];
+        $section->to = $data['to'];
         $section->save();
         return $section;
     }
@@ -406,6 +409,68 @@ class AdminService
         }
        
         return $save;
+    }
+
+    public function editDiagnostic($data)
+    {
+        switch ($data['id']) {
+            case 1:
+                $diagnostic = DiagnosticExam::where('LRN',$data['lrn'])
+                            ->update(['English' => $data['value']]);
+                
+                return $diagnostic;
+                break;
+            case 2:
+                $diagnostic = DiagnosticExam::where('LRN',$data['lrn'])
+                            ->update(['Filipino' => $data['value']]);
+                
+                return $diagnostic;
+                break;
+            case 3:
+                $diagnostic = DiagnosticExam::where('LRN',$data['lrn'])
+                            ->update(['Math' => $data['value']]);
+                
+                return $diagnostic;
+                break;
+            case 4:
+                $diagnostic = DiagnosticExam::where('LRN',$data['lrn'])
+                            ->update(['Science' => $data['value']]);
+                
+                return $diagnostic;
+                break;
+            case 5:
+                $diagnostic = DiagnosticExam::where('LRN',$data['lrn'])
+                            ->update(['Aral_Pan' => $data['value']]);
+                
+                return $diagnostic;
+                break;
+            default:
+                # code...
+                break;
+        }
+    }
+
+    public function getAverage($data)
+    {
+        $diagnostic = DiagnosticExam::where('LRN',$data['lrn'])
+                    ->selectRaw('sum(English + Filipino + Aral_Pan + Math + Science) as total')
+                    ->get();
+        $total = $diagnostic[0]['total'] / 5;
+
+        $exam = DiagnosticExam::where('LRN',$data['lrn'])
+                    ->update(['Average' => $total]);
+
+        return $exam;
+    }
+
+    public function assignSection($data)
+    {
+        $sections = Section::where('from','<',$data['total'])
+                            ->where('to','>',$data['total'])
+                            ->get();
+        $students = Student::where('LRN',$data['lrn'])
+                    ->update(['section_id' => $sections[0]['id']]);
+        return $sections;
     }
 
 

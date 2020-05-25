@@ -40,8 +40,13 @@ Route::prefix('admin')->middleware('auth:admin')->group(function(){
     Route::get('/class/{id}','Admin\AdminController@view_section')->name('admin.view_section');
     Route::get('/announcement','Admin\AdminController@announcement')->name('admin.announcement');
     Route::get('/settings','Admin\AdminController@settings')->name('admin.settings');
-    Route::get('/view_student/{class_id}/{section_id}','Admin\AdminController@view_student')->name('admin.view_student');
+    Route::get('/view_student/{class_id}/{section_id}/{year_level_id}','Admin\AdminController@view_student')->name('admin.view_student');
     Route::get('/view_grade/{lrn}/{class_id}','Admin\AdminController@view_grade')->name('admin.view_grade');
+    Route::get('/diagnostic/exam','Admin\AdminController@view_diagnostic')->name('admin.diagnostic_exam');
+    Route::get('/average/grade','Admin\AdminController@getAverage')->name('admin.getAverage');
+    Route::get('/assign/section','Admin\AdminController@assignSection')->name('admin.assignSection');
+    Route::get('/exam/delete','Admin\AdminController@examDelete')->name('admin.examDelete');
+    Route::post('/edit/exam/grade','Admin\AdminController@editDiagnostic')->name('admin.exam_diagnostic');
     Route::post('/edit_grade','Admin\AdminController@edit_grade')->name('admin.edit_grade');
     Route::post('/delete_section','Admin\AdminController@delete_section')->name('admin.delete_section');
     Route::post('/delete/student','Admin\AdminController@delete_student')->name('student.delete');

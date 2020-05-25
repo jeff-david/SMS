@@ -9,6 +9,8 @@ $(document).ready(function(){
           ]
     });
 
+    $('#exam').DataTable({});
+
     var year = (new Date()).getFullYear();
     $('#class_from').val(year);
     $('#class_to').val( year + 5);
@@ -27,9 +29,9 @@ $(document).ready(function(){
 
     $('#section').DataTable({
         "columnDefs": [
-            { "width": "25%", "targets": 2 },
-            { "width": "25%", "targets": 3 },
-            { "width": "10%", "targets": 4 },
+            { "width": "20%", "targets": 3 },
+            { "width": "20%", "targets": 4 },
+            { "width": "10%", "targets": 5 },
           ]
     });
     $('select[name = "subject1"]').on('change',function(){
@@ -215,11 +217,12 @@ $(document).on('click','#add',function() {
 $(document).on('click','.view_student',function() {
     var class_id = $(this).data('class');
     var section_id = $(this).data('section');
+    var year_level_id = $(this).data('level');
     var text = 'No Student in this Section';
 
     $.ajax({
         type:'GET',
-        url: '/admin/view_student/'+class_id+'/'+section_id,
+        url: '/admin/view_student/'+class_id+'/'+section_id+'/'+year_level_id,
         success:function(data) {
 
             if (data.length == 0) {
@@ -254,10 +257,14 @@ $(document).on('click','.editSection',function() {
     var id = $(this).data('id');
     var classes_id = $(this).data('classes');
     var description = $(this).data('description');
+    var from = $(this).data('from');
+    var to = $(this).data('to');
     $('.modal-body #description').val(description);
     $('.modal-body #section_name').val(section_name);
     $('.modal-body #id').val(id);
     $('.modal-body #classes_id').val(classes_id);
+    $('.modal-body #section_from').val(from);
+    $('.modal-body #section_to').val(to);
 });
 
 $(document).on('click','.delete_section',function() {
@@ -310,4 +317,33 @@ $(document).ready(function() {
     }).val(null);
 });
 
+$(document).ready(function() {
+   $('#done').on('click',function() {
+      var current_object = $(this);
+      swal({
+        title: "Are you sure?",
+        text: "You will not be able to recover this students!",
+        icon: "error",
+        dangerMode: true,
+        buttons: true,
+        buttons: ['Cancel','Delete!']
+      }).then((willDelete) => {
+          if (willDelete) {
+            $.ajax({
+                url: '/admin/exam/delete',
+                type: 'GET',
+                data:{},
+                dataType: 'html',
+                success:function() {
+                    swal("Done!","It was successfully deleted","success");
+                    window.location.reload();
+                },
+                error: function(xhr, ajaxOptions, thrownError) {
+                  swal("Error!","Please try again","error");
+                }
+            });
+          }
+      });
+   });
+});
 
