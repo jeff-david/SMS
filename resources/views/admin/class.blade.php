@@ -77,7 +77,7 @@
                                                     </button>
                                                     <button class="item delete" data-id="{{$classes->id}}"
                                                         title="Delete" data-toggle="modal" data-target="#deleteModal">
-                                                        <i class="zmdi zmdi-delete" style="color:red"></i>
+                                                        <i class="zmdi zmdi-archive" style="color:red"></i>
                                                     </button>
                                                     <a href="{{route('admin.view_section',$classes->id)}}" class="item"
                                                         data-toggle="tooltip" data-placement="top" title="View Section">

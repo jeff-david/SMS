@@ -142,6 +142,54 @@ $(document).on('focusout','.editGrade',function() {
     });
 });
 
+$(document).on('focusout','.editExam',function () {
+   var lrn = $(this).data('lrn');
+   var id = $(this).data('id');
+   var value = $(this).text();
+    
+
+   var row = $(this).closest('tr');
+   var total = 0;
+   $('.editExam',row).each(function() {
+      total += Number($(this).text()) / 5; 
+   });
+   $('.average',row).text(total);
+
+   Promise.all([
+    $.ajax({
+        type:'POST',
+        url: '/admin/edit/exam/grade',
+        data:{"_token": $('meta[name="csrf-token"]').attr('content'),"value":value, "lrn":lrn,"id":id},
+        success:function(data) {
+            console.log(data);
+        }
+        }).fail(function(err){
+            console.log(err);
+        }),
+    $.ajax({
+            type:'GET',
+            url:'/admin/average/grade',
+            data:{"_token": $('meta[name="csrf-token"]').attr('content'), "lrn":lrn},
+            success:function(data) {
+                console.log(data);  
+            }
+        }).fail(function(err) {
+            console.log(err);
+        }),
+    $.ajax({
+        type:'GET',
+        url:'/admin/assign/section',
+        data:{"_token": $('meta[name="csrf-token"]').attr('content'), "total":total, "lrn":lrn},
+        success:function(data) {
+            console.log(data);
+            $('.sections_assign',row).text(data[0]['section_name']);  
+        }
+    }).fail(function(err) {
+        console.log(err);
+    })
+   ]);
+});
+
 
 $('select[name = "province"]').on('change',function(){
     var province = $(this).val();

@@ -41,6 +41,7 @@
                                             <th class="text-center">Id</th>
                                             <th class="text-center">Name</th>
                                             <th class="text-center">Description</th>
+                                            <th class="text-center">Average Grades</th>
                                             <th class="text-center">View Student</th>
                                             <th class="text-center">Action</th>
                                         </tr>
@@ -55,9 +56,11 @@
                                             <td class="text-center">{{$sections->section_name}}
                                             </td>
                                             <td class="text-center">{{$sections->description}}</td>
+                                            <td class="text-center">{{$sections->from}} - {{$sections->to}}</td>
                                             <td class="text-center"><button class="item view_student"
                                                     data-class="{{$sections->class_id}}"
-                                                    data-section="{{$sections->section_id}}" data-toggle="modal"
+                                                    data-section="{{$sections->id}}"
+                                                    data-level="{{$sections->year_level_id}}" data-toggle="modal"
                                                     data-placement="top" data-target="#view_studentModal">
                                                     <i class="zmdi zmdi-view-list" style="color:orange"> View
                                                         Student</i>
@@ -69,14 +72,16 @@
                                                         data-id="{{$sections->id}}"
                                                         data-name="{{$sections->section_name}}"
                                                         data-description="{{$sections->description}}"
+                                                        data-from="{{$sections->from}}"
+                                                        data-to="{{$sections->to}}"
                                                         data-placement="top" title="Edit"
                                                         data-target="#editSectionModal">
                                                         <i class="zmdi zmdi-edit" style="color:green"></i>
                                                     </button>
-                                                    <button class="item delete_section" title="Delete"
+                                                    <button class="item delete_section" title="Archive"
                                                         data-toggle="modal" data-target="#deleteSectionModal"
                                                         data-section="{{$sections->id}}">
-                                                        <i class="zmdi zmdi-delete" style="color:red"></i>
+                                                        <i class="zmdi zmdi-archive" style="color:red"></i>
                                                     </button>
                                                     <a href="{{route('admin.assign_teacher',$sections->year_level_id)}}"
                                                         class="item" data-toggle="tooltip" data-placement="top"
@@ -125,6 +130,22 @@
                             <div class="form-group has-success">
                                 <textarea name="description" class="form-control" id="description" cols="30" rows="2"
                                     placeholder="Enter Description . . ."></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-md-6">
+                            <div class="form-group has-success">
+                                <label for="">Average From:</label>
+                                <input id="section_from" name="from" type="number" class=" form-control " placeholder=""
+                                    value="{{old('lastname')}}">
+                            </div>
+                        </div>
+                        <div class="col col-md-6">
+                            <label for="">Average To:</label>
+                            <div class="form-group has-success">
+                                <input id="section_to" name="to" type="number" class="form-control" placeholder=""
+                                    value="{{old('lastname')}}">
                             </div>
                         </div>
                     </div>
@@ -188,7 +209,7 @@
 <div class="modal fade" id="editSectionModal" tabindex="-1" role="dialog" aria-labelledby="sendModalLabel"
     aria-hidden="true" data-backdrop="send">
     <div class="modal-dialog modal-sm" role="document">
-        <div class="modal-content text-center" style="margin-top: 85%;">
+        <div class="modal-content text-center" style="margin-top: 50%;">
             <form action="{{route('admin.edit_section')}}" method="post">
                 @csrf
                 <div class="modal-header">
@@ -220,6 +241,22 @@
                             <div class="form-group has-success">
                                 <textarea name="description" class="form-control" id="description" cols="30" rows="2"
                                     placeholder="Enter Description . . ."></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-md-6">
+                            <div class="form-group has-success">
+                                <label for="">Average From:</label>
+                                <input id="section_from" name="from" type="number" class=" form-control " placeholder=""
+                                    value="{{old('lastname')}}">
+                            </div>
+                        </div>
+                        <div class="col col-md-6">
+                            <label for="">Average To:</label>
+                            <div class="form-group has-success">
+                                <input id="section_to" name="to" type="number" class="form-control" placeholder=""
+                                    value="{{old('lastname')}}">
                             </div>
                         </div>
                     </div>

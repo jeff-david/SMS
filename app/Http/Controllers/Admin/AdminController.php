@@ -19,6 +19,7 @@ use SMS\Models\Classes;
 use SMS\Models\Grades;
 use SMS\Models\Admin;
 use SMS\Models\Subject;
+use SMS\Models\DiagnosticExam;
 use Config;
 use SMS\Models\Announcement;
 use SMS\Notifications\NewMessageNotifications;
@@ -69,28 +70,28 @@ class AdminController extends Controller
                     ->get();
 
 
-        $total_g7_first = round($g7first[0]['count'] / $g7_count,2);
+        // $total_g7_first = round($g7first[0]['count'] / $g7_count,2);
 
         $g7second = Grades::select(DB::raw("SUM(second_grading) as count"))
                         ->where('year_level_id','=',1)
                         ->groupBy(DB::raw("year_level_id"))
                         ->get();
         
-        $total_g7_second = round($g7second[0]['count'] / $g7_count,2);
+        // $total_g7_second = round($g7second[0]['count'] / $g7_count,2);
 
         $g7third = Grades::select(DB::raw("SUM(third_grading) as count"))
                         ->where('year_level_id','=',1)
                         ->groupBy(DB::raw("year_level_id"))
                         ->get();
        
-        $total_g7_third = round($g7third[0]['count'] / $g7_count,2);
+        // $total_g7_third = round($g7third[0]['count'] / $g7_count,2);
 
         $g7fourth = Grades::select(DB::raw("SUM(fourth_grading) as count"))
                         ->where('year_level_id','=',1)
                         ->groupBy(DB::raw("year_level_id"))
                         ->get();
        
-        $total_g7_fourth = round($g7fourth[0]['count'] / $g7_count,2);
+        // $total_g7_fourth = round($g7fourth[0]['count'] / $g7_count,2);
 
         // Grade 8
         $g8first = Grades::select(DB::raw("SUM(first_grading) as count"))
@@ -98,7 +99,7 @@ class AdminController extends Controller
                         ->groupBy(DB::raw("year_level_id"))
                         ->get();
         $g8_count = Grades::where('year_level_id','=',2)->count();
-        $total_g8_first = round($g8first[0]['count'] / $g8_count,2);
+        // $total_g8_first = round($g8first[0]['count'] / $g8_count,2);
 
         $g8rank = Grades::select('students.firstname','students.lastname', DB::raw("ROUND(((grades.first_grading + grades.second_grading + grades.third_grading + grades.fourth_grading)/4),2) as total"))
                     ->join('students','students.id','=','grades.user_id')
@@ -112,21 +113,21 @@ class AdminController extends Controller
                         ->groupBy(DB::raw("year_level_id"))
                         ->get();
         
-        $total_g8_second = round($g8second[0]['count'] / $g8_count,2);
+        // $total_g8_second = round($g8second[0]['count'] / $g8_count,2);
 
         $g8third = Grades::select(DB::raw("SUM(third_grading) as count"))
                         ->where('year_level_id','=',2)
                         ->groupBy(DB::raw("year_level_id"))
                         ->get();
        
-        $total_g8_third = round($g8third[0]['count'] / $g8_count,2);
+        // $total_g8_third = round($g8third[0]['count'] / $g8_count,2);
 
         $g8fourth = Grades::select(DB::raw("SUM(fourth_grading) as count"))
                         ->where('year_level_id','=',2)
                         ->groupBy(DB::raw("year_level_id"))
                         ->get();
        
-        $total_g8_fourth = round($g8fourth[0]['count'] / $g8_count,2);
+        // $total_g8_fourth = round($g8fourth[0]['count'] / $g8_count,2);
 
         // Grade 9
 
@@ -142,28 +143,28 @@ class AdminController extends Controller
                         ->groupBy(DB::raw("year_level_id"))
                         ->get();
         $g9_count = Grades::where('year_level_id','=',3)->count();
-        $total_g9_first = round($g9first[0]['count'] / $g9_count,2);
+        // $total_g9_first = round($g9first[0]['count'] / $g9_count,2);
 
         $g9second = Grades::select(DB::raw("SUM(second_grading) as count"))
                         ->where('year_level_id','=',3)
                         ->groupBy(DB::raw("year_level_id"))
                         ->get();
         
-        $total_g9_second = round($g9second[0]['count'] / $g9_count,2);
+        // $total_g9_second = round($g9second[0]['count'] / $g9_count,2);
 
         $g9third = Grades::select(DB::raw("SUM(third_grading) as count"))
                         ->where('year_level_id','=',3)
                         ->groupBy(DB::raw("year_level_id"))
                         ->get();
        
-        $total_g9_third = round($g9third[0]['count'] / $g9_count,2);
+        // $total_g9_third = round($g9third[0]['count'] / $g9_count,2);
 
         $g9fourth = Grades::select(DB::raw("SUM(fourth_grading) as count"))
                         ->where('year_level_id','=',3)
                         ->groupBy(DB::raw("year_level_id"))
                         ->get();
        
-        $total_g9_fourth = round($g9fourth[0]['count'] / $g9_count,2);
+        // $total_g9_fourth = round($g9fourth[0]['count'] / $g9_count,2);
         
         // Grade 10
         $g10rank = Grades::select('students.firstname','students.lastname', DB::raw("ROUND(((grades.first_grading + grades.second_grading + grades.third_grading + grades.fourth_grading)/4),2) as total"))
@@ -179,28 +180,28 @@ class AdminController extends Controller
                         ->groupBy(DB::raw("year_level_id"))
                         ->get();
         $g10_count = Grades::where('year_level_id','=',4)->count();
-        $total_g10_first = round($g10first[0]['count'] / $g10_count,2);
+        // $total_g10_first = round($g10first[0]['count'] / $g10_count,2);
 
         $g10second = Grades::select(DB::raw("SUM(second_grading) as count"))
                         ->where('year_level_id','=',4)
                         ->groupBy(DB::raw("year_level_id"))
                         ->get();
         
-        $total_g10_second = round($g10second[0]['count'] / $g10_count,2);
+        // $total_g10_second = round($g10second[0]['count'] / $g10_count,2);
 
         $g10third = Grades::select(DB::raw("SUM(third_grading) as count"))
                         ->where('year_level_id','=',4)
                         ->groupBy(DB::raw("year_level_id"))
                         ->get();
        
-        $total_g10_third = round($g10third[0]['count'] / $g10_count,2);
+        // $total_g10_third = round($g10third[0]['count'] / $g10_count,2);
 
         $g10fourth = Grades::select(DB::raw("SUM(fourth_grading) as count"))
                         ->where('year_level_id','=',4)
                         ->groupBy(DB::raw("year_level_id"))
                         ->get();
        
-        $total_g10_fourth = round($g10fourth[0]['count'] / $g10_count,2);
+        // $total_g10_fourth = round($g10fourth[0]['count'] / $g10_count,2);
 
         // Grade 11
         $g11rank = Grades::select('students.firstname','students.lastname', DB::raw("ROUND(((grades.first_grading + grades.second_grading + grades.third_grading + grades.fourth_grading)/4),2) as total"))
@@ -215,28 +216,28 @@ class AdminController extends Controller
                         ->groupBy(DB::raw("year_level_id"))
                         ->get();
         $g11_count = Grades::where('year_level_id','=',5)->count();
-        $total_g11_first = round($g11first[0]['count'] / $g11_count,2);
+        // $total_g11_first = round($g11first[0]['count'] / $g11_count,2);
 
         $g11second = Grades::select(DB::raw("SUM(second_grading) as count"))
                         ->where('year_level_id','=',5)
                         ->groupBy(DB::raw("year_level_id"))
                         ->get();
         
-        $total_g11_second = round($g11second[0]['count'] / $g11_count,2);
+        // $total_g11_second = round($g11second[0]['count'] / $g11_count,2);
 
         $g11third = Grades::select(DB::raw("SUM(third_grading) as count"))
                         ->where('year_level_id','=',5)
                         ->groupBy(DB::raw("year_level_id"))
                         ->get();
        
-        $total_g11_third = round($g11third[0]['count'] / $g11_count,2);
+        // $total_g11_third = round($g11third[0]['count'] / $g11_count,2);
 
         $g11fourth = Grades::select(DB::raw("SUM(fourth_grading) as count"))
                         ->where('year_level_id','=',5)
                         ->groupBy(DB::raw("year_level_id"))
                         ->get();
        
-        $total_g11_fourth = round($g11fourth[0]['count'] / $g11_count,2);
+        // $total_g11_fourth = round($g11fourth[0]['count'] / $g11_count,2);
 
         // Grade 12
 
@@ -252,60 +253,60 @@ class AdminController extends Controller
                         ->groupBy(DB::raw("year_level_id"))
                         ->get();
         $g12_count = Grades::where('year_level_id','=',6)->count();
-        $total_g12_first = round($g12first[0]['count'] / $g12_count,2);
+        // $total_g12_first = round($g12first[0]['count'] / $g12_count,2);
 
         $g12second = Grades::select(DB::raw("SUM(second_grading) as count"))
                         ->where('year_level_id','=',6)
                         ->groupBy(DB::raw("year_level_id"))
                         ->get();
         
-        $total_g12_second = round($g12second[0]['count'] / $g12_count,2);
+        // $total_g12_second = round($g12second[0]['count'] / $g12_count,2);
 
         $g12third = Grades::select(DB::raw("SUM(third_grading) as count"))
                         ->where('year_level_id','=',6)
                         ->groupBy(DB::raw("year_level_id"))
                         ->get();
        
-        $total_g12_third = round($g12third[0]['count'] / $g12_count,2);
+        // $total_g12_third = round($g12third[0]['count'] / $g12_count,2);
 
         $g12fourth = Grades::select(DB::raw("SUM(fourth_grading) as count"))
                         ->where('year_level_id','=',6)
                         ->groupBy(DB::raw("year_level_id"))
                         ->get();
        
-        $total_g12_fourth = round($g12fourth[0]['count'] / $g12_count,2);
-        JavaScript::put([
-            'g7_first'=> $total_g7_first,
-            'g7_second'=> $total_g7_second,
-            'g7_third'=> $total_g7_third,
-            'g7_fourth' => $total_g7_fourth,
-            'g8_first'=> $total_g8_first,
-            'g8_second'=> $total_g8_second,
-            'g8_third'=> $total_g8_third,
-            'g8_fourth' => $total_g8_fourth,
-            'g9_first'=> $total_g9_first,
-            'g9_second'=> $total_g9_second,
-            'g9_third'=> $total_g9_third,
-            'g9_fourth' => $total_g9_fourth,
-            'g10_first'=> $total_g10_first,
-            'g10_second'=> $total_g10_second,
-            'g10_third'=> $total_g10_third,
-            'g10_fourth' => $total_g10_fourth,
-            'g11_first'=> $total_g11_first,
-            'g11_second'=> $total_g11_second,
-            'g11_third'=> $total_g11_third,
-            'g11_fourth' => $total_g11_fourth,
-            'g12_first'=> $total_g12_first,
-            'g12_second'=> $total_g12_second,
-            'g12_third'=> $total_g12_third,
-            'g12_fourth' => $total_g12_fourth,
-            'g7rank' => $g7rank,
-            'g8rank' => $g8rank,
-            'g9rank' => $g9rank,
-            'g10rank' => $g10rank,
-            'g11rank' => $g11rank,
-            'g12rank' => $g12rank
-        ]);
+        // $total_g12_fourth = round($g12fourth[0]['count'] / $g12_count,2);
+        // JavaScript::put([
+        //     'g7_first'=> $total_g7_first,
+        //     'g7_second'=> $total_g7_second,
+        //     'g7_third'=> $total_g7_third,
+        //     'g7_fourth' => $total_g7_fourth,
+        //     'g8_first'=> $total_g8_first,
+        //     'g8_second'=> $total_g8_second,
+        //     'g8_third'=> $total_g8_third,
+        //     'g8_fourth' => $total_g8_fourth,
+        //     'g9_first'=> $total_g9_first,
+        //     'g9_second'=> $total_g9_second,
+        //     'g9_third'=> $total_g9_third,
+        //     'g9_fourth' => $total_g9_fourth,
+        //     'g10_first'=> $total_g10_first,
+        //     'g10_second'=> $total_g10_second,
+        //     'g10_third'=> $total_g10_third,
+        //     'g10_fourth' => $total_g10_fourth,
+        //     'g11_first'=> $total_g11_first,
+        //     'g11_second'=> $total_g11_second,
+        //     'g11_third'=> $total_g11_third,
+        //     'g11_fourth' => $total_g11_fourth,
+        //     'g12_first'=> $total_g12_first,
+        //     'g12_second'=> $total_g12_second,
+        //     'g12_third'=> $total_g12_third,
+        //     'g12_fourth' => $total_g12_fourth,
+        //     'g7rank' => $g7rank,
+        //     'g8rank' => $g8rank,
+        //     'g9rank' => $g9rank,
+        //     'g10rank' => $g10rank,
+        //     'g11rank' => $g11rank,
+        //     'g12rank' => $g12rank
+        // ]);
         return view('admin.dashboard',compact('g7','g8','g9','g10','g11','g12'));
     }
     public function index()
@@ -463,11 +464,12 @@ class AdminController extends Controller
         return redirect()->back()->with(['success'=>'Successfully Edited']);
     }
 
-    public function view_student($class_id,$section_id)
+    public function view_student($class_id,$section_id,$year_level_id)
     {
-        $conditions = ['section_id' => $section_id, 'class_id' => $class_id];
+        $conditions = ['section_id' => $section_id, 'class_id' => $class_id,'year_level_id' => $year_level_id];
 
         $students = Student::where($conditions)
+                ->orderBy('lastname','asc')
                 ->get();
         return $students;
     }
@@ -477,6 +479,8 @@ class AdminController extends Controller
         
         $data = $request->add_section;
         $description = $request->description;
+        $from = $request->from;
+        $to = $request->to;
         $id = $request->id;
 
         \DB::beginTransaction();
@@ -487,6 +491,8 @@ class AdminController extends Controller
             $section->class_id = $id;
             $section->description = $description;
             $section->section_id = $id;
+            $section->from = $from;
+            $section->to = $to;
             $section->year_level_id = 0;
             $section->save();
             \DB::commit();
@@ -502,10 +508,19 @@ class AdminController extends Controller
    
     public function student_list()
     {
+        $student_arr = array();
         $student = Student::select('students.*','year_levels.yearlevel')
                     ->join('year_levels','students.year_level_id', '=', 'year_levels.id')
                     ->distinct()
                     ->get();
+        $stud = Student::where('section_id' ,'=', 0)->get();
+        if ($stud != null) {
+            foreach($stud as $i => $students){
+                $student_arr[$i] = new DiagnosticExam; 
+                $student_arr[$i]->LRN = $students->LRN;
+                $student_arr[$i]->save();       
+            }
+        }
         return view('admin.studentlist', compact('student'));
     }
 
@@ -808,5 +823,77 @@ class AdminController extends Controller
             return redirect()->back()->withInput()->with('success','Successfully Send Message');
             
         }       
+    }
+    public function view_diagnostic()
+    {
+        $diagnostic = DiagnosticExam::join('students','students.LRN','=','diagnostic_exams.LRN')
+                                    ->orderBy('students.lastname','asc')
+                                    ->get();
+        
+        $section = Section::where('year_level_id','=',1)
+                    ->get();        
+        
+        $exam = $diagnostic->where('section_id',0)->count();
+
+        return view('admin.diagnostic_exam',compact('diagnostic','section','exam'));
+    }
+    public function editDiagnostic(Request $request)
+    {
+        $data = $request->all();
+
+        \DB::beginTransaction();
+
+        try
+        {
+            $save = $this->adminService->editDiagnostic($data);
+            \DB::commit(); 
+        }catch(\Exception $th)
+        {
+            \DB::rollback();
+        }
+
+        return $save;
+    }
+    public function getAverage(Request $request)
+    {
+        $data = $request->all();
+        
+        \DB::beginTransaction();
+
+        try
+        {
+            $save = $this->adminService->getAverage($data);
+            \DB::commit(); 
+        }catch(\Exception $th)
+        {
+            \DB::rollback();
+        }
+
+        return $save;        
+    }
+
+    public function assignSection(Request $request)
+    {
+        $data = $request->all();
+        
+        \DB::beginTransaction();
+
+        try
+        {
+            $save = $this->adminService->assignSection($data);
+            \DB::commit(); 
+        }catch(\Exception $th)
+        {
+            \DB::rollback();
+        }
+
+        return $save;       
+    }
+
+    public function examDelete()
+    {
+        DiagnosticExam::truncate();
+
+        return response()->json(['success','Successfull Deleted']);
     }
 }
