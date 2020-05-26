@@ -97,3 +97,4 @@
     <script src="{{ url('/js/class.js')}}"></script>
     <script src="{{ url('/js/student.js')}}"></script>
     <script src="{{ url('/js/teacher.js')}}"></script>
+    <script src="{{ url('/js/department.js')}}"></script>

@@ -13,17 +13,14 @@ class DepartmentsTableSeeder extends Seeder
     {
         DB::table('departments')->insert(
             array(
-                array('department_name' => 'Aral-Pan'),
-                array('department_name' => 'Filipino'),
-                array( 'department_name' => 'Science'),
-                array('department_name' => 'English'),
-                array('department_name' => 'TVET'),
-                array('department_name' => 'CLE'),
-                array('department_name' => 'MUSIC'),
-                array('department_name' => 'P.E'),
-                array('department_name' => 'ARTS'),
-                array('department_name' => 'HEALTH'),
-                array('department_name' => 'Math'),
+                array('department_name' => 'Aral-Pan','description' => 'sample'),
+                array('department_name' => 'Filipino','description' => 'sample'),
+                array('department_name' => 'Science','description' => 'sample'),
+                array('department_name' => 'English','description' => 'sample'),
+                array('department_name' => 'TVET','description' => 'sample'),
+                array('department_name' => 'CLE','description' => 'sample'),
+                array('department_name' => 'MAPEH','description' => 'sample'),
+                array('department_name' => 'MATH','description' => 'sample'),
             )
         );
 

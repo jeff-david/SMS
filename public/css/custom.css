@@ -53,3 +53,6 @@
     border-radius: 10px;
     margin-right: 170px;
 }
+.swal-footer {
+    text-align: center;
+}

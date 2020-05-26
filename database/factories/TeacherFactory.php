@@ -11,7 +11,7 @@ $factory->define(Teacher::class, function (Faker $faker) {
 
     return [
         'cell_no' => $faker->e164PhoneNumber,
-        'departments_id' => $faker->numberBetween(1,12),
+        'departments_id' => $faker->numberBetween(1,8),
         'lastname' => $faker->lastName,
         'firstname'=>$faker->firstName,
         'middlename'=>$faker->lastName,
