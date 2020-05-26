@@ -11,6 +11,7 @@ use SMS\Models\Subject;
 use SMS\Models\Assign;
 use SMS\Models\Admin;
 use SMS\Models\Grades;
+use SMS\Models\Department;
 use SMS\Models\DiagnosticExam;
 use SMS\Helper\FileHelper;
 use SMS\Models\Announcement;
@@ -472,6 +473,17 @@ class AdminService
                     ->update(['section_id' => $sections[0]['id']]);
         return $sections;
     }
+
+    public function editDepartment($data)
+    {
+        $depart = Department::find($data['id']);
+        $depart->department_name = $data['depart_name'];
+        $depart->description = $data['description'];
+        $depart->save();
+
+        return $depart;
+    }
+
 
 
 } 

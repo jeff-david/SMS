@@ -45,10 +45,16 @@
                             <span class="bot-line"></span> Student
                         </a>
                     </li>
-                    <li>
+                    <li class="has-sub">
                         <a href="{{route('admin.teacher')}}"><i class="fas fa-list-ul"></i>
                             <span class="bot-line"></span> Teacher
                         </a>
+                        <ul class="header3-sub-list list-unstyled">
+                            <li>
+                                <a href="{{route('admin.department')}}"><i class="fas fa-plus-square"></i>
+                                    Department</a>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
             </div>

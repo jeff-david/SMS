@@ -64,6 +64,14 @@ Route::prefix('admin')->middleware('auth:admin')->group(function(){
     Route::post('/assign_teacher/store/{id}', 'Admin\AdminController@store_assign')->name('admin.store_assign');
     Route::post('/student/update/{id}', 'Admin\AdminController@student_update')->name('admin.student_update');
     Route::post('/teacher/update/{id}', 'Admin\AdminController@teacher_update')->name('admin.teacher_update');
+
+    Route::prefix('/department')->group(function ()
+    {
+        Route::get('/view','Admin\AdminController@departmentView')->name('admin.department');
+        Route::post('/editDepartment','Admin\AdminController@editDepartment')->name('admin.editDepartment');
+        Route::post('/addDepartment','Admin\AdminController@addDepartment')->name('admin.addDepartment');
+        Route::post('/delete','Admin\AdminController@deleteDepartment')->name('admin.deleteDepartment');
+    });
 });
 
 

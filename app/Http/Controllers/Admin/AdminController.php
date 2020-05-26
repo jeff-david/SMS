@@ -896,4 +896,61 @@ class AdminController extends Controller
 
         return response()->json(['success','Successfull Deleted']);
     }
+
+    public function departmentView()
+    {
+        $department = Department::select('departments.*', DB::raw('COUNT(teachers.id) as total'))
+                                ->join('teachers','teachers.departments_id','=','departments.id')
+                                ->groupBy('departments.id','departments.department_name','departments.description','departments.created_at','departments.updated_at')
+                                ->get();
+        return view('admin.department',compact('department'));
+    }
+
+    public function addDepartment(Request $request)
+    {
+        $data = $request->all();
+
+        \DB::beginTransaction();
+        try
+        {
+            $department = new Department();
+            $department->department_name = $data['add_department'];
+            $department->description = $data['description'];
+            $department->save();
+            
+            \DB::commit(); 
+        }catch(\Exception $th)
+        {
+            \DB::rollback();
+        }
+        return $department;
+
+    }
+
+    public function editDepartment(Request $request)
+    {
+        $data = $request->all();
+
+        \DB::beginTransaction();
+
+        try
+        {
+            $save = $this->adminService->editDepartment($data);
+            \DB::commit(); 
+        }catch(\Exception $th)
+        {
+            \DB::rollback();
+
+        }
+
+        return $save;   
+    }
+
+    public function deleteDepartment(Request $request)
+    {
+        $id = $request->id;
+        $depart = Department::find($id);
+        $depart->delete();
+        return $depart;
+    }
 }
