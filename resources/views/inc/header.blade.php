@@ -38,6 +38,9 @@
                                 <a href="{{route('admin.diagnostic_exam')}}"><i class="fas fa-plus-square"></i>
                                     Diagnostic Exam</a>
                             </li>
+                            <li>
+                                <a href="{{route('admin.subject')}}"><i class="fas fa-plus-square"></i>Subject</a>
+                            </li>
                         </ul>
                     </li>
                     <li>

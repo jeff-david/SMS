@@ -67,11 +67,17 @@ Route::prefix('admin')->middleware('auth:admin')->group(function(){
 
     Route::prefix('/department')->group(function ()
     {
-        Route::get('/view','Admin\AdminController@departmentView')->name('admin.department');
+        Route::get('/','Admin\AdminController@departmentView')->name('admin.department');
         Route::post('/editDepartment','Admin\AdminController@editDepartment')->name('admin.editDepartment');
         Route::post('/addDepartment','Admin\AdminController@addDepartment')->name('admin.addDepartment');
         Route::post('/delete','Admin\AdminController@deleteDepartment')->name('admin.deleteDepartment');
     });
+
+    Route::prefix('/subject','Admin\AdminController@subjectView')->group(function ()
+    {
+        Route::get('/','Admin\AdminController@subjectView')->name('admin.subject');
+    });
+
 });
 
 

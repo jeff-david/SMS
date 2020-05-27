@@ -953,4 +953,9 @@ class AdminController extends Controller
         $depart->delete();
         return $depart;
     }
+
+    public function subjectView()
+    {
+        return view('admin.view_subjects');
+    }
 }
