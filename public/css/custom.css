@@ -69,3 +69,15 @@
     border-radius: 10px;
     margin-right: 170px;
 }
+.sidebar {
+    height: 100%;
+    width: 250px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #393939;
+    overflow-x: hidden;
+    padding-top: 100px;
+    /* background: #393939 */
+  }

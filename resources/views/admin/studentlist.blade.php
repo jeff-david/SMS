@@ -30,23 +30,23 @@
 
                                         </div>
                                     </div>
-                                    
+
                                     <input class="form-control" id="lrn_scol" type="text" placeholder="LRN"
-                                        aria-label="Search"><br> 
+                                        aria-label="Search"><br>
                                     <input class="form-control" id="stud_name" type="text" placeholder="Name"
                                         aria-label="Search"><br>
                                     <input class="form-control" id="grade_level" type="text" placeholder="Grade Level"
                                         aria-label="Search"><br>
 
-                                        <input class="form-control" id="batch_name" type="text" placeholder="Batch Name"
+                                    <input class="form-control" id="batch_name" type="text" placeholder="Batch Name"
                                         aria-label="Search"><br>
-                                        <input class="form-control" id="section" type="text" placeholder="Section"
+                                    <input class="form-control" id="section" type="text" placeholder="Section"
                                         aria-label="Search"><br>
-                                        <input class="form-control" id="grading" type="text" placeholder="Grading"
+                                    <input class="form-control" id="grading" type="text" placeholder="Grading"
                                         aria-label="Search"><br>
-                                       
 
-                                   
+
+
                                     <button class="btn btn-success form-control " id="search_btn"
                                         type="submit">Search</button>
 
@@ -57,7 +57,7 @@
                         </div>
 
 
-<!-- the table -->
+                        <!-- the table -->
                         <div class="col-md-8">
                             <div class="table-responsive">
                                 <table class="table" id="student">
