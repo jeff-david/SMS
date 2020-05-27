@@ -22,6 +22,12 @@ use SMS\Models\Subject;
 use SMS\Models\DiagnosticExam;
 use Config;
 use SMS\Models\Announcement;
+use SMS\Models\GradeSevenSubject;
+use SMS\Models\GradeEightSubject;
+use SMS\Models\GradeNineSubject;
+use SMS\Models\GradeTenSubject;
+use SMS\Models\GradeElevenSubject;
+use SMS\Models\GradeTwelveSubject;
 use SMS\Notifications\NewMessageNotifications;
 use JavaScript;
 use Session;
@@ -956,6 +962,27 @@ class AdminController extends Controller
 
     public function subjectView()
     {
-        return view('admin.view_subjects');
+        $seven = GradeSevenSubject::where('year_level_id',1)
+                ->paginate(10);
+
+        $eight = GradeEightSubject::where('year_level_id',2)
+                ->paginate(10);
+
+        $nine = GradeNineSubject::where('year_level_id',3)
+                ->paginate(10);
+
+        $ten = GradeTenSubject::where('year_level_id',4)
+                ->paginate(10);
+
+        $elevenfirst = GradeElevenSubject::where('year_level_id',5)
+                ->where('semester',1)
+                ->paginate(10);
+        
+        $elevensecond = GradeElevenSubject::where('year_level_id',5)
+                ->where('semester',2)
+                ->paginate(10);
+       
+        
+        return view('admin.view_subjects',compact('seven','eight','nine','ten','elevenfirst','elevensecond'));
     }
 }

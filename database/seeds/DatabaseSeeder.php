@@ -20,6 +20,12 @@ class DatabaseSeeder extends Seeder
         $this->call(ClassTableSeeder::class);
         $this->call(AdminTableSeeder::class);
         $this->call(PrincipalTableSeeder::class);
+        $this->call(GradeSevenSubjectTableSeeder::class);
+        $this->call(GradeEightSubjectTableSeeder::class);
+        $this->call(GradeNineSubjectTableSeeder::class);
+        $this->call(GradeTenSubjectTableSeeder::class);
+        $this->call(GradeElevenSubjectTableSeeder::class);
+        $this->call(GradeTwelveSubjectTableSeeder::class);
         // $this->call(GradesTableSeeder::class);
         // $this->call(FirstGradingSeeder::class);
     }

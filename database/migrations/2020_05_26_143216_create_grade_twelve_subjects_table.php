@@ -15,7 +15,7 @@ class CreateGradeTwelveSubjectsTable extends Migration
     {
         Schema::create('grade_twelve_subjects', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('LRN');
+            $table->bigInteger('department_id');
             $table->bigInteger('year_level_id');
             $table->string('subject_name');
             $table->string('description');
