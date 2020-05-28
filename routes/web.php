@@ -59,6 +59,10 @@ Route::prefix('admin')->middleware('auth:admin')->group(function(){
     Route::post('/assign_teacher/store/{id}', 'Admin\AdminController@store_assign')->name('admin.store_assign');
     Route::post('/student/update/{id}', 'Admin\AdminController@student_update')->name('admin.student_update');
     Route::post('/teacher/update/{id}', 'Admin\AdminController@teacher_update')->name('admin.teacher_update');
+
+
+    //post and comment routing
+
 });
 
 

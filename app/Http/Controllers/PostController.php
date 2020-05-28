@@ -44,7 +44,7 @@ class PostController extends Controller
     
         Post::create($request->all());
     
-        return redirect()->route('posts.index');
+        return redirect()->route('posts.show');
     }
     
     /**
