@@ -60,8 +60,10 @@
                                                             <td class="text-center">{{$sevens->subject_name}}</td>
                                                             <td class="text-center">{{$sevens->description}}</td>
                                                             <td class="table-data-feature" style="text-align:center;">
-                                                                <button class="item" title="edit" data-toggle="modal"
-                                                                    data-target="#editannouncement">
+                                                                <button class="item subject_edit" title="edit" data-toggle="modal"
+                                                                    data-target="#edit_subjects" data-name="{{$sevens->subject_name}}"
+                                                                    data-description="{{$sevens->description}}" data-year="{{$sevens->year_level_id}}"
+                                                                    data-id="{{$sevens->id}}" data-department="{{$sevens->department_id}}">
                                                                     <i class="zmdi zmdi-edit"></i>
                                                                 </button>
 
@@ -103,8 +105,10 @@
                                                             <td class="text-center">{{$eights->subject_name}}</td>
                                                             <td class="text-center">{{$eights->description}}</td>
                                                             <td class="table-data-feature" style="text-align:center;">
-                                                                <button class="item" title="edit" data-toggle="modal"
-                                                                    data-target="#editannouncement">
+                                                                <button class="item subject_edit" title="edit" data-toggle="modal"
+                                                                    data-target="#edit_subjects" data-name="{{$eights->subject_name}}"
+                                                                    data-description="{{$eights->description}}" data-year="{{$eights->year_level_id}}"
+                                                                    data-id="{{$eights->id}}" data-department="{{$eights->department_id}}">
                                                                     <i class="zmdi zmdi-edit"></i>
                                                                 </button>
 
@@ -146,8 +150,10 @@
                                                             <td class="text-center">{{$nines->subject_name}}</td>
                                                             <td class="text-center">{{$nines->description}}</td>
                                                             <td class="table-data-feature" style="text-align:center;">
-                                                                <button class="item" title="edit" data-toggle="modal"
-                                                                    data-target="#editannouncement">
+                                                            <button class="item subject_edit" title="edit" data-toggle="modal"
+                                                                    data-target="#edit_subjects" data-name="{{$nines->subject_name}}"
+                                                                    data-description="{{$nines->description}}" data-year="{{$nines->year_level_id}}"
+                                                                    data-id="{{$nines->id}}" data-department="{{$nines->department_id}}">
                                                                     <i class="zmdi zmdi-edit"></i>
                                                                 </button>
 
@@ -189,8 +195,10 @@
                                                             <td class="text-center">{{$tens->subject_name}}</td>
                                                             <td class="text-center">{{$tens->description}}</td>
                                                             <td class="table-data-feature" style="text-align:center;">
-                                                                <button class="item" title="edit" data-toggle="modal"
-                                                                    data-target="#editannouncement">
+                                                            <button class="item subject_edit" title="edit" data-toggle="modal"
+                                                                    data-target="#edit_subjects" data-name="{{$tens->subject_name}}"
+                                                                    data-description="{{$tens->description}}" data-year="{{$tens->year_level_id}}"
+                                                                    data-id="{{$tens->id}}" data-department="{{$tens->department_id}}">
                                                                     <i class="zmdi zmdi-edit"></i>
                                                                 </button>
 
@@ -235,8 +243,10 @@
                                                             <td class="text-center">{{$elevenfirsts->subject_name}}</td>
                                                             <td class="text-center">{{$elevenfirsts->description}}</td>
                                                             <td class="table-data-feature" style="text-align:center;">
-                                                                <button class="item" title="edit" data-toggle="modal"
-                                                                    data-target="#editannouncement">
+                                                                <button class="item subjectset_edit" title="edit" data-toggle="modal"
+                                                                    data-target="#edit_subjectset" data-name="{{$elevenfirsts->subject_name}}"
+                                                                    data-description="{{$elevenfirsts->description}}" data-year="{{$elevenfirsts->year_level_id}}"
+                                                                    data-id="{{$elevenfirsts->id}}" data-department="{{$elevenfirsts->department_id}}" data-semester="{{$elevenfirsts->semester}}">
                                                                     <i class="zmdi zmdi-edit"></i>
                                                                 </button>
 
@@ -278,8 +288,10 @@
                                                             <td class="text-center">{{$elevenseconds->subject_name}}</td>
                                                             <td class="text-center">{{$elevenseconds->description}}</td>
                                                             <td class="table-data-feature" style="text-align:center;">
-                                                                <button class="item" title="edit" data-toggle="modal"
-                                                                    data-target="#editannouncement">
+                                                                <button class="item subjectset_edit" title="edit" data-toggle="modal"
+                                                                data-target="#edit_subjectset" data-name="{{$elevenseconds->subject_name}}"
+                                                                    data-description="{{$elevenseconds->description}}" data-year="{{$elevenseconds->year_level_id}}"
+                                                                    data-id="{{$elevenseconds->id}}" data-department="{{$elevenseconds->department_id}}" data-semester="{{$elevenseconds->semester}}">>
                                                                     <i class="zmdi zmdi-edit"></i>
                                                                 </button>
 
@@ -398,13 +410,6 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col col-md-12">
-                            <div class="form-group has-success">
-                                <input id="id" name="id" type="hidden" class="form-control">
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-primary btn-block">ADD</button>
@@ -416,6 +421,7 @@
     </div>
 </div>
 
+<!-- ADD SUBJECTS FOR GRADE 11 AND GRADE 12 -->
 <div class="modal fade" id="addsubjectset" tabindex="-1" role="dialog" aria-labelledby="sendModalLabel" aria-hidden="true"
     data-backdrop="send">
     <div class="modal-dialog modal-lg" role="document">
@@ -488,6 +494,158 @@
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-primary btn-block">ADD</button>
+                    <button type="button" class="btn btn-danger btn-block" data-dismiss="modal"
+                        style="margin-top: 0rem;">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- UPDATING SUBJECTS FOR GRADE 7 TO GRADE 10 -->
+<div class="modal fade" id="edit_subjects" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content text-center" style="margin-top: 20%;">
+            <form id="editSubjectForm" action="{{route('admin.editSubject')}}" method="post">
+                @csrf
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticModalLabel">UPDATE SUBJECTS</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col col-md-12">
+                            <div class="form-group has-success">
+                                <input name="add_subject" type="text" id="subject_name" class="form-control"
+                                    placeholder="Enter Subject Name" value="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-md-12">
+                            <div class="form-group has-success">
+                                <textarea name="description" class="form-control" id="description" cols="30" rows="2"
+                                    placeholder="Enter Description . . ."></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-md-6">
+                            <div class="form-group has-success">
+                                <label for="">Grade Year :</label>
+                                <select name="edityear" id="edityear" class="form-control">
+                                <option value=""></option>
+                                @foreach($year as $years)
+                                <option value="{{$years->id}}">{{$years->yearlevel}}</option>
+                                @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col col-md-6">
+                            <label for="">Department :</label>
+                            <div class="form-group has-success">
+                                <select name="editdepartment" id="editdepartment" class="form-control">
+                                <option value=""></option>
+                                @foreach($department as $departments)
+                                <option value="{{$departments->id}}">{{$departments->department_name}}</option>
+                                @endforeach
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-md-12">
+                            <div class="form-group has-success">
+                                <input id="id" name="id" type="hidden" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary btn-block">Update</button>
+                    <button type="button" class="btn btn-danger btn-block" data-dismiss="modal"
+                        style="margin-top: 0rem;">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- UPDATING SUBJECTS FOR GRADE 11 TO GRADE 12 -->
+<div class="modal fade" id="edit_subjectset" tabindex="-1" role="dialog" aria-labelledby="sendModalLabel" aria-hidden="true"
+    data-backdrop="send">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content text-center" style="margin-top: 20%;">
+            <form id="editSubjectsetForm" action="{{route('admin.editSubjectset')}}" method="post">
+                @csrf
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticModalLabel">UPDATE SUBJECTS</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col col-md-12">
+                            <div class="form-group has-success">
+                                <input name="add_subject" type="text" id="add_subject" class="form-control"
+                                    placeholder="Enter Subject Name" value="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-md-12">
+                            <div class="form-group has-success">
+                                <textarea name="description" class="form-control" id="description" cols="30" rows="2"
+                                    placeholder="Enter Description . . ."></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-md-4">
+                            <div class="form-group has-success">
+                                <label for="">Grade Year :</label>
+                                <select name="edityear" id="edityear" class="form-control">
+                                <option value="0"></option>
+                                @foreach($yearset as $key => $yearsets)
+                                <option value="{{$yearset[$key]->id}}" class="form-control">{{$yearsets->yearlevel}}</option>
+                                @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col col-md-4">
+                            <label for="">Department :</label>
+                            <div class="form-group has-success">
+                                <select name="editdepartment" id="editdepartment" class="form-control">
+                                <option value="0"></option>
+                                @foreach($department as $departments)
+                                <option value="{{$departments->id}}" class="form-control">{{$departments->department_name}}</option>
+                                @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col col-md-4">
+                            <label for="">Semester :</label>
+                            <div class="form-group has-success">
+                                <select name="editsemester" id="editsemester" class="form-control">
+                                <option value="1" class="form-control">First Semester</option>
+                                <option value="2" class="form-control">Second Semester</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-md-12">
+                            <div class="form-group has-success">
+                                <input id="id" name="id" type="hidden" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary btn-block">Update</button>
                     <button type="button" class="btn btn-danger btn-block" data-dismiss="modal"
                         style="margin-top: 0rem;">Cancel</button>
                 </div>

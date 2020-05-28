@@ -994,7 +994,6 @@ class AdminController extends Controller
     public function addSubject(Request $request)
     {
         $data = $request->all();
-
         \DB::beginTransaction();
         try
         {
@@ -1015,6 +1014,38 @@ class AdminController extends Controller
         try
         {
             $save = $this->adminService->addSubjectset($data);
+            \DB::commit(); 
+        }catch(\Exception $th)
+        {
+            \DB::rollback();
+        }
+        return $save;
+    }
+
+    public function editSubject(Request $request)
+    {
+        $data = $request->all();
+
+        \DB::beginTransaction();
+        try
+        {
+            $save = $this->adminService->editSubject($data);
+            \DB::commit(); 
+        }catch(\Exception $th)
+        {
+            \DB::rollback();
+        }
+        return $save;
+    }
+
+    public function editSubjectset(Request $request)
+    {
+        $data = $request->all();
+
+        \DB::beginTransaction();
+        try
+        {
+            $save = $this->adminService->editSubjectset($data);
             \DB::commit(); 
         }catch(\Exception $th)
         {

@@ -571,6 +571,85 @@ class AdminService
         }
     }
 
+    public function editSubject($data)
+    {
+        switch ($data['edityear']) {
+            case 1:
+                $seven = GradeSevenSubject::find($data['id']);
+                $seven->subject_name = $data['add_subject'];
+                $seven->department_id = $data['editdepartment'];
+                $seven->year_level_id = $data['edityear'];
+                $seven->description = $data['description'];
+                $seven->save();
+                
+                return $seven;
+                break;
+            case 2:
+                $eight = GradeEightSubject::find($data['id']);
+                $eight->subject_name = $data['add_subject'];
+                $eight->department_id = $data['editdepartment'];
+                $eight->year_level_id = $data['edityear'];
+                $eight->description = $data['description'];
+                $eight->save();
+                
+                return $eight;
+                break;
+            case 3:
+                $nine = GradeNineSubject::find($data['id']);
+                $nine->subject_name = $data['add_subject'];
+                $nine->department_id = $data['editdepartment'];
+                $nine->year_level_id = $data['edityear'];
+                $nine->description = $data['description'];
+                $nine->save();
+                
+                return $nine;
+                break;
+            case 4:
+                $ten = GradeTenSubject::find($data['id']);
+                $ten->subject_name = $data['add_subject'];
+                $ten->department_id = $data['editdepartment'];
+                $ten->year_level_id = $data['edityear'];
+                $ten->description = $data['description'];
+                $ten->save();
+                
+                return $ten;
+                break;
+            default:
+                # code...
+                break;
+        }
+    }
+
+    public function editSubjectset($data)
+    {
+        switch ($data['edityear']) {
+            case 5:
+                $eleven = GradeElevenSubject::find($data['id']);
+                $eleven->subject_name = $data['add_subject'];
+                $eleven->department_id = $data['editdepartment'];
+                $eleven->year_level_id = $data['edityear'];
+                $eleven->description = $data['description'];
+                $eleven->semester = $data['editsemester'];
+                $eleven->save();
+                
+                return $eleven;
+                break;
+            case 6:
+                $twelve = GradeTwelveSubject::find($data['id']);
+                $twelve->subject_name = $data['add_subject'];
+                $twelve->department_id = $data['editdepartment'];   
+                $twelve->year_level_id = $data['edityear'];
+                $twelve->description = $data['description'];
+                $twelve->semester = $data['editsemester'];
+                $twelve->save();
+                
+                return $twelve;
+                break;
+            default:
+                # code...
+                break;
+        }
+    }
 
 
 } 

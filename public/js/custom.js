@@ -86,11 +86,13 @@ $(document).ready(function() {
            }
        }).fail(function() {
             swal("Fail!", "Network/Server error!", 'error');
-            window.location.reload();
+            // window.location.reload();
        });
     });
 
+});
 
+$(document).ready(function() {
     var form = $('#subjectsetForm');
 
     form.submit(function(e) {
@@ -120,5 +122,98 @@ $(document).ready(function() {
             window.location.reload();
        });
     });
- 
+  
+});
+$(document).on('click','.subject_edit',function() {
+    var subject_name = $(this).data('name');
+    var id = $(this).data('id');
+    var description = $(this).data('description');
+    var year = $(this).data('year');
+    var depart = $(this).data('department');
+    $('.modal-body #subject_name').val(subject_name);
+    $('.modal-body #id').val(id);
+    $('.modal-body #description').val(description);
+    $('.modal-body #edityear option[value='+ year +']').attr('selected','selected');
+    $('.modal-body #editdepartment option[value='+ depart +']').attr('selected','selected');
+  
+});
+
+$(document).ready(function() {
+
+    var form = $('#editSubjectForm');
+    form.submit(function(e) {
+       e.preventDefault();
+       
+       $.ajax({
+            url: form.attr('action'),
+            type:'POST',
+            data: form.serialize(),
+            dataType: 'json'
+       }).done(function(response) {
+           if (response) {
+               swal({
+                   title: "Successfully Updated",
+                   text:  "",
+                   icon:"success"
+               }).then(function(){
+                    window.location.reload();
+               },function() {
+                   window.location.reload();
+               });
+           }else{
+                swal("Oops!", "Error in Updating!", 'error');
+           }
+       }).fail(function() {
+            swal("Fail!", "Network/Server error!", 'error');
+            window.location.reload();
+       });
+    });
+});
+
+$(document).on('click','.subjectset_edit',function() {
+    var subject_name = $(this).data('name');
+    var id = $(this).data('id');
+    var description = $(this).data('description');
+    var year = $(this).data('year');
+    var depart = $(this).data('department');
+    var semester = $(this).data('semester')
+    $('.modal-body #add_subject').val(subject_name);
+    $('.modal-body #id').val(id);
+    $('.modal-body #description').val(description);
+    $('.modal-body #edityear option[value='+ year +']').attr('selected','selected');
+    $('.modal-body #editdepartment option[value='+ depart +']').attr('selected','selected');
+    $('.modal-body #editsemester option[value='+ semester +']').attr('selected','selected');
+  
+});
+
+$(document).ready(function() {
+
+    var form = $('#editSubjectsetForm');
+    form.submit(function(e) {
+       e.preventDefault();
+       
+       $.ajax({
+            url: form.attr('action'),
+            type:'POST',
+            data: form.serialize(),
+            dataType: 'json'
+       }).done(function(response) {
+           if (response) {
+               swal({
+                   title: "Successfully Updated",
+                   text:  "",
+                   icon:"success"
+               }).then(function(){
+                    window.location.reload();
+               },function() {
+                   window.location.reload();
+               });
+           }else{
+                swal("Oops!", "Error in Updating!", 'error');
+           }
+       }).fail(function() {
+            swal("Fail!", "Network/Server error!", 'error');
+            window.location.reload();
+       });
+    });
 });
