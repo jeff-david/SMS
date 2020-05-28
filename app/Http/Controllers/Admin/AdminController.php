@@ -982,13 +982,20 @@ class AdminController extends Controller
                 ->where('semester',2)
                 ->paginate(10);
 
+        $twelvefirst = GradeTwelveSubject::where('year_level_id',6)
+                ->where('semester',1)
+                ->paginate(10);
+        $twelvesecond = GradeTwelveSubject::where('year_level_id',6)
+                ->where('semester',2)
+                ->paginate(10);
+
         $year = YearLevel::all()->take(4);
         $yearset = YearLevel::orderBy('id','desc')->take(2)->get();
     
         $department = Department::all();
        
         
-        return view('admin.view_subjects',compact('seven','eight','nine','ten','elevenfirst','elevensecond','year','department','yearset'));
+        return view('admin.view_subjects',compact('seven','eight','nine','ten','elevenfirst','elevensecond','twelvefirst','twelvesecond','year','department','yearset'));
     }
 
     public function addSubject(Request $request)

@@ -297,9 +297,14 @@
                                         </div>
                                     </div>
                                 </div>
+                                   
+                                <!-- G12 subjects -->
                                 <div class="tab-pane fade" id="grade-twelve" role="tabpanel"
                                     aria-labelledby="grade-twelve-tab">
                                     <div class="row">
+                                        <div class="typo-headers">
+                                            <h3 class="pb-2 display-5">First Semester Subjects</h3>
+                                        </div>
                                         <div class="col-lg-12" style="margin-left: -7px;">
                                             <div class="table-responsive table--no-card m-b-30">
                                                 <table class="table table-borderless table-striped table-earning">
@@ -312,10 +317,14 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
+                                                        @php
+                                                        $e = 1;
+                                                        @endphp
+                                                        @foreach($twelvefirst as $twelvefirsts)
                                                         <tr style="font-size:15px">
-                                                            <td></td>
-                                                            <td class="text-center"></td>
-                                                            <td class="text-center"></td>
+                                                            <td class="text-center">{{$e++}}</td>
+                                                            <td class="text-center">{{$twelvefirsts->subject_name}}</td>
+                                                            <td class="text-center">{{$twelvefirsts->description}}</td>
                                                             <td class="table-data-feature" style="text-align:center;">
                                                                 <button class="item" title="edit" data-toggle="modal"
                                                                     data-target="#editannouncement">
@@ -328,11 +337,60 @@
                                                                 </button>
                                                             </td>
                                                         </tr>
+                                                        @endforeach
                                                     </tbody>
                                                 </table>
+                                                {!! $twelvesecond->links() !!}
                                             </div>
                                         </div>
                                     </div>
+                                    <!-- G12 second sem -->
+                                    <div class="row">
+                                        <div class="typo-headers">
+                                            <h3 class="pb-2 display-5">Second Semester Subjects</h3>
+                                        </div>
+                                        <div class="col-lg-12" style="margin-left: -7px;">
+                                            <div class="table-responsive table--no-card m-b-30">
+                                                <table class="table table-borderless table-striped table-earning">
+                                                    <thead>
+                                                        <tr>
+                                                            <th class="text-center">ID</th>
+                                                            <th class="text-center">Subject Name</th>
+                                                            <th class="text-center">Subject Description</th>
+                                                            <th class="text-center">Action</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @php
+                                                        $es = 1
+                                                        @endphp
+                                                        @foreach($twelvesecond as $twelveseconds)
+                                                        <tr style="font-size:15px">
+                                                            <td class="text-center">{{$es++}}</td>
+                                                            <td class="text-center">{{$twelveseconds->subject_name}}</td>
+                                                            <td class="text-center">{{$twelveseconds->description}}</td>
+                                                            <td class="table-data-feature" style="text-align:center;">
+                                                                <button class="item" title="edit" data-toggle="modal"
+                                                                    data-target="#editannouncement">
+                                                                    <i class="zmdi zmdi-edit"></i>
+                                                                </button>
+
+                                                                <button class="item sendannounce" title="Send"
+                                                                    data-toggle="modal" data-target="#sendModal">
+                                                                    <i class="zmdi zmdi-archive"></i>
+                                                                </button>
+                                                            </td>
+                                                        </tr>
+                                                        @endforeach
+                                                    </tbody>
+                                                </table>
+                                                {!! $twelvesecond->links() !!}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- end of G12 second sem -->
+                                </div>
+                                <!-- end of G12 semesters -->
                                 </div>
                             </div>
 
