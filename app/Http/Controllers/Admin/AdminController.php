@@ -981,8 +981,45 @@ class AdminController extends Controller
         $elevensecond = GradeElevenSubject::where('year_level_id',5)
                 ->where('semester',2)
                 ->paginate(10);
+
+        $year = YearLevel::all()->take(4);
+        $yearset = YearLevel::orderBy('id','desc')->take(2)->get();
+    
+        $department = Department::all();
        
         
-        return view('admin.view_subjects',compact('seven','eight','nine','ten','elevenfirst','elevensecond'));
+        return view('admin.view_subjects',compact('seven','eight','nine','ten','elevenfirst','elevensecond','year','department','yearset'));
+    }
+
+    public function addSubject(Request $request)
+    {
+        $data = $request->all();
+
+        \DB::beginTransaction();
+        try
+        {
+            $save = $this->adminService->addSubject($data);
+            \DB::commit(); 
+        }catch(\Exception $th)
+        {
+            \DB::rollback();
+        }
+        return $save;
+    }
+
+    public function addSubjectset(Request $request)
+    {
+        $data = $request->all();
+
+        \DB::beginTransaction();
+        try
+        {
+            $save = $this->adminService->addSubjectset($data);
+            \DB::commit(); 
+        }catch(\Exception $th)
+        {
+            \DB::rollback();
+        }
+        return $save;
     }
 }

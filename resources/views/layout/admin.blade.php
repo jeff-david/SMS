@@ -34,6 +34,7 @@
     <link href="{{ url('/assets/vendor/slick/slick.css')}}" rel="stylesheet" media="all">
     <link href="{{ url('/assets/vendor/yearpicker/yearpicker.css') }}" rel="stylesheet" media="all">
     <link href="{{ url('/assets/vendor/select2/select2.min.css') }}" rel="stylesheet" media="all">
+    <link href="{{ url('/assets/vendor/sweetalert/sweetalert.min.css') }}" rel="stylesheet" media="all">
     <link href="{{ url('/assets/vendor/perfect-scrollbar/perfect-scrollbar.css')}}" rel="stylesheet" media="all">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">

@@ -17,6 +17,7 @@ class CreateGradeTwelveSubjectsTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('department_id');
             $table->bigInteger('year_level_id');
+            $table->bigInteger('semester');
             $table->string('subject_name');
             $table->string('description');
             $table->timestamps();

@@ -8,7 +8,9 @@
                 <div class="card">
                     <div class="card-header">
                         <button class="btn btn-primary" data-toggle="modal" id="posts"
-                            data-target="#postannouncement">ADD SUBJECTS</button>
+                            data-target="#addsubjects">ADD SUBJECTS</button>
+                        <button class="btn btn-primary" data-toggle="modal" id="posts"
+                            data-target="#addsubjectset">ADD SUBJECTS FOR GRADE 11 AND 12</button>
                     </div>
                     <div class="card-body">
                         <div class="custom-tab">
@@ -342,5 +344,156 @@
     </div>
 </div>
 <!-- END PAGE CONTAINER-->
+<!-- ADD SUBJECTS FOR GRADE 7 TO GRADE 10 -->
+<div class="modal fade" id="addsubjects" tabindex="-1" role="dialog" aria-labelledby="sendModalLabel" aria-hidden="true"
+    data-backdrop="send">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content text-center" style="margin-top: 20%;">
+            <form id="subjectForm" action="{{route('admin.addSubject')}}" method="post">
+                @csrf
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticModalLabel">ADD SUBJECTS</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col col-md-12">
+                            <div class="form-group has-success">
+                                <input name="add_subject" type="text" class="form-control"
+                                    placeholder="Enter Subject Name" value="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-md-12">
+                            <div class="form-group has-success">
+                                <textarea name="description" class="form-control" id="description" cols="30" rows="2"
+                                    placeholder="Enter Description . . ."></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-md-6">
+                            <div class="form-group has-success">
+                                <label for="">Grade Year :</label>
+                                <select name="year" id="" class="form-control">
+                                <option value="0"></option>
+                                @foreach($year as $years)
+                                <option value="{{$years->id}}" class="form-control">{{$years->yearlevel}}</option>
+                                @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col col-md-6">
+                            <label for="">Department :</label>
+                            <div class="form-group has-success">
+                                <select name="department" id="" class="form-control">
+                                <option value="0"></option>
+                                @foreach($department as $departments)
+                                <option value="{{$departments->id}}" class="form-control">{{$departments->department_name}}</option>
+                                @endforeach
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-md-12">
+                            <div class="form-group has-success">
+                                <input id="id" name="id" type="hidden" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary btn-block">ADD</button>
+                    <button type="button" class="btn btn-danger btn-block" data-dismiss="modal"
+                        style="margin-top: 0rem;">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="addsubjectset" tabindex="-1" role="dialog" aria-labelledby="sendModalLabel" aria-hidden="true"
+    data-backdrop="send">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content text-center" style="margin-top: 20%;">
+            <form id="subjectsetForm" action="{{route('admin.addSubjectset')}}" method="post">
+                @csrf
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticModalLabel">ADD SUBJECTS</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col col-md-12">
+                            <div class="form-group has-success">
+                                <input name="add_subject" type="text" class="form-control"
+                                    placeholder="Enter Subject Name" value="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-md-12">
+                            <div class="form-group has-success">
+                                <textarea name="description" class="form-control" id="description" cols="30" rows="2"
+                                    placeholder="Enter Description . . ."></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-md-4">
+                            <div class="form-group has-success">
+                                <label for="">Grade Year :</label>
+                                <select name="year" id="" class="form-control">
+                                <option value="0"></option>
+                                @foreach($yearset as $key => $yearsets)
+                                <option value="{{$yearset[$key]->id}}" class="form-control">{{$yearsets->yearlevel}}</option>
+                                @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col col-md-4">
+                            <label for="">Department :</label>
+                            <div class="form-group has-success">
+                                <select name="department" id="" class="form-control">
+                                <option value="0"></option>
+                                @foreach($department as $departments)
+                                <option value="{{$departments->id}}" class="form-control">{{$departments->department_name}}</option>
+                                @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col col-md-4">
+                            <label for="">Semester :</label>
+                            <div class="form-group has-success">
+                                <select name="semester" id="" class="form-control">
+                                <option value="1" class="form-control">First Semester</option>
+                                <option value="2" class="form-control">Second Semester</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-md-12">
+                            <div class="form-group has-success">
+                                <input id="id" name="id" type="hidden" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary btn-block">ADD</button>
+                    <button type="button" class="btn btn-danger btn-block" data-dismiss="modal"
+                        style="margin-top: 0rem;">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
 @endsection

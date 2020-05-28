@@ -76,6 +76,8 @@ Route::prefix('admin')->middleware('auth:admin')->group(function(){
     Route::prefix('/subject','Admin\AdminController@subjectView')->group(function ()
     {
         Route::get('/','Admin\AdminController@subjectView')->name('admin.subject');
+        Route::post('/add/subjects','Admin\AdminController@addSubject')->name('admin.addSubject');
+        Route::post('/add/subjectset','Admin\AdminController@addSubjectset')->name('admin.addSubjectset');
     });
 
 });

@@ -59,5 +59,66 @@ $(document).ready(function() {
     console.log($('#file').val());
 }); 
 
+$(document).ready(function() {
+    var form = $('#subjectForm');
 
-// 
+    form.submit(function(e) {
+       e.preventDefault();
+       
+       $.ajax({
+            url: form.attr('action'),
+            type:'POST',
+            data: form.serialize(),
+            dataType: 'json'
+       }).done(function(response) {
+           if (response) {
+               swal({
+                   title: "Successfully Registered a Subject",
+                   text:  "",
+                   icon:"success"
+               }).then(function(){
+                    window.location.reload();
+               },function() {
+                   window.location.reload();
+               });
+           }else{
+                swal("Oops!", "Registering Subject error!", 'error');
+           }
+       }).fail(function() {
+            swal("Fail!", "Network/Server error!", 'error');
+            window.location.reload();
+       });
+    });
+
+
+    var form = $('#subjectsetForm');
+
+    form.submit(function(e) {
+       e.preventDefault();
+       
+       $.ajax({
+            url: form.attr('action'),
+            type:'POST',
+            data: form.serialize(),
+            dataType: 'json'
+       }).done(function(response) {
+           if (response) {
+               swal({
+                   title: "Successfully Registered a Subject",
+                   text:  "",
+                   icon:"success"
+               }).then(function(){
+                    window.location.reload();
+               },function() {
+                   window.location.reload();
+               });
+           }else{
+                swal("Oops!", "Registering Subject error!", 'error');
+           }
+       }).fail(function() {
+            swal("Fail!", "Network/Server error!", 'error');
+            window.location.reload();
+       });
+    });
+ 
+});

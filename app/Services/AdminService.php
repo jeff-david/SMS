@@ -15,6 +15,12 @@ use SMS\Models\Department;
 use SMS\Models\DiagnosticExam;
 use SMS\Helper\FileHelper;
 use SMS\Models\Announcement;
+use SMS\Models\GradeSevenSubject;
+use SMS\Models\GradeEightSubject;
+use SMS\Models\GradeNineSubject;
+use SMS\Models\GradeTenSubject;
+use SMS\Models\GradeElevenSubject;
+use SMS\Models\GradeTwelveSubject;
 use SMS\Notifications\NewAnnouncementNotification;
 use Hash;
 use Carbon\Carbon;
@@ -482,6 +488,87 @@ class AdminService
         $depart->save();
 
         return $depart;
+    }
+
+    public function addSubject($data)
+    {
+        switch ($data['year']) {
+            case 1:
+                $seven = new GradeSevenSubject();
+                $seven->subject_name = $data['add_subject'];
+                $seven->department_id = $data['department'];
+                $seven->year_level_id = $data['year'];
+                $seven->description = $data['description'];
+                $seven->save();
+                
+                return $seven;
+                break;
+            case 2:
+                $eight = new GradeEightSubject();
+                $eight->subject_name = $data['add_subject'];
+                $eight->department_id = $data['department'];
+                $eight->year_level_id = $data['year'];
+                $eight->description = $data['description'];
+                $eight->save();
+                
+                return $eight;
+                break;
+            case 3:
+                $nine = new GradeNineSubject();
+                $nine->subject_name = $data['add_subject'];
+                $nine->department_id = $data['department'];
+                $nine->year_level_id = $data['year'];
+                $nine->description = $data['description'];
+                $nine->save();
+                
+                return $nine;
+                break;
+            case 4:
+                $ten = new GradeTenSubject();
+                $ten->subject_name = $data['add_subject'];
+                $ten->department_id = $data['department'];
+                $ten->year_level_id = $data['year'];
+                $ten->description = $data['description'];
+                $ten->save();
+                
+                return $ten;
+                break;
+            default:
+                # code...
+                break;
+        }
+
+    }
+
+    public function addSubjectset($data)
+    {
+        switch ($data['year']) {
+            case 5:
+                $eleven = new GradeElevenSubject();
+                $eleven->subject_name = $data['add_subject'];
+                $eleven->department_id = $data['department'];
+                $eleven->year_level_id = $data['year'];
+                $eleven->description = $data['description'];
+                $eleven->semester = $data['semester'];
+                $eleven->save();
+                
+                return $eleven;
+                break;
+            case 6:
+                $twelve = new GradeTwelveSubject();
+                $twelve->subject_name = $data['add_subject'];
+                $twelve->department_id = $data['department'];   
+                $twelve->year_level_id = $data['year'];
+                $twelve->description = $data['description'];
+                $twelve->semester = $data['semester'];
+                $twelve->save();
+                
+                return $twelve;
+                break;
+            default:
+                # code...
+                break;
+        }
     }
 
 
