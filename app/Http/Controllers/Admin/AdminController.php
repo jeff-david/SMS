@@ -1053,4 +1053,13 @@ class AdminController extends Controller
         }
         return $save;
     }
+
+    public function deleteSubject(Request $request)
+    {
+        
+        $id = $request->id;
+        $subj = Subject::find($id);
+        $subj->delete();
+        return $subj;
+    }
 }

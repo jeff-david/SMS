@@ -216,4 +216,42 @@ $(document).ready(function() {
             window.location.reload();
        });
     });
+    
+    // delete
+    $(document).ready(function() {
+        $('.deleteSubject').on('click',function() {
+           var id = $(this).data('id');
+           swal({
+             title: "Are you sure?",
+             text: "You will not be able to recover this subjects!",
+             icon: "error",
+             dangerMode: true,
+             buttons: true,
+             buttons: ['Cancel','Delete!']
+           }).then((willDelete) => {
+               if (willDelete) {
+                 $.ajax({
+                     url: '/admin/subject/delete',
+                     type: 'POST',
+                     dataType: 'json',
+                     data:{"_token": $('meta[name="csrf-token"]').attr('content'), 'id': id},
+                     success:function() {
+                        swal({
+                            title: "Done!",
+                            text:  "Successfully Deleted",
+                            icon:"success"
+                        }).then(function(){
+                            window.location.reload();
+                       },function() {
+                           window.location.reload();
+                       });
+                     },
+                     error: function(xhr, ajaxOptions, thrownError) {
+                       swal("Error!","Please try again","error");
+                     }
+                 });
+               }
+           });
+        });
+    });
 });
