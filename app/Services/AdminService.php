@@ -155,10 +155,39 @@ class AdminService
 
     public function get_Subject($id)
     {
-        $subject = Subject::where('subjects.year_level_id','=',$id)
-                    ->get();
-
-        return $subject;
+        switch ($id) {
+            case 1:
+                $subject = GradeSevenSubject::where('year_level_id','=',$id)
+                        ->get();
+                return $subject;
+                break;
+            case 2:
+                $subject = GradeEightSubject::where('year_level_id','=',$id)
+                        ->get();
+                return $subject;
+                break;
+            case 3:
+                $subject = GradeNineSubject::where('year_level_id','=',$id)
+                        ->get();
+                return $subject;
+                break;
+            case 4:
+                $subject = GradeTenSubject::where('year_level_id','=',$id)
+                        ->get();
+                return $subject;
+                break;
+            case 5:
+                $subject = GradeElevenSubject::where('year_level_id','=',$id)
+                        ->get();
+                return $subject;
+                break;
+            default:
+                $subject = GradeTwelveSubject::where('year_level_id','=',$id)
+                        ->get();
+                return $subject;
+                break;
+        }
+        
     }
     public function get_Section($id)
     {
@@ -648,6 +677,29 @@ class AdminService
             default:
                 # code...
                 break;
+        }
+    }
+
+    public function getSubject($data)
+    {
+        switch ($data['level']) {
+            case 1:
+                $seven = GradeSevenSubject::where('id',$data['section'])->pluck('id','subject_name');
+                return $seven;
+                break;
+            case 2:
+                $eight = GradeEightSubject::where('id',$data['section'])->pluck('id','subject_name');
+                return $eight;
+                break;
+            case 3:
+                $nine = GradeNineSubject::where('id',$data['section'])->pluck('id','subject_name');
+                return $nine;
+                break;
+            default:
+                $ten = GradeTenSubject::where('id',$data['section'])->pluck('id','subject_name');
+                return $ten;
+                break;
+                
         }
     }
 

@@ -34,7 +34,8 @@ Route::prefix('admin')->middleware('auth:admin')->group(function(){
     Route::get('/register/studentlist','Admin\AdminController@student_list')->name('admin.studentlist');
     Route::get('/register/teacherlist','Admin\AdminController@teacher_list')->name('admin.teacher');
     Route::get('/assign_teacher/{id}','Admin\AdminController@assign_teacher')->name('admin.assign_teacher');
-    Route::get('/assign_teacher/getTeacher/{id}','Admin\AdminController@get_teacher');
+    Route::get('/assign/teacher/getTeacher','Admin\AdminController@get_teacher');
+    Route::get('/assign/subject','Admin\AdminController@getSubject');
     Route::get('/register/student/edit/{id}','Admin\AdminController@student_edit')->name('admin.student_edit');
     Route::get('/register/teacher/edit/{id}','Admin\AdminController@teacher_edit')->name('admin.teacher_edit');
     Route::get('/class/{id}','Admin\AdminController@view_section')->name('admin.view_section');

@@ -609,10 +609,12 @@ class AdminController extends Controller
         
     }
 
-    public function get_teacher($id)
+    public function get_teacher(Request $request)
     {
-        $teacher = DB::table('teachers')->where('departments_id', $id)->pluck('lastname','id'); 
-        return json_encode($teacher);
+       
+        $teacher = DB::table('teachers')->where('departments_id', $request->subjectId)->pluck('lastname','id');
+
+        return $teacher;
     }
 
     public function store_assign(Request $request,$id)
@@ -1044,8 +1046,24 @@ class AdminController extends Controller
 
         \DB::beginTransaction();
         try
-        {
+        { 
             $save = $this->adminService->editSubjectset($data);
+            \DB::commit(); 
+        }catch(\Exception $th)
+        {
+            \DB::rollback();
+        }
+        return $save;
+    }
+
+    public function getSubject(Request $request)
+    {
+        $data = $request->all();
+
+        \DB::beginTransaction();
+        try
+        { 
+            $save = $this->adminService->getSubject($data);
             \DB::commit(); 
         }catch(\Exception $th)
         {
