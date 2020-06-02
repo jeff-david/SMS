@@ -612,7 +612,7 @@ class AdminController extends Controller
     public function get_teacher(Request $request)
     {
        
-        $teacher = DB::table('teachers')->where('departments_id', $request->subjectId)->pluck('lastname','id');
+        $teacher = DB::table('teachers')->where('departments_id', $request->subjectId)->get();
 
         return $teacher;
     }

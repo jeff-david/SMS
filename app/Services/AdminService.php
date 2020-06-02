@@ -684,19 +684,19 @@ class AdminService
     {
         switch ($data['level']) {
             case 1:
-                $seven = GradeSevenSubject::where('id',$data['section'])->pluck('id','subject_name');
+                $seven = GradeSevenSubject::where('id',$data['section'])->get();
                 return $seven;
                 break;
             case 2:
-                $eight = GradeEightSubject::where('id',$data['section'])->pluck('id','subject_name');
+                $eight = GradeEightSubject::where('id',$data['section'])->get();
                 return $eight;
                 break;
             case 3:
-                $nine = GradeNineSubject::where('id',$data['section'])->pluck('id','subject_name');
+                $nine = GradeNineSubject::where('id',$data['section'])->get();
                 return $nine;
                 break;
             default:
-                $ten = GradeTenSubject::where('id',$data['section'])->pluck('id','subject_name');
+                $ten = GradeTenSubject::where('id',$data['section'])->get();
                 return $ten;
                 break;
                 
