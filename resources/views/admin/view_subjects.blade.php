@@ -67,8 +67,8 @@
                                                                     <i class="zmdi zmdi-edit"></i>
                                                                 </button>
 
-                                                                <button class="item sendannounce" title="Send"
-                                                                    data-toggle="modal" data-target="#sendModal">
+                                                                <button class="item sendannounce" title="Delete"
+                                                                    data-toggle="modal" data-target="#deleteSubjects">
                                                                     <i class="zmdi zmdi-archive"></i>
                                                                 </button>
                                                             </td>
@@ -112,7 +112,7 @@
                                                                     <i class="zmdi zmdi-edit"></i>
                                                                 </button>
 
-                                                                <button class="item sendannounce" title="Send"
+                                                                <button class="item sendannounce" title="Delete"
                                                                     data-toggle="modal" data-target="#sendModal">
                                                                     <i class="zmdi zmdi-archive"></i>
                                                                 </button>
@@ -157,7 +157,7 @@
                                                                     <i class="zmdi zmdi-edit"></i>
                                                                 </button>
 
-                                                                <button class="item sendannounce" title="Send"
+                                                                <button class="item sendannounce" title="Delete"
                                                                     data-toggle="modal" data-target="#sendModal">
                                                                     <i class="zmdi zmdi-archive"></i>
                                                                 </button>
@@ -202,7 +202,7 @@
                                                                     <i class="zmdi zmdi-edit"></i>
                                                                 </button>
 
-                                                                <button class="item sendannounce" title="Send"
+                                                                <button class="item sendannounce" title="Delete"
                                                                     data-toggle="modal" data-target="#sendModal">
                                                                     <i class="zmdi zmdi-archive"></i>
                                                                 </button>
@@ -250,7 +250,7 @@
                                                                     <i class="zmdi zmdi-edit"></i>
                                                                 </button>
 
-                                                                <button class="item sendannounce" title="Send"
+                                                                <button class="item sendannounce" title="Delete"
                                                                     data-toggle="modal" data-target="#sendModal">
                                                                     <i class="zmdi zmdi-archive"></i>
                                                                 </button>
@@ -295,7 +295,7 @@
                                                                     <i class="zmdi zmdi-edit"></i>
                                                                 </button>
 
-                                                                <button class="item sendannounce" title="Send"
+                                                                <button class="item sendannounce" title="Delete"
                                                                     data-toggle="modal" data-target="#sendModal">
                                                                     <i class="zmdi zmdi-archive"></i>
                                                                 </button>
@@ -334,7 +334,10 @@
                                                                     <i class="zmdi zmdi-edit"></i>
                                                                 </button>
 
-                                                                <button class="item sendannounce" title="Send"
+                                                  
+
+
+                                                                <button class="item sendannounce" title="Delete"
                                                                     data-toggle="modal" data-target="#sendModal">
                                                                     <i class="zmdi zmdi-archive"></i>
                                                                 </button>
