@@ -220,7 +220,9 @@ $(document).ready(function() {
     // delete
     $(document).ready(function() {
         $('.deleteSubject').on('click',function() {
+            // get value from the data attribute
            var id = $(this).data('id');
+           var level = $(this).data('level');
            swal({
              title: "Are you sure?",
              text: "You will not be able to recover this subjects!",
@@ -231,9 +233,13 @@ $(document).ready(function() {
            }).then((willDelete) => {
                if (willDelete) {
                  $.ajax({
+                    // pass to controller
+                    //use this to call the routing to controller
                      url: '/admin/subject/delete',
                      type: 'POST',
                      dataType: 'json',
+                     //data to pass in controller
+                    //  data:{"_token": $('meta[name="csrf-token"]').attr('content'), 'id': id,'level':level},
                      data:{"_token": $('meta[name="csrf-token"]').attr('content'), 'id': id},
                      success:function() {
                         swal({

@@ -81,6 +81,9 @@ Route::prefix('admin')->middleware('auth:admin')->group(function(){
         Route::post('/add/subjectset','Admin\AdminController@addSubjectset')->name('admin.addSubjectset');
         Route::post('/edit','Admin\AdminController@editSubject')->name('admin.editSubject');
         Route::post('/edit/subjectset','Admin\AdminController@editSubjectset')->name('admin.editSubjectset');
+        // use routing for delete
+        // Route::post('/delete','Admin\AdminController@deleteSubject')->name('admin.deleteSubject');
+
 
 
     });

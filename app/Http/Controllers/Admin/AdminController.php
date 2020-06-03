@@ -1065,9 +1065,20 @@ class AdminController extends Controller
 
     public function deleteSubject(Request $request)
     {
-        
         $id = $request->id;
-        $subj = Subject::find($id);
+        $level = $request->level;
+        //check if the is grade seven or so on....
+        // switch ($level) {
+        //     case 1:
+        //         $seven = GradeSevenSubject::find($id);
+        //         $seven->delete();
+        //         return $seven;
+        //         break;
+            //please continue to all the year level
+        //     default:
+        //         # code...
+        //         break;
+        // }
         $subj->delete();
         return $subj;
     }

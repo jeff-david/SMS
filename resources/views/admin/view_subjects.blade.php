@@ -69,9 +69,14 @@
                                                                     data-department="{{$sevens->department_id}}">
                                                                     <i class="zmdi zmdi-edit"></i>
                                                                 </button>
-
-                                                                <button class="item sendannounce" title="Delete"
-                                                                    data-toggle="modal" data-target="#deleteSubjects">
+                                                                <!-- use to call the sweet alert -->
+                                                                <!-- use data attribute like data-level and data-id  to pass to ajax to controller-->
+                                                                <!-- <button class="item deleteSubject" title="Delete"
+                                                                    data-level="{{$sevens->year_level_id}}"
+                                                                    data-id="{{$sevens->id}}">
+                                                                    <i class="zmdi zmdi-archive"></i>
+                                                                </button> -->
+                                                                <button class="item deleteSubject" title="Delete">
                                                                     <i class="zmdi zmdi-archive"></i>
                                                                 </button>
                                                             </td>
@@ -359,8 +364,8 @@
                                                             <td class="text-center">{{$twelvefirsts->subject_name}}</td>
                                                             <td class="text-center">{{$twelvefirsts->description}}</td>
                                                             <td class="table-data-feature" style="text-align:center;">
-                                                                <button class="item subjectset_edit" title="edit" data-toggle="modal"
-                                                                    data-target="#edit_subjectset"
+                                                                <button class="item subjectset_edit" title="edit"
+                                                                    data-toggle="modal" data-target="#edit_subjectset"
                                                                     data-name="{{$twelvefirsts->subject_name}}"
                                                                     data-description="{{$twelvefirsts->description}}"
                                                                     data-year="{{$twelvefirsts->year_level_id}}"
@@ -370,7 +375,7 @@
                                                                     <i class="zmdi zmdi-edit"></i>
                                                                 </button>
 
-                                                  
+
 
 
                                                                 <button class="item sendannounce" title="Delete"
@@ -413,8 +418,8 @@
                                                             </td>
                                                             <td class="text-center">{{$twelveseconds->description}}</td>
                                                             <td class="table-data-feature" style="text-align:center;">
-                                                                <button class="item subjectset_edit" title="edit" data-toggle="modal"
-                                                                    data-target="#edit_subjectset"
+                                                                <button class="item subjectset_edit" title="edit"
+                                                                    data-toggle="modal" data-target="#edit_subjectset"
                                                                     data-name="{{$twelveseconds->subject_name}}"
                                                                     data-description="{{$twelveseconds->description}}"
                                                                     data-year="{{$twelveseconds->year_level_id}}"
