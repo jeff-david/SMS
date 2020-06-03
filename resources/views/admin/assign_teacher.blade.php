@@ -7,6 +7,115 @@
     <div class="section__content section__content--p30">
         <div class="container-fluid">
             <div class="row">
+                <div class="col-md-3">
+                    <div class="sticky-top mb-3">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Select Subjects</h4>
+                                <select name="subject" id="" class="form-control">
+                                    <option value=""></option>
+                                    @foreach($subject as $subjects)
+                                    <option value="{{$subjects->department_id}}" data-section="{{$subjects->id}}"
+                                        data-id="{{$subjects->year_level_id}}">{{$subjects->subject_name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="card-body">
+                                <div id="external-events">
+
+                                </div>
+                                <div class="checkbox">
+                                    <label for="drop-remove">
+                                        <input type="checkbox" id="drop-remove">
+                                        remove after drop
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Choose a Teacher</h4>
+                            </div>
+                            <div class="card-body">
+                                <div id="external-events" class="department_teacher">
+
+                                </div>
+                                <div class="checkbox">
+                                    <label for="drop-remove">
+                                        <input type="checkbox" id="drop-remove">
+                                        remove after drop
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card card-primary">
+                        <div class="card-body p-0">
+                            <div class="table-responsive table--no-card m-b-30">
+                                <table class="table table-hover table-striped table-earning ">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center">Subject</th>
+                                            <th class="text-center">Teacher</th>
+                                            <th class="text-center">Schedule</th>
+                                            <th class="text-center">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="droppable">
+                                        @for($i = 0;$i < 10; $i++ )
+                                        <tr style="font-size:15px">
+                                            <td class="text-center subject_drag"></td>
+                                            <td class="text-center teacher_drag"></td>
+                                            <td class="text-center" id="schedule_drag"></td>
+                                            <td class="table-data-feature" style="text-align:center;">
+                                                <button class="item subject_edit" title="edit" data-toggle="modal">
+                                                    <i class="zmdi zmdi-edit"></i>
+                                                </button>
+                                                <button class="item sendannounce" title="Send" data-toggle="modal"
+                                                    data-target="#sendModal">
+                                                    <i class="zmdi zmdi-archive"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        @endfor
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">Schedules</h4>
+                        </div>
+                        <div class="card-body">
+                            <div id="external-events">
+                                @foreach(config('const.schedule_time') as $id => $schedule_time)
+                                    <div class="external-event bg-info" style="color:white" name="{{$id}}" id="schedule_event">{{$schedule_time}}</div>
+                                @endforeach
+                                <div class="checkbox">
+                                    <label for="drop-remove">
+                                        <input type="checkbox" id="drop-remove">
+                                        remove after drop
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- <div class="main-content">
+
+    <div class="section__content section__content--p30">
+        <div class="container-fluid">
+            <div class="row">
                 <div class="col-lg-12">
                     <div class="card" style="padding: 10px;margin-top: 45px;">
                         <div class="card-header">
@@ -346,8 +455,8 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 <!-- PAGE CONTENT-->
-</div>
+<!-- </div> -->
 
 @endsection

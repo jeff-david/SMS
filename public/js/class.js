@@ -34,23 +34,121 @@ $(document).ready(function(){
             { "width": "10%", "targets": 5 },
           ]
     });
-    $('select[name = "subject1"]').on('change',function(){
+    $('select[name = "subject"]').on('change',function(){
         var subjectId = $(this).val();
-        if (subjectId) {
+        var year_level = $(this).find(':selected').data('id');
+        var section = $(this).find(':selected').data('section');
+        var td2;
+        var td;
+    
+        Promise.all([
             $.ajax({
-                url:'/admin/assign_teacher/getTeacher/' + subjectId,
+                url:'/admin/assign/subject',
                 type: "GET",
                 dataType: "json",
+                data:{"_token": $('meta[name="csrf-token"]').attr('content'), "subjectId":subjectId,'level':year_level,'section':section},
                 success:function(data) {
-                    $('select[name="teacher1"]').empty();
+                    $('#external-events').empty();
                     $.each(data,function(key,value) {
-                        $('select[name="teacher1"]').append('<option value="' + key + '">' + value + '</option>');    
+                        $result = $('#external-events').append('<div class="external-event bg-success" id="subject_event" data-department="'+ value['department_id'] +'" data-id="'+ value['id'] +'" style="color:white">'+ value['subject_name'] + '</div>');  
+                    });
+                    $('#external-events #subject_event').draggable({
+                        zIndex:1000,
+                        revert: true,
+                        reverDuration:0
+                    });
+                    $('#droppable tr .subject_drag').droppable({
+                        drop:function(event, ui) {
+                            $(this).append($(ui.draggable));
+                            $(ui.draggable).draggable('option','revert',true);
+
+                            $('#droppable tr .subject_drag').find('#subject_event').each(function() {
+                                td2 = $(this).data('department');
+                            });
+
+                        },
+                        accept: "#subject_event",
                     });
                 }
-            });
-        }else{
-            $('select[name="teacher1"]').empty();
-        }
+            }),
+
+            $.ajax({
+                url:'/admin/assign/teacher/getTeacher',
+                type: "GET",
+                dataType: "json",
+                data:{"_token": $('meta[name="csrf-token"]').attr('content'), "subjectId":subjectId},
+                success:function(data) {
+                    $('.department_teacher').empty();
+                    $.each(data,function(key,value) {
+                        $('.department_teacher').append('<div class="external-event bg-primary" data-department="'+ value['departments_id'] +'" data-id="'+ value['id'] +'" style="color:white" id="teacher_event">'+ value['lastname'] + ',' + value['firstname'] + '</div>');  
+                    });
+                    var sourceColIndex;
+                    $('.department_teacher .external-event').draggable({
+                        zIndex:1000,
+                        revert: 'invalid',
+                        reverDuration:0,
+                        start:function(event, ui) {
+                            var foo = $(ui.helper).data('department');
+                            sourceColIndex = foo;
+                        }
+                    });
+                    var draggableClass;
+                    $('#droppable tr .teacher_drag').droppable({
+                        drop:function(event, ui) {
+                            var $draggable = $(ui.draggable);
+                            draggableClass = $draggable.data('department');
+                            var foo = $(event.target);
+                            var teacherCount = foo.find('#teacher_event').length;
+                            if (teacherCount > 0) {
+                                swal("Error!","Only One Teacher is allowed","warning");
+                                $draggable.draggable('option','revert',true);
+                                return false;
+                            }else{
+                                $(this).append($(ui.draggable));
+                                $(ui.draggable).draggable('option','revert',true);
+                                $('.department_teacher').empty();
+                            }
+
+                            var td;
+                            $('#droppable tr .teacher_drag').find('#teacher_event').each(function() {
+                                td = $(this).data('department');
+                            });
+
+                            if (td == 0 || td2 == 0) {
+                                $(this).append($(ui.draggable));
+                                $(ui.draggable).draggable('option','revert',true);
+                            }
+                            else if (td != td2) {
+                                swal("Error!","Not Applicable","warning");
+                                $draggable.draggable('option','revert',true);
+                                return false;
+                            }else{
+                                $(this).append($(ui.draggable));
+                                $(ui.draggable).draggable('option','revert',true);
+                            }
+                        },
+                        accept: "#teacher_event",
+                       
+                    });
+                }
+            }).fail(function(err) {
+                console.log(err);
+            })
+       
+        ]);
+    });
+
+    $(document).ready(function() {
+        
+        $('#droppable tr #schedule_drag').droppable({
+            drop:function(event, ui) {
+                $(this).append($(ui.draggable));
+                $(ui.draggable).draggable('option','revert',true);
+            },
+            accept: "#schedule_event",
+           
+        });
+
     });
 
     $('select[name = "subject2"]').on('change',function(){
@@ -265,6 +363,18 @@ $(document).on('click','.editSection',function() {
     $('.modal-body #classes_id').val(classes_id);
     $('.modal-body #section_from').val(from);
     $('.modal-body #section_to').val(to);
+});
+
+$(document).ready(function() {
+    $('#external-events .external-event').draggable({
+        zIndex:1070,
+        revert: true,
+        reverDuration:0,
+    });
+});
+
+$(document).ready(function() {
+    
 });
 
 $(document).on('click','.delete_section',function() {

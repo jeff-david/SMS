@@ -609,10 +609,12 @@ class AdminController extends Controller
         
     }
 
-    public function get_teacher($id)
+    public function get_teacher(Request $request)
     {
-        $teacher = DB::table('teachers')->where('departments_id', $id)->pluck('lastname','id'); 
-        return json_encode($teacher);
+       
+        $teacher = DB::table('teachers')->where('departments_id', $request->subjectId)->get();
+
+        return $teacher;
     }
 
     public function store_assign(Request $request,$id)
@@ -982,13 +984,20 @@ class AdminController extends Controller
                 ->where('semester',2)
                 ->paginate(10);
 
+        $twelvefirst = GradeTwelveSubject::where('year_level_id',6)
+                ->where('semester',1)
+                ->paginate(10);
+        $twelvesecond = GradeTwelveSubject::where('year_level_id',6)
+                ->where('semester',2)
+                ->paginate(10);
+
         $year = YearLevel::all()->take(4);
         $yearset = YearLevel::orderBy('id','desc')->take(2)->get();
     
         $department = Department::all();
        
         
-        return view('admin.view_subjects',compact('seven','eight','nine','ten','elevenfirst','elevensecond','year','department','yearset'));
+        return view('admin.view_subjects',compact('seven','eight','nine','ten','elevenfirst','elevensecond','twelvefirst','twelvesecond','year','department','yearset'));
     }
 
     public function addSubject(Request $request)
@@ -1044,7 +1053,7 @@ class AdminController extends Controller
 
         \DB::beginTransaction();
         try
-        {
+        { 
             $save = $this->adminService->editSubjectset($data);
             \DB::commit(); 
         }catch(\Exception $th)
@@ -1061,5 +1070,20 @@ class AdminController extends Controller
         $subj = Subject::find($id);
         $subj->delete();
         return $subj;
+    }
+    public function getSubject(Request $request)
+    {
+        $data = $request->all();
+
+        \DB::beginTransaction();
+        try
+        { 
+            $save = $this->adminService->getSubject($data);
+            \DB::commit(); 
+        }catch(\Exception $th)
+        {
+            \DB::rollback();
+        }
+        return $save;
     }
 }
